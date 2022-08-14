@@ -16,6 +16,12 @@
 		64871D6C28A990EE0004B773 /* Configurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64871D6928A990EE0004B773 /* Configurable.swift */; };
 		64871D6D28A990EE0004B773 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64871D6A28A990EE0004B773 /* BaseViewController.swift */; };
 		64871D6E28A990EE0004B773 /* BaseConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64871D6B28A990EE0004B773 /* BaseConstants.swift */; };
+		64871D7328A993670004B773 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 64871D7528A993670004B773 /* Localizable.strings */; };
+		64871D7E28A995210004B773 /* Strings+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64871D7928A995210004B773 /* Strings+Generated.swift */; };
+		64871D7F28A995210004B773 /* Fonts+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64871D7A28A995210004B773 /* Fonts+Generated.swift */; };
+		64871D8028A995210004B773 /* XCAssets+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64871D7B28A995210004B773 /* XCAssets+Generated.swift */; };
+		64871D8128A995210004B773 /* IB-Scenes+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64871D7C28A995210004B773 /* IB-Scenes+Generated.swift */; };
+		64871D8228A995210004B773 /* IB-Segues+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64871D7D28A995210004B773 /* IB-Segues+Generated.swift */; };
 		7DE9EAE86547A52B88FFB77C /* Pods_SpyGameiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AD0D9AAA4A666D0623D23D3 /* Pods_SpyGameiOS.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +39,13 @@
 		64871D6928A990EE0004B773 /* Configurable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configurable.swift; sourceTree = "<group>"; };
 		64871D6A28A990EE0004B773 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		64871D6B28A990EE0004B773 /* BaseConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseConstants.swift; sourceTree = "<group>"; };
+		64871D7428A993670004B773 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		64871D7628A993890004B773 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		64871D7928A995210004B773 /* Strings+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Strings+Generated.swift"; sourceTree = "<group>"; };
+		64871D7A28A995210004B773 /* Fonts+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Fonts+Generated.swift"; sourceTree = "<group>"; };
+		64871D7B28A995210004B773 /* XCAssets+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCAssets+Generated.swift"; sourceTree = "<group>"; };
+		64871D7C28A995210004B773 /* IB-Scenes+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IB-Scenes+Generated.swift"; sourceTree = "<group>"; };
+		64871D7D28A995210004B773 /* IB-Segues+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IB-Segues+Generated.swift"; sourceTree = "<group>"; };
 		6AD0D9AAA4A666D0623D23D3 /* Pods_SpyGameiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpyGameiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -100,6 +113,9 @@
 		64871D6728A98DFF0004B773 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				64871D6F28A992F30004B773 /* Generated */,
+				64871D7828A994B10004B773 /* Fonts */,
+				64871D7028A993200004B773 /* Strings */,
 				64871D5828A989C00004B773 /* SpyGameiOS.xcdatamodeld */,
 				64871D5B28A989C30004B773 /* Assets.xcassets */,
 			);
@@ -113,6 +129,33 @@
 				64871D5D28A989C30004B773 /* LaunchScreen.storyboard */,
 			);
 			path = Screens;
+			sourceTree = "<group>";
+		};
+		64871D6F28A992F30004B773 /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				64871D7A28A995210004B773 /* Fonts+Generated.swift */,
+				64871D7C28A995210004B773 /* IB-Scenes+Generated.swift */,
+				64871D7D28A995210004B773 /* IB-Segues+Generated.swift */,
+				64871D7928A995210004B773 /* Strings+Generated.swift */,
+				64871D7B28A995210004B773 /* XCAssets+Generated.swift */,
+			);
+			path = Generated;
+			sourceTree = "<group>";
+		};
+		64871D7028A993200004B773 /* Strings */ = {
+			isa = PBXGroup;
+			children = (
+				64871D7528A993670004B773 /* Localizable.strings */,
+			);
+			path = Strings;
+			sourceTree = "<group>";
+		};
+		64871D7828A994B10004B773 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		A71A5C05372C22D2AAD0BCB2 /* Pods */ = {
@@ -132,6 +175,7 @@
 			buildConfigurationList = 64871D6328A989C30004B773 /* Build configuration list for PBXNativeTarget "SpyGameiOS" */;
 			buildPhases = (
 				887D529ED0967495F04357BD /* [CP] Check Pods Manifest.lock */,
+				64871D7728A994340004B773 /* SwiftGen */,
 				64871D4828A989C00004B773 /* Sources */,
 				64871D4928A989C00004B773 /* Frameworks */,
 				64871D4A28A989C00004B773 /* Resources */,
@@ -168,6 +212,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 64871D4328A989C00004B773;
 			productRefGroup = 64871D4D28A989C00004B773 /* Products */;
@@ -185,6 +230,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				64871D5F28A989C30004B773 /* LaunchScreen.storyboard in Resources */,
+				64871D7328A993670004B773 /* Localizable.strings in Resources */,
 				64871D5C28A989C30004B773 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -192,6 +238,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		64871D7728A994340004B773 /* SwiftGen */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftGen;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT\"/SwiftGen/bin/swiftgen\n";
+		};
 		887D529ED0967495F04357BD /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -238,12 +302,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64871D7F28A995210004B773 /* Fonts+Generated.swift in Sources */,
 				64871D6C28A990EE0004B773 /* Configurable.swift in Sources */,
 				64871D6E28A990EE0004B773 /* BaseConstants.swift in Sources */,
 				64871D5A28A989C00004B773 /* SpyGameiOS.xcdatamodeld in Sources */,
 				64871D5428A989C00004B773 /* MainViewController.swift in Sources */,
+				64871D8028A995210004B773 /* XCAssets+Generated.swift in Sources */,
 				64871D5028A989C00004B773 /* AppDelegate.swift in Sources */,
+				64871D8128A995210004B773 /* IB-Scenes+Generated.swift in Sources */,
 				64871D5228A989C00004B773 /* SceneDelegate.swift in Sources */,
+				64871D7E28A995210004B773 /* Strings+Generated.swift in Sources */,
+				64871D8228A995210004B773 /* IB-Segues+Generated.swift in Sources */,
 				64871D6D28A990EE0004B773 /* BaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -259,6 +328,15 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		64871D7528A993670004B773 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				64871D7428A993670004B773 /* en */,
+				64871D7628A993890004B773 /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -266,6 +344,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -326,6 +405,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -387,9 +467,9 @@
 				DEVELOPMENT_TEAM = 598487U66T;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SpyGameiOS/Info.plist;
-				INFOPLIST_KEY_NSMainNibFile = MainViewController;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -416,9 +496,9 @@
 				DEVELOPMENT_TEAM = 598487U66T;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SpyGameiOS/Info.plist;
-				INFOPLIST_KEY_NSMainNibFile = MainViewController;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
