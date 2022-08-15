@@ -23,12 +23,17 @@
 		64871D8128A995210004B773 /* IB-Scenes+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64871D7C28A995210004B773 /* IB-Scenes+Generated.swift */; };
 		64871D8228A995210004B773 /* IB-Segues+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64871D7D28A995210004B773 /* IB-Segues+Generated.swift */; };
 		7DE9EAE86547A52B88FFB77C /* Pods_SpyGameiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AD0D9AAA4A666D0623D23D3 /* Pods_SpyGameiOS.framework */; };
+		CEE8667228A99E65006AC0FB /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE8667128A99E65006AC0FB /* SettingsTableViewCell.swift */; };
+		CEE8667928AA6570006AC0FB /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEE8667528AA6570006AC0FB /* Montserrat-Regular.ttf */; };
+		CEE8667A28AA6570006AC0FB /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEE8667628AA6570006AC0FB /* Montserrat-Medium.ttf */; };
+		CEE8667B28AA6570006AC0FB /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEE8667728AA6570006AC0FB /* Montserrat-Bold.ttf */; };
+		CEE8667C28AA6570006AC0FB /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEE8667828AA6570006AC0FB /* Montserrat-SemiBold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		433FC07363D81E5A1D472859 /* Pods-SpyGameiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpyGameiOS.debug.xcconfig"; path = "Target Support Files/Pods-SpyGameiOS/Pods-SpyGameiOS.debug.xcconfig"; sourceTree = "<group>"; };
 		4360E8475BB1DFC6325BDD72 /* Pods-SpyGameiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpyGameiOS.release.xcconfig"; path = "Target Support Files/Pods-SpyGameiOS/Pods-SpyGameiOS.release.xcconfig"; sourceTree = "<group>"; };
-		64871D4C28A989C00004B773 /* SpyGameiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpyGameiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		64871D4C28A989C00004B773 /* Spy Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Spy Game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		64871D4F28A989C00004B773 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64871D5128A989C00004B773 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		64871D5328A989C00004B773 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +52,11 @@
 		64871D7C28A995210004B773 /* IB-Scenes+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IB-Scenes+Generated.swift"; sourceTree = "<group>"; };
 		64871D7D28A995210004B773 /* IB-Segues+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IB-Segues+Generated.swift"; sourceTree = "<group>"; };
 		6AD0D9AAA4A666D0623D23D3 /* Pods_SpyGameiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpyGameiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEE8667128A99E65006AC0FB /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
+		CEE8667528AA6570006AC0FB /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		CEE8667628AA6570006AC0FB /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
+		CEE8667728AA6570006AC0FB /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
+		CEE8667828AA6570006AC0FB /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,7 +92,7 @@
 		64871D4D28A989C00004B773 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				64871D4C28A989C00004B773 /* SpyGameiOS.app */,
+				64871D4C28A989C00004B773 /* Spy Game.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -113,8 +123,8 @@
 		64871D6728A98DFF0004B773 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CEE8667028A9982A006AC0FB /* Fonts */,
 				64871D6F28A992F30004B773 /* Generated */,
-				64871D7828A994B10004B773 /* Fonts */,
 				64871D7028A993200004B773 /* Strings */,
 				64871D5828A989C00004B773 /* SpyGameiOS.xcdatamodeld */,
 				64871D5B28A989C30004B773 /* Assets.xcassets */,
@@ -125,7 +135,7 @@
 		64871D6828A98E310004B773 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				64871D5328A989C00004B773 /* MainViewController.swift */,
+				CEE8667D28AA7EBE006AC0FB /* Main */,
 				64871D5D28A989C30004B773 /* LaunchScreen.storyboard */,
 			);
 			path = Screens;
@@ -151,13 +161,6 @@
 			path = Strings;
 			sourceTree = "<group>";
 		};
-		64871D7828A994B10004B773 /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Fonts;
-			sourceTree = "<group>";
-		};
 		A71A5C05372C22D2AAD0BCB2 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -167,12 +170,40 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		CEE8667028A9982A006AC0FB /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				CEE8667728AA6570006AC0FB /* Montserrat-Bold.ttf */,
+				CEE8667628AA6570006AC0FB /* Montserrat-Medium.ttf */,
+				CEE8667528AA6570006AC0FB /* Montserrat-Regular.ttf */,
+				CEE8667828AA6570006AC0FB /* Montserrat-SemiBold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		CEE8667D28AA7EBE006AC0FB /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				CEE8667E28AA7EC7006AC0FB /* Cell */,
+				64871D5328A989C00004B773 /* MainViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		CEE8667E28AA7EC7006AC0FB /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				CEE8667128A99E65006AC0FB /* SettingsTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		64871D4B28A989C00004B773 /* SpyGameiOS */ = {
+		64871D4B28A989C00004B773 /* Spy Game */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 64871D6328A989C30004B773 /* Build configuration list for PBXNativeTarget "SpyGameiOS" */;
+			buildConfigurationList = 64871D6328A989C30004B773 /* Build configuration list for PBXNativeTarget "Spy Game" */;
 			buildPhases = (
 				887D529ED0967495F04357BD /* [CP] Check Pods Manifest.lock */,
 				64871D7728A994340004B773 /* SwiftGen */,
@@ -185,9 +216,9 @@
 			);
 			dependencies = (
 			);
-			name = SpyGameiOS;
+			name = "Spy Game";
 			productName = SpyGameiOS;
-			productReference = 64871D4C28A989C00004B773 /* SpyGameiOS.app */;
+			productReference = 64871D4C28A989C00004B773 /* Spy Game.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -219,7 +250,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				64871D4B28A989C00004B773 /* SpyGameiOS */,
+				64871D4B28A989C00004B773 /* Spy Game */,
 			);
 		};
 /* End PBXProject section */
@@ -229,6 +260,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEE8667928AA6570006AC0FB /* Montserrat-Regular.ttf in Resources */,
+				CEE8667A28AA6570006AC0FB /* Montserrat-Medium.ttf in Resources */,
+				CEE8667B28AA6570006AC0FB /* Montserrat-Bold.ttf in Resources */,
+				CEE8667C28AA6570006AC0FB /* Montserrat-SemiBold.ttf in Resources */,
 				64871D5F28A989C30004B773 /* LaunchScreen.storyboard in Resources */,
 				64871D7328A993670004B773 /* Localizable.strings in Resources */,
 				64871D5C28A989C30004B773 /* Assets.xcassets in Resources */,
@@ -314,6 +349,7 @@
 				64871D7E28A995210004B773 /* Strings+Generated.swift in Sources */,
 				64871D8228A995210004B773 /* IB-Segues+Generated.swift in Sources */,
 				64871D6D28A990EE0004B773 /* BaseViewController.swift in Sources */,
+				CEE8667228A99E65006AC0FB /* SettingsTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,14 +498,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 598487U66T;
+				DEVELOPMENT_TEAM = 2K66K5CLW8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SpyGameiOS/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Spy Game";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -479,6 +517,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.curepool.SpyGameiOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -491,14 +530,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 598487U66T;
+				DEVELOPMENT_TEAM = 2K66K5CLW8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SpyGameiOS/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Spy Game";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -508,6 +549,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.curepool.SpyGameiOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -526,7 +568,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		64871D6328A989C30004B773 /* Build configuration list for PBXNativeTarget "SpyGameiOS" */ = {
+		64871D6328A989C30004B773 /* Build configuration list for PBXNativeTarget "Spy Game" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				64871D6428A989C30004B773 /* Debug */,
