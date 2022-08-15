@@ -33,7 +33,7 @@
 /* Begin PBXFileReference section */
 		433FC07363D81E5A1D472859 /* Pods-SpyGameiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpyGameiOS.debug.xcconfig"; path = "Target Support Files/Pods-SpyGameiOS/Pods-SpyGameiOS.debug.xcconfig"; sourceTree = "<group>"; };
 		4360E8475BB1DFC6325BDD72 /* Pods-SpyGameiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpyGameiOS.release.xcconfig"; path = "Target Support Files/Pods-SpyGameiOS/Pods-SpyGameiOS.release.xcconfig"; sourceTree = "<group>"; };
-		64871D4C28A989C00004B773 /* Spy Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Spy Game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		64871D4C28A989C00004B773 /* SpyGameiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpyGameiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64871D4F28A989C00004B773 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64871D5128A989C00004B773 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		64871D5328A989C00004B773 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -92,7 +92,7 @@
 		64871D4D28A989C00004B773 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				64871D4C28A989C00004B773 /* Spy Game.app */,
+				64871D4C28A989C00004B773 /* SpyGameiOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -201,9 +201,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		64871D4B28A989C00004B773 /* Spy Game */ = {
+		64871D4B28A989C00004B773 /* SpyGameiOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 64871D6328A989C30004B773 /* Build configuration list for PBXNativeTarget "Spy Game" */;
+			buildConfigurationList = 64871D6328A989C30004B773 /* Build configuration list for PBXNativeTarget "SpyGameiOS" */;
 			buildPhases = (
 				887D529ED0967495F04357BD /* [CP] Check Pods Manifest.lock */,
 				64871D7728A994340004B773 /* SwiftGen */,
@@ -216,9 +216,9 @@
 			);
 			dependencies = (
 			);
-			name = "Spy Game";
+			name = SpyGameiOS;
 			productName = SpyGameiOS;
-			productReference = 64871D4C28A989C00004B773 /* Spy Game.app */;
+			productReference = 64871D4C28A989C00004B773 /* SpyGameiOS.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -250,7 +250,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				64871D4B28A989C00004B773 /* Spy Game */,
+				64871D4B28A989C00004B773 /* SpyGameiOS */,
 			);
 		};
 /* End PBXProject section */
@@ -504,7 +504,7 @@
 				DEVELOPMENT_TEAM = 2K66K5CLW8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SpyGameiOS/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Spy Game";
+				INFOPLIST_KEY_CFBundleDisplayName = SpyGameiOS;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -536,7 +536,7 @@
 				DEVELOPMENT_TEAM = 2K66K5CLW8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SpyGameiOS/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Spy Game";
+				INFOPLIST_KEY_CFBundleDisplayName = SpyGameiOS;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -568,7 +568,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		64871D6328A989C30004B773 /* Build configuration list for PBXNativeTarget "Spy Game" */ = {
+		64871D6328A989C30004B773 /* Build configuration list for PBXNativeTarget "SpyGameiOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				64871D6428A989C30004B773 /* Debug */,
