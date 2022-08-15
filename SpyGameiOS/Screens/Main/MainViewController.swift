@@ -12,9 +12,9 @@ class MainViewController: BaseViewController {
     
     // Private property
     private var models = [
-        SettingsTableViewCell.Model(id: 0, title: "Игроки"),
-        SettingsTableViewCell.Model(id: 1, title: "Шпионы"),
-        SettingsTableViewCell.Model(id: 2, title: "Таймер"),
+        SettingsTableViewCell.Model(title: "Игроки", type: .player),
+        SettingsTableViewCell.Model(title: "Шпионы", type: .spy),
+        SettingsTableViewCell.Model(title: "Таймер", type: .timer),
     ]
     
     // UI
@@ -87,5 +87,9 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         cell.configure(with: models[indexPath.row])
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
