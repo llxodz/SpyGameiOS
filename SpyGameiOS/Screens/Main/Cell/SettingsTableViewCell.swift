@@ -95,27 +95,22 @@ class SettingsTableViewCell: UITableViewCell {
 
 extension SettingsTableViewCell: Configurable {
     
-    struct Model {
-        let title: String
-        let type: TypeCell
+    enum FieldType {
+        case number
+        case timer
     }
     
-    enum TypeCell {
-        case player, spy, timer
+    struct Model {
+        let icon: UIImage
+        let titleText: String
+        let countText: String
+        let maxValue: Int
+        let fieldType: FieldType
     }
     
     func configure(with model: Model) {
-        titleTextLabel.text = model.title
-        switch model.type {
-            case .player:
-                infoImageView.image = Asset.playerImage.image
-                countTextLabel.text = "4"
-            case .spy:
-                infoImageView.image = Asset.spyImage.image
-                countTextLabel.text = "1"
-            case .timer:
-                infoImageView.image = Asset.clockImage.image
-                countTextLabel.text = "1 мин."
-        }
+        infoImageView.image = model.icon
+        titleTextLabel.text = model.titleText
+        countTextLabel.text = model.countText
     }
 }

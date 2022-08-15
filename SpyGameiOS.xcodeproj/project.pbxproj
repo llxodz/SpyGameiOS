@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		644FDBFF28AAF6FE0097F55D /* SettingsCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644FDBFE28AAF6FE0097F55D /* SettingsCellType.swift */; };
 		64871D5028A989C00004B773 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64871D4F28A989C00004B773 /* AppDelegate.swift */; };
 		64871D5228A989C00004B773 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64871D5128A989C00004B773 /* SceneDelegate.swift */; };
 		64871D5428A989C00004B773 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64871D5328A989C00004B773 /* MainViewController.swift */; };
@@ -33,6 +34,7 @@
 /* Begin PBXFileReference section */
 		433FC07363D81E5A1D472859 /* Pods-SpyGameiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpyGameiOS.debug.xcconfig"; path = "Target Support Files/Pods-SpyGameiOS/Pods-SpyGameiOS.debug.xcconfig"; sourceTree = "<group>"; };
 		4360E8475BB1DFC6325BDD72 /* Pods-SpyGameiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpyGameiOS.release.xcconfig"; path = "Target Support Files/Pods-SpyGameiOS/Pods-SpyGameiOS.release.xcconfig"; sourceTree = "<group>"; };
+		644FDBFE28AAF6FE0097F55D /* SettingsCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCellType.swift; sourceTree = "<group>"; };
 		64871D4C28A989C00004B773 /* SpyGameiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpyGameiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64871D4F28A989C00004B773 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64871D5128A989C00004B773 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +81,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		644FDBFD28AAF6BC0097F55D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				644FDBFE28AAF6FE0097F55D /* SettingsCellType.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		64871D4328A989C00004B773 = {
 			isa = PBXGroup;
 			children = (
@@ -102,6 +112,7 @@
 			children = (
 				64871D4F28A989C00004B773 /* AppDelegate.swift */,
 				64871D5128A989C00004B773 /* SceneDelegate.swift */,
+				644FDBFD28AAF6BC0097F55D /* Models */,
 				64871D6828A98E310004B773 /* Screens */,
 				64871D6728A98DFF0004B773 /* Resources */,
 				64871D6628A98DEF0004B773 /* Core */,
@@ -349,6 +360,7 @@
 				64871D7E28A995210004B773 /* Strings+Generated.swift in Sources */,
 				64871D8228A995210004B773 /* IB-Segues+Generated.swift in Sources */,
 				64871D6D28A990EE0004B773 /* BaseViewController.swift in Sources */,
+				644FDBFF28AAF6FE0097F55D /* SettingsCellType.swift in Sources */,
 				CEE8667228A99E65006AC0FB /* SettingsTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
