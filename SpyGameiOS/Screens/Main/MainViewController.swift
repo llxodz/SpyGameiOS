@@ -10,13 +10,6 @@ import SnapKit
 
 class MainViewController: BaseViewController {
     
-    // Private property
-    private var models = [
-        SettingsTableViewCell.Model(title: "Игроки", type: .player),
-        SettingsTableViewCell.Model(title: "Шпионы", type: .spy),
-        SettingsTableViewCell.Model(title: "Таймер", type: .timer),
-    ]
-    
     // UI
     private lazy var tableView = UITableView()
     
@@ -75,7 +68,7 @@ class MainViewController: BaseViewController {
 extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return models.count
+        return SettingsCellType.allCases.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -84,8 +77,9 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
             for: indexPath
         ) as? SettingsTableViewCell else { return UITableViewCell() }
         
-        cell.configure(with: models[indexPath.row])
-        
+        if let type = SettingsCellType(rawValue: indexPath.row) {
+            cell.configure(with: type.cellModel())
+        }
         return cell
     }
     
