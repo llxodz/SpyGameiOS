@@ -57,9 +57,9 @@ extension SettingsCellType {
     
     private var titleText: String {
         switch self {
-        case .players: return "Игроки"
-        case .spies: return "Шпионы"
-        case .timer: return "Таймер"
+        case .players: return L10n.SettingsCell.players
+        case .spies: return L10n.SettingsCell.spys
+        case .timer: return L10n.SettingsCell.timer
         }
     }
     
@@ -68,7 +68,7 @@ extension SettingsCellType {
         switch self {
         case .players: return "4"
         case .spies: return "1"
-        case .timer: return "10 мин"
+        case .timer: return "10 \(L10n.SettingsCell.minute)"
         }
     }
     

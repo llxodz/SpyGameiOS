@@ -10,9 +10,6 @@ import SnapKit
 
 private enum Constants {
     static let sizeImage: CGFloat = 24
-    
-    static let mainBlackColor = Asset.mainBlackColor.color
-    
     static let titleFont = FontFamily.Montserrat.medium.font(size: 16)
 }
 
@@ -27,23 +24,20 @@ class SettingsTableViewCell: UITableViewCell {
     private lazy var titleTextLabel: UILabel = {
         let label = UILabel()
         label.font = Constants.titleFont
-        label.textColor = Constants.mainBlackColor
+        label.textColor = Asset.mainBlackColor.color
         return label
-    }()
-    private lazy var infoImageView: UIImageView = {
-        let imageView = UIImageView()
-        return imageView
-    }()
-    private lazy var arrowImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = Asset.arrowRightImage.image
-        return imageView
     }()
     private lazy var countTextLabel: UILabel = {
         let label = UILabel()
         label.font = Constants.titleFont
-        label.textColor = Constants.mainBlackColor
+        label.textColor = Asset.mainBlackColor.color
         return label
+    }()
+    private lazy var infoImageView = UIImageView()
+    private lazy var arrowImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = Asset.arrowRightImage.image
+        return imageView
     }()
     
     // MARK: - Init
@@ -62,7 +56,7 @@ class SettingsTableViewCell: UITableViewCell {
     
     private func addViews() {
         [infoImageView, titleTextLabel, arrowImageView, countTextLabel].forEach {
-            addSubview($0)
+            contentView.addSubview($0)
         }
     }
     
@@ -70,23 +64,20 @@ class SettingsTableViewCell: UITableViewCell {
         infoImageView.snp.makeConstraints {
             $0.height.width.equalTo(Constants.sizeImage)
             $0.leading.equalToSuperview().offset(CGFloat.baseMargin)
-            $0.top.bottom.equalToSuperview().inset(CGFloat.compactMargin)
+            $0.top.bottom.equalToSuperview().inset(CGFloat.compactMargin).priority(.high)
         }
-        
         titleTextLabel.snp.makeConstraints {
             $0.leading.equalTo(infoImageView.snp.trailing).offset(CGFloat.smallMargin)
-            $0.center.equalToSuperview()
+            $0.centerY.equalToSuperview()
         }
-        
+        countTextLabel.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+        }
         arrowImageView.snp.makeConstraints {
             $0.height.width.equalTo(Constants.sizeImage)
             $0.trailing.equalToSuperview().inset(CGFloat.baseMargin)
-            $0.top.bottom.equalToSuperview().inset(CGFloat.compactMargin)
-        }
-        
-        countTextLabel.snp.makeConstraints {
-            $0.top.bottom.equalToSuperview().inset(CGFloat.compactMargin)
-            $0.trailing.equalTo(arrowImageView.snp.trailing).inset(CGFloat.extraLargeMargin)
+            $0.leading.equalTo(countTextLabel.snp.trailing).offset(CGFloat.smallMargin)
+            $0.centerY.equalToSuperview()
         }
     }
 }
