@@ -8,6 +8,10 @@
 import UIKit
 import SnapKit
 
+private enum Constants {
+    static let cellRowHeight: CGFloat = 50
+}
+
 class MainViewController: BaseViewController {
     
     // UI
@@ -54,7 +58,7 @@ class MainViewController: BaseViewController {
         tableView.dataSource = self
         tableView.register(SettingsTableViewCell.self, forCellReuseIdentifier: SettingsTableViewCell.identifier)
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 50
+        tableView.estimatedRowHeight = Constants.cellRowHeight
     }
 }
 
