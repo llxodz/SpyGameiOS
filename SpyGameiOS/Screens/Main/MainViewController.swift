@@ -31,8 +31,6 @@ class MainViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.backgroundColor = .green
     }
     
     // MARK: - Private
@@ -42,24 +40,21 @@ class MainViewController: BaseViewController {
     }
     
     private func configureLayout() {
-        tableView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-        }
+        tableView.snp.makeConstraints { $0.edges.equalToSuperview() }
     }
     
     private func configureAppearance() {
-        
+        tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 0.001, height: 0))
+        tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0.001, height: 0))
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: .baseMargin, bottom: 0, right: 0)
     }
     
     private func configureTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 0.001, height: 0))
-        tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0.001, height: 0))
-        tableView.register(
-            SettingsTableViewCell.self,
-            forCellReuseIdentifier: SettingsTableViewCell.identifier
-        )
+        tableView.register(SettingsTableViewCell.self, forCellReuseIdentifier: SettingsTableViewCell.identifier)
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 50
     }
 }
 
