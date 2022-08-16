@@ -10,8 +10,18 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 internal enum L10n {
-  /// Игра в шпиона
-  internal static let spyGameiOS = L10n.tr("Localizable", "SpyGameiOS", fallback: #"Игра в шпиона"#)
+  /// Spy Game
+  internal static let spyGameiOS = L10n.tr("Localizable", "SpyGameiOS", fallback: #"Spy Game"#)
+  internal enum SettingsCell {
+    /// min
+    internal static let minute = L10n.tr("Localizable", "SettingsCell.Minute", fallback: #"min"#)
+    /// Players
+    internal static let players = L10n.tr("Localizable", "SettingsCell.Players", fallback: #"Players"#)
+    /// Spys
+    internal static let spys = L10n.tr("Localizable", "SettingsCell.Spys", fallback: #"Spys"#)
+    /// Timer
+    internal static let timer = L10n.tr("Localizable", "SettingsCell.Timer", fallback: #"Timer"#)
+  }
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces
