@@ -59,32 +59,19 @@ class SettingsTableViewCell: UITableViewCell {
     
     // MARK: - Lifecycle
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        if selected { alpha = Constants.selectedAlpha } else { alpha = Constants.normalAlpha }
-    }
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        setSelected(true, animated: true)
+        super.touchesBegan(touches, with: event)
+        startAnimation(alpha: Constants.selectedAlpha)
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        UIView.animate(
-            withDuration: Constants.animateDuration,
-            delay: 0,
-            options: UIView.AnimationOptions()
-        ) {
-            self.setSelected(false, animated: true)
-        }
+        super.touchesEnded(touches, with: event)
+        startAnimation(alpha: Constants.normalAlpha)
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        UIView.animate(
-            withDuration: Constants.animateDuration,
-            delay: 0,
-            options: UIView.AnimationOptions()
-        ) {
-            self.setSelected(false, animated: true)
-        }
+        super.touchesCancelled(touches, with: event)
+        startAnimation(alpha: Constants.normalAlpha)
     }
     
     // MARK: - Private
@@ -113,6 +100,16 @@ class SettingsTableViewCell: UITableViewCell {
             $0.trailing.equalToSuperview().inset(CGFloat.baseMargin)
             $0.leading.equalTo(countTextLabel.snp.trailing).offset(CGFloat.smallMargin)
             $0.centerY.equalToSuperview()
+        }
+    }
+    
+    private func startAnimation(alpha: CGFloat) {
+        UIView.animate(
+            withDuration: Constants.animateDuration,
+            delay: 0,
+            options: UIView.AnimationOptions()
+        ) {
+            self.alpha = alpha
         }
     }
 }
