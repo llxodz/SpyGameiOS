@@ -56,6 +56,7 @@ class MainViewController: BaseViewController {
     private func configureTableView() {
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.delaysContentTouches = false
         tableView.register(SettingsTableViewCell.self, forCellReuseIdentifier: SettingsTableViewCell.identifier)
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = Constants.cellRowHeight
@@ -80,9 +81,5 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
             cell.configure(with: type.cellModel())
         }
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
