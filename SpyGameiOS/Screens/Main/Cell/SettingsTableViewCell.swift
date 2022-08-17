@@ -11,6 +11,11 @@ import SnapKit
 private enum Constants {
     static let sizeImage: CGFloat = 24
     static let titleFont = FontFamily.Montserrat.medium.font(size: 16)
+    
+    static let selectedAlpha = 0.3
+    static let normalAlpha: CGFloat = 1
+    
+    static let animateDuration = 0.3
 }
 
 class SettingsTableViewCell: UITableViewCell {
@@ -55,11 +60,7 @@ class SettingsTableViewCell: UITableViewCell {
     // MARK: - Lifecycle
     
     override func setSelected(_ selected: Bool, animated: Bool) {
-        if selected {
-            alpha = 0.3
-        } else {
-            alpha = 1
-        }
+        if selected { alpha = Constants.selectedAlpha } else { alpha = Constants.normalAlpha }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -67,13 +68,21 @@ class SettingsTableViewCell: UITableViewCell {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        UIView.animate(withDuration: 0.3, delay: 0, options: UIView.AnimationOptions()) {
+        UIView.animate(
+            withDuration: Constants.animateDuration,
+            delay: 0,
+            options: UIView.AnimationOptions()
+        ) {
             self.setSelected(false, animated: true)
         }
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        UIView.animate(withDuration: 0.3, delay: 0, options: UIView.AnimationOptions()) {
+        UIView.animate(
+            withDuration: Constants.animateDuration,
+            delay: 0,
+            options: UIView.AnimationOptions()
+        ) {
             self.setSelected(false, animated: true)
         }
     }
