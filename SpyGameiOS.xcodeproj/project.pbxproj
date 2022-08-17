@@ -26,6 +26,7 @@
 		7DE9EAE86547A52B88FFB77C /* Pods_SpyGameiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AD0D9AAA4A666D0623D23D3 /* Pods_SpyGameiOS.framework */; };
 		CE7CA78128AD3395001320AD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE7CA78328AD3395001320AD /* InfoPlist.strings */; };
 		CE7CA78728AD5F67001320AD /* HeaderMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7CA78628AD5F67001320AD /* HeaderMainView.swift */; };
+		CE7CA78A28AD8F2D001320AD /* FooterMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7CA78928AD8F2D001320AD /* FooterMainView.swift */; };
 		CEE8667228A99E65006AC0FB /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE8667128A99E65006AC0FB /* SettingsTableViewCell.swift */; };
 		CEE8667928AA6570006AC0FB /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEE8667528AA6570006AC0FB /* Montserrat-Regular.ttf */; };
 		CEE8667A28AA6570006AC0FB /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEE8667628AA6570006AC0FB /* Montserrat-Medium.ttf */; };
@@ -59,6 +60,7 @@
 		CE7CA78228AD3395001320AD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CE7CA78428AD3398001320AD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CE7CA78628AD5F67001320AD /* HeaderMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderMainView.swift; sourceTree = "<group>"; };
+		CE7CA78928AD8F2D001320AD /* FooterMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterMainView.swift; sourceTree = "<group>"; };
 		CEE8667128A99E65006AC0FB /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		CEE8667528AA6570006AC0FB /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		CEE8667628AA6570006AC0FB /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
@@ -195,6 +197,14 @@
 			path = HeaderMainView;
 			sourceTree = "<group>";
 		};
+		CE7CA78828AD8F19001320AD /* FooterMainView */ = {
+			isa = PBXGroup;
+			children = (
+				CE7CA78928AD8F2D001320AD /* FooterMainView.swift */,
+			);
+			path = FooterMainView;
+			sourceTree = "<group>";
+		};
 		CEE8667028A9982A006AC0FB /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -209,6 +219,7 @@
 		CEE8667D28AA7EBE006AC0FB /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				CE7CA78828AD8F19001320AD /* FooterMainView */,
 				CE7CA78528AD5F52001320AD /* HeaderMainView */,
 				CEE8667E28AA7EC7006AC0FB /* Cell */,
 				64871D5328A989C00004B773 /* MainViewController.swift */,
@@ -378,6 +389,7 @@
 				64871D8228A995210004B773 /* IB-Segues+Generated.swift in Sources */,
 				64871D6D28A990EE0004B773 /* BaseViewController.swift in Sources */,
 				644FDBFF28AAF6FE0097F55D /* SettingsCellType.swift in Sources */,
+				CE7CA78A28AD8F2D001320AD /* FooterMainView.swift in Sources */,
 				CEE8667228A99E65006AC0FB /* SettingsTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
