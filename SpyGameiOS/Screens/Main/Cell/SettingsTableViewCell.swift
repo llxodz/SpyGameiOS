@@ -14,7 +14,6 @@ private enum Constants {
     
     static let selectedAlpha = 0.3
     static let normalAlpha: CGFloat = 1
-    
     static let animateDuration = 0.3
 }
 
