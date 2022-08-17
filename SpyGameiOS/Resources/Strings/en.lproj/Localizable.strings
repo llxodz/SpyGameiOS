@@ -11,3 +11,4 @@ SettingsCell.Players = "Players";
 SettingsCell.Spys = "Spys";
 SettingsCell.Timer = "Timer";
 SettingsCell.Minute = "min";
+FooterView.StartGame = "Start game";

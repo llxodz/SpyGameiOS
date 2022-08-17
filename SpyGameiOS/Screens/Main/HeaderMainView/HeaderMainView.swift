@@ -54,8 +54,7 @@ class HeaderMainView: UIView {
         }
         separatorView.snp.makeConstraints {
             $0.height.equalTo(Constants.heightSeparator)
-            $0.leading.trailing.equalToSuperview()
-            $0.bottom.equalToSuperview()
+            $0.leading.trailing.bottom.equalToSuperview()
         }
     }
     
