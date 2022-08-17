@@ -10,6 +10,11 @@ import SnapKit
 
 private enum Constants {
     static let cellRowHeight: CGFloat = 50
+    static var clearView: UIView {
+        let view = UIView()
+        view.backgroundColor = .clear
+        return view
+    }
 }
 
 class MainViewController: BaseViewController {
@@ -76,7 +81,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
             withIdentifier: SettingsTableViewCell.identifier,
             for: indexPath
         ) as? SettingsTableViewCell else { return UITableViewCell() }
-        
+        cell.selectedBackgroundView = Constants.clearView
         if let type = SettingsCellType(rawValue: indexPath.row) {
             cell.configure(with: type.cellModel())
         }
