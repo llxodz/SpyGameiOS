@@ -6,7 +6,7 @@
   
 */
 
-SpyGameiOS = "Игра в шпиона";
+SpyGameiOS = "Игра Шпион";
 SettingsCell.Players = "Игроки";
 SettingsCell.Spys = "Шпионы";
 SettingsCell.Timer = "Таймер";

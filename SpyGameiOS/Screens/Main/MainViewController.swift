@@ -21,6 +21,7 @@ class MainViewController: BaseViewController {
     
     // UI
     private lazy var tableView = UITableView()
+    private lazy var headerView = HeaderMainView()
     
     // MARK: - Init
     
@@ -40,16 +41,27 @@ class MainViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = .white
     }
     
     // MARK: - Private
     
     private func addViews() {
+        view.addSubview(headerView)
         view.addSubview(tableView)
     }
     
     private func configureLayout() {
-        tableView.snp.makeConstraints { $0.edges.equalToSuperview() }
+        headerView.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(44)
+        }
+        tableView.snp.makeConstraints {
+            $0.top.equalTo(headerView.snp.bottom)
+            $0.bottom.leading.trailing.equalToSuperview()
+        }
     }
     
     private func configureAppearance() {
