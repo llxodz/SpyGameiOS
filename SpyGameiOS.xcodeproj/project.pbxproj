@@ -24,6 +24,7 @@
 		64871D8128A995210004B773 /* IB-Scenes+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64871D7C28A995210004B773 /* IB-Scenes+Generated.swift */; };
 		64871D8228A995210004B773 /* IB-Segues+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64871D7D28A995210004B773 /* IB-Segues+Generated.swift */; };
 		7DE9EAE86547A52B88FFB77C /* Pods_SpyGameiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AD0D9AAA4A666D0623D23D3 /* Pods_SpyGameiOS.framework */; };
+		CE7CA78128AD3395001320AD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE7CA78328AD3395001320AD /* InfoPlist.strings */; };
 		CEE8667228A99E65006AC0FB /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE8667128A99E65006AC0FB /* SettingsTableViewCell.swift */; };
 		CEE8667928AA6570006AC0FB /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEE8667528AA6570006AC0FB /* Montserrat-Regular.ttf */; };
 		CEE8667A28AA6570006AC0FB /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEE8667628AA6570006AC0FB /* Montserrat-Medium.ttf */; };
@@ -54,6 +55,8 @@
 		64871D7C28A995210004B773 /* IB-Scenes+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IB-Scenes+Generated.swift"; sourceTree = "<group>"; };
 		64871D7D28A995210004B773 /* IB-Segues+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IB-Segues+Generated.swift"; sourceTree = "<group>"; };
 		6AD0D9AAA4A666D0623D23D3 /* Pods_SpyGameiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpyGameiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE7CA78228AD3395001320AD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CE7CA78428AD3398001320AD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CEE8667128A99E65006AC0FB /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		CEE8667528AA6570006AC0FB /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		CEE8667628AA6570006AC0FB /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
@@ -117,6 +120,7 @@
 				64871D6728A98DFF0004B773 /* Resources */,
 				64871D6628A98DEF0004B773 /* Core */,
 				64871D6028A989C30004B773 /* Info.plist */,
+				CE7CA78328AD3395001320AD /* InfoPlist.strings */,
 			);
 			path = SpyGameiOS;
 			sourceTree = "<group>";
@@ -272,6 +276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEE8667928AA6570006AC0FB /* Montserrat-Regular.ttf in Resources */,
+				CE7CA78128AD3395001320AD /* InfoPlist.strings in Resources */,
 				CEE8667A28AA6570006AC0FB /* Montserrat-Medium.ttf in Resources */,
 				CEE8667B28AA6570006AC0FB /* Montserrat-Bold.ttf in Resources */,
 				CEE8667C28AA6570006AC0FB /* Montserrat-SemiBold.ttf in Resources */,
@@ -383,6 +388,15 @@
 				64871D7628A993890004B773 /* ru */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		CE7CA78328AD3395001320AD /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CE7CA78228AD3395001320AD /* en */,
+				CE7CA78428AD3398001320AD /* ru */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -516,7 +530,7 @@
 				DEVELOPMENT_TEAM = 2K66K5CLW8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SpyGameiOS/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = SpyGameiOS;
+				INFOPLIST_KEY_CFBundleDisplayName = "${PRODUCT_NAME}";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -548,7 +562,7 @@
 				DEVELOPMENT_TEAM = 2K66K5CLW8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SpyGameiOS/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = SpyGameiOS;
+				INFOPLIST_KEY_CFBundleDisplayName = "${PRODUCT_NAME}";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
