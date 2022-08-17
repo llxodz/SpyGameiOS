@@ -52,6 +52,32 @@ class SettingsTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Lifecycle
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        if selected {
+            alpha = 0.3
+        } else {
+            alpha = 1
+        }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        setSelected(true, animated: true)
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        UIView.animate(withDuration: 0.3, delay: 0, options: UIView.AnimationOptions()) {
+            self.setSelected(false, animated: true)
+        }
+    }
+    
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        UIView.animate(withDuration: 0.3, delay: 0, options: UIView.AnimationOptions()) {
+            self.setSelected(false, animated: true)
+        }
+    }
+    
     // MARK: - Private
     
     private func addViews() {
