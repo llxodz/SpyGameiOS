@@ -73,9 +73,7 @@ class SettingsTableViewCell: UITableViewCell {
     // MARK: - Private
     
     private func addViews() {
-        [infoImageView, titleTextLabel, arrowImageView, countTextLabel].forEach {
-            contentView.addSubview($0)
-        }
+        addSubviews([infoImageView, titleTextLabel, countTextLabel, arrowImageView])
     }
     
     private func configureLayout() {

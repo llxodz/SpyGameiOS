@@ -10,24 +10,19 @@ import SnapKit
 
 private enum Constants {
     static let heightSeparator: CGFloat = 0.5
-    static let titleFont = FontFamily.Montserrat.bold.font(size: 16)
+    static let titleFont: UIFont = FontFamily.Montserrat.bold.font(size: 16)
     
     static let heightButton: CGFloat = 56
-    static let selectedAlpha = 0.3
-    static let whiteSelected = 0.5
+    static let selectedAlpha: CGFloat = 0.3
+    static let whiteSelected: CGFloat  = 0.5
 }
 
-class FooterMainView: UIView {
+final class FooterMainView: UIView {
     
     // UI
     private lazy var separatorView: UIView = {
         let view = UIView()
         view.backgroundColor = .gray
-        return view
-    }()
-    private lazy var backgroundView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
         return view
     }()
     private lazy var startGameButton: UIButton = {
@@ -51,6 +46,8 @@ class FooterMainView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        backgroundColor = .white
+        
         addViews()
         configureLayout()
     }
@@ -62,15 +59,10 @@ class FooterMainView: UIView {
     // MARK: - Private
     
     private func addViews() {
-        [backgroundView, separatorView, startGameButton].forEach {
-            addSubview($0)
-        }
+        addSubviews([separatorView, startGameButton])
     }
     
     private func configureLayout() {
-        backgroundView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-        }
         separatorView.snp.makeConstraints {
             $0.top.leading.trailing.equalToSuperview()
             $0.height.equalTo(Constants.heightSeparator)

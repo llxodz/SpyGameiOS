@@ -24,6 +24,7 @@
 		64871D8128A995210004B773 /* IB-Scenes+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64871D7C28A995210004B773 /* IB-Scenes+Generated.swift */; };
 		64871D8228A995210004B773 /* IB-Segues+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64871D7D28A995210004B773 /* IB-Segues+Generated.swift */; };
 		7DE9EAE86547A52B88FFB77C /* Pods_SpyGameiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AD0D9AAA4A666D0623D23D3 /* Pods_SpyGameiOS.framework */; };
+		CE329E2928AE6CA900508E25 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE329E2828AE6CA900508E25 /* UIView+Extension.swift */; };
 		CE7CA78128AD3395001320AD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE7CA78328AD3395001320AD /* InfoPlist.strings */; };
 		CE7CA78728AD5F67001320AD /* HeaderMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7CA78628AD5F67001320AD /* HeaderMainView.swift */; };
 		CE7CA78A28AD8F2D001320AD /* FooterMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7CA78928AD8F2D001320AD /* FooterMainView.swift */; };
@@ -57,6 +58,7 @@
 		64871D7C28A995210004B773 /* IB-Scenes+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IB-Scenes+Generated.swift"; sourceTree = "<group>"; };
 		64871D7D28A995210004B773 /* IB-Segues+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IB-Segues+Generated.swift"; sourceTree = "<group>"; };
 		6AD0D9AAA4A666D0623D23D3 /* Pods_SpyGameiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpyGameiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE329E2828AE6CA900508E25 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		CE7CA78228AD3395001320AD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CE7CA78428AD3398001320AD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CE7CA78628AD5F67001320AD /* HeaderMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderMainView.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				64871D4F28A989C00004B773 /* AppDelegate.swift */,
 				64871D5128A989C00004B773 /* SceneDelegate.swift */,
 				644FDBFD28AAF6BC0097F55D /* Models */,
+				CE329E2728AE6C7B00508E25 /* Helpers */,
 				64871D6828A98E310004B773 /* Screens */,
 				64871D6728A98DFF0004B773 /* Resources */,
 				64871D6628A98DEF0004B773 /* Core */,
@@ -187,6 +190,14 @@
 				4360E8475BB1DFC6325BDD72 /* Pods-SpyGameiOS.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		CE329E2728AE6C7B00508E25 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				CE329E2828AE6CA900508E25 /* UIView+Extension.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		CE7CA78528AD5F52001320AD /* HeaderMainView */ = {
@@ -382,6 +393,7 @@
 				64871D5428A989C00004B773 /* MainViewController.swift in Sources */,
 				64871D8028A995210004B773 /* XCAssets+Generated.swift in Sources */,
 				64871D5028A989C00004B773 /* AppDelegate.swift in Sources */,
+				CE329E2928AE6CA900508E25 /* UIView+Extension.swift in Sources */,
 				64871D8128A995210004B773 /* IB-Scenes+Generated.swift in Sources */,
 				CE7CA78728AD5F67001320AD /* HeaderMainView.swift in Sources */,
 				64871D5228A989C00004B773 /* SceneDelegate.swift in Sources */,
