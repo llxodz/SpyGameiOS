@@ -44,7 +44,7 @@ final class HeaderMainView: UIView {
     
     private func configureLayout() {
         titleLabel.snp.makeConstraints {
-            $0.centerY.centerX.equalToSuperview()
+            $0.center.equalToSuperview()
         }
         separatorView.snp.makeConstraints {
             $0.height.equalTo(Constants.heightSeparator)
