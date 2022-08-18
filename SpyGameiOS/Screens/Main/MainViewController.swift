@@ -52,9 +52,7 @@ class MainViewController: BaseViewController {
     // MARK: - Private
     
     private func addViews() {
-        [headerView, tableView, footerView].forEach {
-            view.addSubview($0)
-        }
+        view.addSubviews([headerView, tableView, footerView])
     }
     
     private func configureLayout() {

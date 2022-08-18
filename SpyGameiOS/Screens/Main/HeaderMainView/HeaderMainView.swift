@@ -13,10 +13,9 @@ private enum Constants {
     static let heightSeparator: CGFloat = 0.5
 }
 
-class HeaderMainView: UIView {
+final class HeaderMainView: UIView {
     
     // UI
-    private lazy var backgroundView = UIView()
     private lazy var titleLabel = UILabel()
     private lazy var separatorView: UIView = {
         let view = UIView()
@@ -40,15 +39,10 @@ class HeaderMainView: UIView {
     // MARK: - Private
     
     private func addViews() {
-        [backgroundView, titleLabel, separatorView].forEach {
-            addSubview($0)
-        }
+        addSubviews([titleLabel, separatorView])
     }
     
     private func configureLayout() {
-        backgroundView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-        }
         titleLabel.snp.makeConstraints {
             $0.centerY.centerX.equalToSuperview()
         }
@@ -59,7 +53,7 @@ class HeaderMainView: UIView {
     }
     
     private func configureAppearance() {
-        backgroundView.backgroundColor = .white
+        backgroundColor = .white
         
         titleLabel.text = L10n.spyGameiOS
         titleLabel.font = Constants.titleFont
