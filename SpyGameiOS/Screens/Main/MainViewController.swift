@@ -11,7 +11,7 @@ import SnapKit
 private enum Constants {
     static let cellRowHeight: CGFloat = 50
     static let headerHeight: CGFloat = 44
-    static let footerHeight: CGFloat = 104
+    static let footerHeight: CGFloat = 64
     
     static var clearView: UIView {
         let view = UIView()
@@ -52,7 +52,7 @@ class MainViewController: BaseViewController {
     // MARK: - Private
     
     private func addViews() {
-        view.addSubviews([headerView, tableView, footerView])
+        view.addSubviews(headerView, tableView, footerView)
     }
     
     private func configureLayout() {
