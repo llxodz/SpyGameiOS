@@ -12,6 +12,10 @@ import Foundation
 internal enum L10n {
   /// Spy Game
   internal static let spyGameiOS = L10n.tr("Localizable", "SpyGameiOS", fallback: #"Spy Game"#)
+  internal enum FooterView {
+    /// Start game
+    internal static let startGame = L10n.tr("Localizable", "FooterView.StartGame", fallback: #"Start game"#)
+  }
   internal enum SettingsCell {
     /// min
     internal static let minute = L10n.tr("Localizable", "SettingsCell.Minute", fallback: #"min"#)

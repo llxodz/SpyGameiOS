@@ -6,8 +6,9 @@
   
 */
 
-SpyGameiOS = "Игра в шпиона";
+SpyGameiOS = "Игра Шпион";
 SettingsCell.Players = "Игроки";
 SettingsCell.Spys = "Шпионы";
 SettingsCell.Timer = "Таймер";
 SettingsCell.Minute = "мин";
+FooterView.StartGame = "Начать";
