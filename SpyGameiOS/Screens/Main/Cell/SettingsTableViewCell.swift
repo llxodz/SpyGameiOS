@@ -14,7 +14,6 @@ private enum Constants {
     
     static let selectedAlpha = 0.3
     static let normalAlpha: CGFloat = 1
-    
     static let animateDuration = 0.3
 }
 
@@ -60,26 +59,21 @@ class SettingsTableViewCell: UITableViewCell {
     // MARK: - Lifecycle
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
         startAnimation(alpha: Constants.selectedAlpha)
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesEnded(touches, with: event)
         startAnimation(alpha: Constants.normalAlpha)
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesCancelled(touches, with: event)
         startAnimation(alpha: Constants.normalAlpha)
     }
     
     // MARK: - Private
     
     private func addViews() {
-        [infoImageView, titleTextLabel, arrowImageView, countTextLabel].forEach {
-            contentView.addSubview($0)
-        }
+        addSubviews(infoImageView, titleTextLabel, countTextLabel, arrowImageView)
     }
     
     private func configureLayout() {

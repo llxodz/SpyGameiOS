@@ -10,6 +10,9 @@ import SnapKit
 
 private enum Constants {
     static let cellRowHeight: CGFloat = 50
+    static let headerHeight: CGFloat = 44
+    static let footerHeight: CGFloat = 64
+    
     static var clearView: UIView {
         let view = UIView()
         view.backgroundColor = .clear
@@ -21,6 +24,8 @@ class MainViewController: BaseViewController {
     
     // UI
     private lazy var tableView = UITableView()
+    private lazy var headerView = HeaderMainView()
+    private lazy var footerView = FooterMainView()
     
     // MARK: - Init
     
@@ -40,16 +45,32 @@ class MainViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = .white
     }
     
     // MARK: - Private
     
     private func addViews() {
-        view.addSubview(tableView)
+        view.addSubviews(headerView, tableView, footerView)
     }
     
     private func configureLayout() {
-        tableView.snp.makeConstraints { $0.edges.equalToSuperview() }
+        headerView.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(Constants.headerHeight)
+        }
+        tableView.snp.makeConstraints {
+            $0.top.equalTo(headerView.snp.bottom)
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(footerView.snp.top)
+        }
+        footerView.snp.makeConstraints {
+            $0.height.equalTo(Constants.footerHeight)
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+        }
     }
     
     private func configureAppearance() {
