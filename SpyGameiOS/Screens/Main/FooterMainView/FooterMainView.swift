@@ -20,11 +20,6 @@ private enum Constants {
 final class FooterMainView: UIView {
     
     // UI
-    private lazy var separatorView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .gray
-        return view
-    }()
     private lazy var startGameButton: UIButton = {
         let button = UIButton()
         button.layer.cornerRadius = .baseRadius
@@ -46,7 +41,7 @@ final class FooterMainView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .white
+        backgroundColor = .clear
         
         addViews()
         configureLayout()
@@ -59,14 +54,10 @@ final class FooterMainView: UIView {
     // MARK: - Private
     
     private func addViews() {
-        addSubviews([separatorView, startGameButton])
+        addSubview(startGameButton)
     }
     
     private func configureLayout() {
-        separatorView.snp.makeConstraints {
-            $0.top.leading.trailing.equalToSuperview()
-            $0.height.equalTo(Constants.heightSeparator)
-        }
         startGameButton.snp.makeConstraints {
             $0.height.equalTo(Constants.heightButton)
             $0.trailing.equalToSuperview().inset(CGFloat.baseMargin)

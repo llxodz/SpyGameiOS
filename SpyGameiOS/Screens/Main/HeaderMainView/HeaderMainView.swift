@@ -39,7 +39,7 @@ final class HeaderMainView: UIView {
     // MARK: - Private
     
     private func addViews() {
-        addSubviews([titleLabel, separatorView])
+        addSubviews(titleLabel, separatorView)
     }
     
     private func configureLayout() {
