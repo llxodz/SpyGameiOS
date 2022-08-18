@@ -60,8 +60,7 @@ final class FooterMainView: UIView {
     private func configureLayout() {
         startGameButton.snp.makeConstraints {
             $0.height.equalTo(Constants.heightButton)
-            $0.trailing.equalToSuperview().inset(CGFloat.baseMargin)
-            $0.leading.equalToSuperview().offset(CGFloat.baseMargin)
+            $0.trailing.leading.equalToSuperview().inset(CGFloat.baseMargin)
             $0.centerX.centerY.equalToSuperview()
         }
     }
