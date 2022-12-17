@@ -103,6 +103,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
             for: indexPath
         ) as? SettingsTableViewCell else { return UITableViewCell() }
         cell.selectedBackgroundView = Constants.clearView
+        cell.vcMain = self
         if let type = SettingsCellType(rawValue: indexPath.row) {
             cell.configure(with: type.cellModel())
         }

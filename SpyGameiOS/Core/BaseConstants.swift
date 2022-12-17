@@ -57,7 +57,7 @@ extension CGFloat {
     /// Радиус закругления элементов (12 pt)
     public static let baseRadius: CGFloat = 12
     /// Радиус закругления элементов (16 pt)
-    public static let mediusRadius: CGFloat = 16
+    public static let mediumRadius: CGFloat = 16
     /// Радиус закругления элементов (20 pt)
     public static let largeRadius: CGFloat = 20
 }
