@@ -24,6 +24,8 @@ class SettingsTableViewCell: UITableViewCell {
         String(describing: self)
     }
     
+    weak var vcMain: BaseViewController?
+    
     // UI
     private lazy var titleTextLabel: UILabel = {
         let label = UILabel()
@@ -63,6 +65,10 @@ class SettingsTableViewCell: UITableViewCell {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let vc = SettingsGameViewController()
+        vc.modalTransitionStyle = .crossDissolve
+        vc.modalPresentationStyle = .overCurrentContext
+        vcMain?.present(vc, animated: true, completion: nil)
         startAnimation(alpha: Constants.normalAlpha)
     }
     
