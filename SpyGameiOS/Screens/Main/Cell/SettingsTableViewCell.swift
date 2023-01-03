@@ -70,6 +70,11 @@ class SettingsTableViewCell: UITableViewCell, Tappable {
         startAnimation(alpha: Constants.normalAlpha)
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        disableTapping()
+    }
+    
     // MARK: - Private
     
     private func addViews() {

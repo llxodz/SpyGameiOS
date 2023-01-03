@@ -38,7 +38,6 @@ final class SettingsGameViewController: BaseViewController {
     private lazy var minusCountButton: SettingsCountButton = SettingsCountButton(image: .minusImage)
     private lazy var plusCountButton: SettingsCountButton = SettingsCountButton(image: .plusImage)
     private lazy var stackView: UIStackView = UIStackView()
-    private lazy var backgroundStackView = UIView()
     private lazy var saveSettingsButton: UIButton = {
         let button = UIButton()
         button.layer.cornerRadius = .baseRadius
@@ -75,20 +74,24 @@ final class SettingsGameViewController: BaseViewController {
     // MARK: - Private
     
     private func addViews() {
-        view.addSubviews(backgroundView, backgroundStackView)
-        
+        view.addSubview(backgroundView)
+        backgroundView.addSubviews(titleLabel, closeImageButton, stackView, saveSettingsButton)
         stackView.addArrangedSubview(minusCountButton)
         stackView.addArrangedSubview(countLabel)
         stackView.addArrangedSubview(plusCountButton)
-        
-        backgroundView.addSubviews(titleLabel, closeImageButton, stackView, saveSettingsButton)
     }
     
     private func configureLayout() {
+        backgroundView.snp.makeConstraints {
+            $0.leading.equalTo(view.snp.leading).offset(32)
+            $0.trailing.equalTo(view.snp.trailing).inset(32)
+            $0.center.equalTo(view.center)
+            $0.height.equalTo(256)
+        }
         titleLabel.snp.makeConstraints {
             $0.leading.equalTo(backgroundView.snp.leading).offset(16)
-            $0.top.equalTo(backgroundView.snp.top).offset(16)
             $0.trailing.equalTo(closeImageButton.snp.leading)
+            $0.centerY.equalTo(closeImageButton.snp.centerY)
         }
         closeImageButton.snp.makeConstraints {
             $0.height.width.equalTo(32)
@@ -96,20 +99,12 @@ final class SettingsGameViewController: BaseViewController {
             $0.leading.equalTo(titleLabel.snp.trailing)
             $0.trailing.equalTo(backgroundView.snp.trailing).inset(16)
         }
-        backgroundView.snp.makeConstraints {
-            $0.leading.equalTo(view.snp.leading).offset(32)
-            $0.trailing.equalTo(view.snp.trailing).inset(32)
-            $0.center.equalTo(view.center)
-            $0.height.equalTo(256)
-        }
-        backgroundStackView.snp.makeConstraints {
-            $0.top.equalTo(closeImageButton.snp.bottom)
-            $0.leading.equalTo(backgroundView.snp.leading)
-            $0.trailing.equalTo(backgroundView.snp.trailing)
-            $0.bottom.equalTo(saveSettingsButton.snp.top)
-        }
         stackView.snp.makeConstraints {
-            $0.center.equalTo(backgroundStackView.snp.center)
+            $0.leading.greaterThanOrEqualToSuperview()
+            $0.trailing.lessThanOrEqualToSuperview()
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(closeImageButton.snp.bottom)
+            $0.bottom.equalTo(saveSettingsButton.snp.top)
         }
         minusCountButton.snp.makeConstraints {
             $0.height.width.equalTo(48)
@@ -129,15 +124,16 @@ final class SettingsGameViewController: BaseViewController {
         backgroundView.backgroundColor = .white
         stackView.axis = .horizontal
         stackView.spacing = 32
-        
+        stackView.alignment = .center
         saveSettingsButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
         
         view.backgroundColor = .gray.withAlphaComponent(0.5)
     }
     
     private func configureButtons() {
-        minusCountButton.addTapGesture(tapNumber: 1, target: self, action: #selector(minusCountButtonTapped))
-//        plusCountButton.addGestureRecognizer(gesturePlus)
+        minusCountButton.enableTapping {
+            print("minus")
+        }
     }
     
     @objc private func closeButtonTapped() {
