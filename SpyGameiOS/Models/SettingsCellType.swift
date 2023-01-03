@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 enum SettingsCellType: RawRepresentable, CaseIterable {
+    
     case players
     case spies
     case timer
