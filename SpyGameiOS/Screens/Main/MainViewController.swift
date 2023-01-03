@@ -103,9 +103,14 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
             for: indexPath
         ) as? SettingsTableViewCell else { return UITableViewCell() }
         cell.selectedBackgroundView = Constants.clearView
-        cell.vcMain = self
         if let type = SettingsCellType(rawValue: indexPath.row) {
             cell.configure(with: type.cellModel())
+        }
+        cell.enableTapping { [weak self] in
+            let vc = SettingsGameViewController()
+            vc.modalTransitionStyle = .crossDissolve
+            vc.modalPresentationStyle = .overCurrentContext
+            self?.present(vc, animated: true)
         }
         return cell
     }

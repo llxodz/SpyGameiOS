@@ -14,17 +14,15 @@ private enum Constants {
     
     static let selectedAlpha = 0.3
     static let normalAlpha: CGFloat = 1
-    static let animateDuration = 0.3
+    static let animateDuration = 0.1
 }
 
-class SettingsTableViewCell: UITableViewCell {
+class SettingsTableViewCell: UITableViewCell, Tappable {
     
     // Public property
     public static var identifier: String {
         String(describing: self)
     }
-    
-    weak var vcMain: BaseViewController?
     
     // UI
     private lazy var titleTextLabel: UILabel = {
@@ -65,10 +63,6 @@ class SettingsTableViewCell: UITableViewCell {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let vc = SettingsGameViewController()
-        vc.modalTransitionStyle = .crossDissolve
-        vc.modalPresentationStyle = .overCurrentContext
-        vcMain?.present(vc, animated: true, completion: nil)
         startAnimation(alpha: Constants.normalAlpha)
     }
     

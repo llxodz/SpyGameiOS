@@ -25,6 +25,7 @@
 		64871D8028A995210004B773 /* XCAssets+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64871D7B28A995210004B773 /* XCAssets+Generated.swift */; };
 		64871D8128A995210004B773 /* IB-Scenes+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64871D7C28A995210004B773 /* IB-Scenes+Generated.swift */; };
 		64871D8228A995210004B773 /* IB-Segues+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64871D7D28A995210004B773 /* IB-Segues+Generated.swift */; };
+		64F8F5F4296459C900477407 /* Tappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F8F5F3296459C900477407 /* Tappable.swift */; };
 		7DE9EAE86547A52B88FFB77C /* Pods_SpyGameiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AD0D9AAA4A666D0623D23D3 /* Pods_SpyGameiOS.framework */; };
 		CE329E2928AE6CA900508E25 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE329E2828AE6CA900508E25 /* UIView+Extension.swift */; };
 		CE7CA78128AD3395001320AD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE7CA78328AD3395001320AD /* InfoPlist.strings */; };
@@ -61,6 +62,7 @@
 		64871D7B28A995210004B773 /* XCAssets+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCAssets+Generated.swift"; sourceTree = "<group>"; };
 		64871D7C28A995210004B773 /* IB-Scenes+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IB-Scenes+Generated.swift"; sourceTree = "<group>"; };
 		64871D7D28A995210004B773 /* IB-Segues+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IB-Segues+Generated.swift"; sourceTree = "<group>"; };
+		64F8F5F3296459C900477407 /* Tappable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tappable.swift; sourceTree = "<group>"; };
 		6AD0D9AAA4A666D0623D23D3 /* Pods_SpyGameiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpyGameiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE329E2828AE6CA900508E25 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		CE7CA78228AD3395001320AD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 		64871D6628A98DEF0004B773 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				64F8F5F3296459C900477407 /* Tappable.swift */,
 				64871D6B28A990EE0004B773 /* BaseConstants.swift */,
 				64871D6A28A990EE0004B773 /* BaseViewController.swift */,
 				64871D6928A990EE0004B773 /* Configurable.swift */,
@@ -422,6 +425,7 @@
 				33E3AEBA294E5D11000E0C03 /* SettingsCountButton.swift in Sources */,
 				64871D5228A989C00004B773 /* SceneDelegate.swift in Sources */,
 				64871D7E28A995210004B773 /* Strings+Generated.swift in Sources */,
+				64F8F5F4296459C900477407 /* Tappable.swift in Sources */,
 				64871D8228A995210004B773 /* IB-Segues+Generated.swift in Sources */,
 				64871D6D28A990EE0004B773 /* BaseViewController.swift in Sources */,
 				644FDBFF28AAF6FE0097F55D /* SettingsCellType.swift in Sources */,
