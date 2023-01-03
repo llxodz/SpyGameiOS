@@ -12,7 +12,7 @@ enum ImageInButton {
     case plusImage, minusImage
 }
 
-final class SettingsCountButton: UIView {
+final class SettingsCountButton: UIView, Tappable {
     
     /// External properties
     private var image: ImageInButton = .plusImage
@@ -35,7 +35,6 @@ final class SettingsCountButton: UIView {
         addViews()
         configureLayout()
         configureAppearance()
-        self.isUserInteractionEnabled = true
     }
     
     required init?(coder: NSCoder) {
@@ -60,10 +59,8 @@ final class SettingsCountButton: UIView {
     
     private func configureAppearance() {
         switch image {
-        case .plusImage:
-            imageButton.image = Asset.plusImage.image
-        case .minusImage:
-            imageButton.image = Asset.minusImage.image
+        case .plusImage: imageButton.image = Asset.plusImage.image
+        case .minusImage: imageButton.image = Asset.minusImage.image
         }
     }
 }
