@@ -17,7 +17,7 @@ private enum Constants {
     static let animateDuration = 0.1
 }
 
-class SettingsTableViewCell: UITableViewCell, Tappable {
+final class SettingsTableViewCell: UITableViewCell, Tappable {
     
     // Public property
     public static var identifier: String {
@@ -101,16 +101,6 @@ class SettingsTableViewCell: UITableViewCell, Tappable {
             $0.centerY.equalToSuperview()
         }
     }
-    
-    private func startAnimation(alpha: CGFloat) {
-        UIView.animate(
-            withDuration: Constants.animateDuration,
-            delay: 0,
-            options: UIView.AnimationOptions()
-        ) {
-            self.alpha = alpha
-        }
-    }
 }
 
 // MARK: - Configurable
@@ -125,7 +115,7 @@ extension SettingsTableViewCell: Configurable {
     struct Model {
         let icon: UIImage
         let titleText: String
-        let countText: String
+        var countText: Int
         let maxValue: Int
         let fieldType: FieldType
     }
@@ -133,6 +123,10 @@ extension SettingsTableViewCell: Configurable {
     func configure(with model: Model) {
         infoImageView.image = model.icon
         titleTextLabel.text = model.titleText
-        countTextLabel.text = model.countText
+        
+        switch model.fieldType {
+        case .number: countTextLabel.text = String(model.countText)
+        case .timer: countTextLabel.text = "\(model.countText) \(L10n.SettingsCell.minute)"
+        }
     }
 }

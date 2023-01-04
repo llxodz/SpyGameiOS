@@ -26,6 +26,10 @@ internal enum L10n {
     /// Timer
     internal static let timer = L10n.tr("Localizable", "SettingsCell.Timer", fallback: #"Timer"#)
   }
+  internal enum SettingsViewController {
+    /// Save
+    internal static let save = L10n.tr("Localizable", "SettingsViewController.Save", fallback: #"Save"#)
+  }
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces

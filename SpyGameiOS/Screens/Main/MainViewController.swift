@@ -27,6 +27,9 @@ class MainViewController: BaseViewController {
     private lazy var headerView = HeaderMainView()
     private lazy var footerView = FooterMainView()
     
+    // Private property
+    private let viewModel = MainViewModel()
+    
     // MARK: - Init
     
     override init() {
@@ -94,7 +97,7 @@ class MainViewController: BaseViewController {
 extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return SettingsCellType.allCases.count
+        return viewModel.getFields().count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -103,14 +106,16 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
             for: indexPath
         ) as? SettingsTableViewCell else { return UITableViewCell() }
         cell.selectedBackgroundView = Constants.clearView
-        if let type = SettingsCellType(rawValue: indexPath.row) {
-            cell.configure(with: type.cellModel())
-        }
+        cell.configure(with: viewModel.getField(indexPath))
         cell.enableTapping { [weak self] in
-            let vc = SettingsGameViewController()
+            let vc = SettingsGameViewController(cellData: (self?.viewModel.getField(indexPath))!)
             vc.modalTransitionStyle = .crossDissolve
             vc.modalPresentationStyle = .overCurrentContext
             self?.present(vc, animated: true)
+            vc.handler = { [weak self] (value) in
+                self?.viewModel.setValuesInField(indexPath: indexPath, field: value)
+                self?.tableView.reloadRows(at: [indexPath], with: .automatic)
+            }
         }
         return cell
     }
