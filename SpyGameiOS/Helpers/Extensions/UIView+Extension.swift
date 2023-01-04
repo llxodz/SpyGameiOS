@@ -19,10 +19,13 @@ extension UIView {
         }
     }
     
-    func addTapGesture(tapNumber: Int, target: Any, action: Selector) {
-        let tap = UITapGestureRecognizer(target: target, action: action)
-        tap.numberOfTapsRequired = tapNumber
-        addGestureRecognizer(tap)
-        isUserInteractionEnabled = true
-      }
+    func startAnimation(alpha: CGFloat) {
+        UIView.animate(
+            withDuration: 0.1,
+            delay: 0,
+            options: UIView.AnimationOptions()
+        ) {
+            self.alpha = alpha
+        }
+    }
 }

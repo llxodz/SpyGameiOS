@@ -12,6 +12,10 @@ enum ImageInButton {
     case plusImage, minusImage
 }
 
+private enum Constants {
+    static let heightButton: CGFloat = 16
+}
+
 final class SettingsCountButton: UIView, Tappable {
     
     /// External properties
@@ -53,7 +57,7 @@ final class SettingsCountButton: UIView, Tappable {
         }
         imageButton.snp.makeConstraints {
             $0.center.equalTo(backgroundView.snp.center)
-            $0.height.width.equalTo(16)
+            $0.height.width.equalTo(Constants.heightButton)
         }
     }
     

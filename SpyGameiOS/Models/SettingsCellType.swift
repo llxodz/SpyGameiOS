@@ -65,11 +65,11 @@ extension SettingsCellType {
     }
     
     // TODO: Надо брать значения из UserDefaults
-    private var countText: String {
+    private var countText: Int {
         switch self {
-        case .players: return "4"
-        case .spies: return "1"
-        case .timer: return "10 \(L10n.SettingsCell.minute)"
+        case .players: return 4
+        case .spies: return 1
+        case .timer: return 10
         }
     }
     
