@@ -27,6 +27,12 @@ internal enum L10n {
     internal static let timer = L10n.tr("Localizable", "SettingsCell.Timer", fallback: #"Timer"#)
   }
   internal enum SettingsViewController {
+    /// OK
+    internal static let errorAccept = L10n.tr("Localizable", "SettingsViewController.ErrorAccept", fallback: #"OK"#)
+    /// Please, input correct count
+    internal static let errorDescription = L10n.tr("Localizable", "SettingsViewController.ErrorDescription", fallback: #"Please, input correct count"#)
+    /// Error
+    internal static let errorTitle = L10n.tr("Localizable", "SettingsViewController.ErrorTitle", fallback: #"Error"#)
     /// Save
     internal static let save = L10n.tr("Localizable", "SettingsViewController.Save", fallback: #"Save"#)
   }

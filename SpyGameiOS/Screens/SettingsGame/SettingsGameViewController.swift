@@ -169,17 +169,25 @@ final class SettingsGameViewController: BaseViewController {
     private func configureButtons() {
         minusCountButton.enableTapping { [weak self] in
             guard let self = self else { return }
-            self.cellData.countText -= 1
-            self.setTextInCountLabel()
+            
+            if (self.cellData.countText) > (self.cellData.maxValue) {
+                self.showErrorAlert()
+            } else if self.cellData.countText == self.cellData.minValue {
+                self.showErrorAlert()
+            } else {
+                self.cellData.countText -= 1
+                self.setTextInCountLabel()
+            }
         }
         plusCountButton.enableTapping { [weak self] in
             guard let self = self else { return }
-            self.cellData.countText += 1
             
-            if (self.cellData.countText) >= (self.cellData.maxValue) {
-                
+            if (self.cellData.countText) == (self.cellData.maxValue) {
+                self.showErrorAlert()
+            } else {
+                self.cellData.countText += 1
+                self.setTextInCountLabel()
             }
-            self.setTextInCountLabel()
         }
     }
     
@@ -188,6 +196,18 @@ final class SettingsGameViewController: BaseViewController {
         case .number: self.countLabel.text = String(self.cellData.countText)
         case .timer: self.countLabel.text = "\(self.cellData.countText) \(L10n.SettingsCell.minute)"
         }
+    }
+    
+    private func showErrorAlert() {
+        let alert = UIAlertController(title: L10n.SettingsViewController.errorTitle,
+                                      message: L10n.SettingsViewController.errorDescription,
+                                      preferredStyle: UIAlertController.Style.alert
+        )
+        alert.addAction(UIAlertAction(title: L10n.SettingsViewController.errorAccept,
+                                      style: UIAlertAction.Style.default,
+                                      handler: nil)
+        )
+        self.present(alert, animated: true, completion: nil)
     }
     
     @objc private func closeButtonTapped() {

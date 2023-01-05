@@ -9,6 +9,7 @@ import UIKit
 
 extension UIView {
     
+    /// Функции множественного добавления View
     func addSubviews(_ views: UIView...) {
         addSubviews(views)
     }
@@ -19,7 +20,8 @@ extension UIView {
         }
     }
     
-    func startAnimation(alpha: CGFloat) {
+    /// Анимация нажатия Custom'ных кнопок
+    func animateTapButton(alpha: CGFloat) {
         UIView.animate(
             withDuration: 0.1,
             delay: 0,

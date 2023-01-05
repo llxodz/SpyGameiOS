@@ -12,4 +12,7 @@ SettingsCell.Spys = "Spys";
 SettingsCell.Timer = "Timer";
 SettingsCell.Minute = "min";
 SettingsViewController.Save = "Save";
+SettingsViewController.ErrorTitle = "Error";
+SettingsViewController.ErrorDescription = "Please, input correct count";
+SettingsViewController.ErrorAccept = "OK";
 FooterView.StartGame = "Start game";

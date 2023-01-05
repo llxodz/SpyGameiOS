@@ -59,15 +59,15 @@ final class SettingsTableViewCell: UITableViewCell, Tappable {
     // MARK: - Lifecycle
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        startAnimation(alpha: Constants.selectedAlpha)
+        animateTapButton(alpha: Constants.selectedAlpha)
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        startAnimation(alpha: Constants.normalAlpha)
+        animateTapButton(alpha: Constants.normalAlpha)
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        startAnimation(alpha: Constants.normalAlpha)
+        animateTapButton(alpha: Constants.normalAlpha)
     }
     
     override func prepareForReuse() {
@@ -117,6 +117,7 @@ extension SettingsTableViewCell: Configurable {
         let titleText: String
         var countText: Int
         let maxValue: Int
+        let minValue: Int
         let fieldType: FieldType
     }
     
