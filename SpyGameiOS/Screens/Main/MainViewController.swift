@@ -108,10 +108,11 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         cell.selectedBackgroundView = Constants.clearView
         cell.configure(with: viewModel.getField(indexPath))
         cell.enableTapping { [weak self] in
-            let vc = SettingsGameViewController(cellData: (self?.viewModel.getField(indexPath))!)
+            guard let self = self else { return }
+            let vc = SettingsGameViewController(cellData: (self.viewModel.getField(indexPath)))
             vc.modalTransitionStyle = .crossDissolve
             vc.modalPresentationStyle = .overCurrentContext
-            self?.present(vc, animated: true)
+            self.present(vc, animated: true)
             vc.handler = { [weak self] (value) in
                 self?.viewModel.setValuesInField(indexPath: indexPath, field: value)
                 self?.tableView.reloadRows(at: [indexPath], with: .automatic)

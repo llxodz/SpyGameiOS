@@ -14,6 +14,9 @@ enum ImageInButton {
 
 private enum Constants {
     static let heightButton: CGFloat = 16
+    
+    static let selectedAlpha: CGFloat = 0.5
+    static let normalAlpha: CGFloat = 1
 }
 
 final class SettingsCountButton: UIView, Tappable {
@@ -43,6 +46,18 @@ final class SettingsCountButton: UIView, Tappable {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        animateTapButton(alpha: Constants.selectedAlpha)
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        animateTapButton(alpha: Constants.normalAlpha)
+    }
+    
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        animateTapButton(alpha: Constants.normalAlpha)
     }
     
     // MARK: - Private

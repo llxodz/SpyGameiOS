@@ -12,4 +12,7 @@ SettingsCell.Spys = "Шпионы";
 SettingsCell.Timer = "Таймер";
 SettingsCell.Minute = "мин";
 SettingsViewController.Save = "Сохранить";
+SettingsViewController.ErrorTitle = "Ошибка";
+SettingsViewController.ErrorDescription = "Пожалуйста, введите корректное количество";
+SettingsViewController.ErrorAccept = "OK";
 FooterView.StartGame = "Начать";
