@@ -9,11 +9,14 @@ import Foundation
 
 final class MainViewModel {
     
+    // Private property
     private var fields: [SettingsTableViewCell.Model] = [
         SettingsCellType.players.cellModel(),
         SettingsCellType.spies.cellModel(),
         SettingsCellType.timer.cellModel()
     ]
+    
+    // MARK: - Public functions
     
     func getFields() -> [SettingsTableViewCell.Model] {
         return fields

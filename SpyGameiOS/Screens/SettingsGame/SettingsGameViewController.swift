@@ -75,9 +75,12 @@ final class SettingsGameViewController: BaseViewController {
     
     // MARK: - Init
     
-    init(data: SettingsTableViewCell.Model, handler: ((SettingsTableViewCell.Model) -> Void)? = nil) {
+    init(data: [SettingsTableViewCell.Model],
+         position: Int,
+         handler: ((SettingsTableViewCell.Model) -> Void)? = nil
+    ) {
         self.handler = handler
-        self.viewModel = SettingsGameViewModel(data: data)
+        self.viewModel = SettingsGameViewModel(data: data, position: position)
         super.init()
     }
     
