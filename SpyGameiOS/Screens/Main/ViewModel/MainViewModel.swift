@@ -7,7 +7,7 @@
 
 import Foundation
 
-class MainViewModel {
+final class MainViewModel {
     
     private var fields: [SettingsTableViewCell.Model] = [
         SettingsCellType.players.cellModel(),
