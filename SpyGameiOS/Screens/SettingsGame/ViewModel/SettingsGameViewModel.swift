@@ -34,9 +34,9 @@ final class SettingsGameViewModel {
     }
     
     func plusButtonTapped(complition: @escaping (String) -> Void) {
-        var role = SettingsCellType(rawValue: position)
+        guard let role = SettingsCellType(rawValue: position) else { return }
         
-        switch role! {
+        switch role {
         case .players:
             if (data[position].countText - 2 == data[1].countText) {
                 data[position].countText += 1
