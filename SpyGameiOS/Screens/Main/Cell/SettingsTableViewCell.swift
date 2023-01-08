@@ -14,10 +14,10 @@ private enum Constants {
     
     static let selectedAlpha = 0.3
     static let normalAlpha: CGFloat = 1
-    static let animateDuration = 0.3
+    static let animateDuration = 0.1
 }
 
-class SettingsTableViewCell: UITableViewCell {
+final class SettingsTableViewCell: UITableViewCell, Tappable {
     
     // Public property
     public static var identifier: String {
@@ -59,15 +59,20 @@ class SettingsTableViewCell: UITableViewCell {
     // MARK: - Lifecycle
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        startAnimation(alpha: Constants.selectedAlpha)
+        animateTapButton(alpha: Constants.selectedAlpha)
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        startAnimation(alpha: Constants.normalAlpha)
+        animateTapButton(alpha: Constants.normalAlpha)
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        startAnimation(alpha: Constants.normalAlpha)
+        animateTapButton(alpha: Constants.normalAlpha)
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        disableTapping()
     }
     
     // MARK: - Private
@@ -96,16 +101,6 @@ class SettingsTableViewCell: UITableViewCell {
             $0.centerY.equalToSuperview()
         }
     }
-    
-    private func startAnimation(alpha: CGFloat) {
-        UIView.animate(
-            withDuration: Constants.animateDuration,
-            delay: 0,
-            options: UIView.AnimationOptions()
-        ) {
-            self.alpha = alpha
-        }
-    }
 }
 
 // MARK: - Configurable
@@ -120,14 +115,19 @@ extension SettingsTableViewCell: Configurable {
     struct Model {
         let icon: UIImage
         let titleText: String
-        let countText: String
+        var countText: Int
         let maxValue: Int
+        let minValue: Int
         let fieldType: FieldType
     }
     
     func configure(with model: Model) {
         infoImageView.image = model.icon
         titleTextLabel.text = model.titleText
-        countTextLabel.text = model.countText
+        
+        switch model.fieldType {
+        case .number: countTextLabel.text = String(model.countText)
+        case .timer: countTextLabel.text = "\(model.countText) \(L10n.SettingsCell.minute)"
+        }
     }
 }

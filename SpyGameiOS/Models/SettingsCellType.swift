@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 enum SettingsCellType: RawRepresentable, CaseIterable {
+    
     case players
     case spies
     case timer
@@ -41,6 +42,7 @@ extension SettingsCellType {
             titleText: titleText,
             countText: countText,
             maxValue: maxValue,
+            minValue: minValue,
             fieldType: fieldType
         )
     }
@@ -64,11 +66,11 @@ extension SettingsCellType {
     }
     
     // TODO: Надо брать значения из UserDefaults
-    private var countText: String {
+    private var countText: Int {
         switch self {
-        case .players: return "4"
-        case .spies: return "1"
-        case .timer: return "10 \(L10n.SettingsCell.minute)"
+        case .players: return 4
+        case .spies: return 1
+        case .timer: return 10
         }
     }
     
@@ -76,8 +78,16 @@ extension SettingsCellType {
         switch self {
         case .players: return 20
         // TODO: Надо брать значения из UserDefaults -> SettingsCellType.players...
-        case .spies: return 2
+        case .spies: return 18
         case .timer: return 120
+        }
+    }
+    
+    private var minValue: Int {
+        switch self {
+        case .players: return 3
+        case .spies: return 1
+        case .timer: return 1
         }
     }
     
