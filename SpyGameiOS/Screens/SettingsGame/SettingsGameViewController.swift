@@ -26,7 +26,7 @@ final class SettingsGameViewController: BaseViewController {
     public var handler: ((SettingsTableViewCell.Model) -> Void)?
     
     // Private property
-    private var cellData: SettingsTableViewCell.Model
+    private var viewModel: SettingsGameViewModel
     
     // UI
     private lazy var backgroundView: UIView = {
@@ -37,7 +37,7 @@ final class SettingsGameViewController: BaseViewController {
     }()
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = cellData.titleText
+        label.text = viewModel.getData().titleText
         label.font = Constants.labelFont
         label.textColor = Asset.mainBlackColor.color
         return label
@@ -69,18 +69,15 @@ final class SettingsGameViewController: BaseViewController {
         let label = UILabel()
         label.font = Constants.labelFont
         label.textColor = Asset.mainBlackColor.color
-        switch cellData.fieldType {
-            case .number: label.text = String(cellData.countText)
-            case .timer: label.text = "\(cellData.countText) \(L10n.SettingsCell.minute)"
-        }
+        label.text = viewModel.getCountText()
         return label
     }()
     
     // MARK: - Init
     
-    init(cellData: SettingsTableViewCell.Model, handler: ((SettingsTableViewCell.Model) -> Void)? = nil) {
-        self.cellData = cellData
+    init(data: SettingsTableViewCell.Model, handler: ((SettingsTableViewCell.Model) -> Void)? = nil) {
         self.handler = handler
+        self.viewModel = SettingsGameViewModel(data: data)
         super.init()
     }
     
@@ -170,44 +167,19 @@ final class SettingsGameViewController: BaseViewController {
         minusCountButton.enableTapping { [weak self] in
             guard let self = self else { return }
             
-            if (self.cellData.countText) > (self.cellData.maxValue) {
-                self.showErrorAlert()
-            } else if self.cellData.countText == self.cellData.minValue {
-                self.showErrorAlert()
-            } else {
-                self.cellData.countText -= 1
-                self.setTextInCountLabel()
+            self.viewModel.minusButtonTapped { [weak self] (newValue) in
+                guard let self = self else { return }
+                self.countLabel.text = newValue
             }
         }
         plusCountButton.enableTapping { [weak self] in
             guard let self = self else { return }
             
-            if (self.cellData.countText) == (self.cellData.maxValue) {
-                self.showErrorAlert()
-            } else {
-                self.cellData.countText += 1
-                self.setTextInCountLabel()
+            self.viewModel.plusButtonTapped { [weak self] (newValue) in
+                guard let self = self else { return }
+                self.countLabel.text = newValue
             }
         }
-    }
-    
-    private func setTextInCountLabel() {
-        switch self.cellData.fieldType {
-        case .number: self.countLabel.text = String(self.cellData.countText)
-        case .timer: self.countLabel.text = "\(self.cellData.countText) \(L10n.SettingsCell.minute)"
-        }
-    }
-    
-    private func showErrorAlert() {
-        let alert = UIAlertController(title: L10n.SettingsViewController.errorTitle,
-                                      message: L10n.SettingsViewController.errorDescription,
-                                      preferredStyle: UIAlertController.Style.alert
-        )
-        alert.addAction(UIAlertAction(title: L10n.SettingsViewController.errorAccept,
-                                      style: UIAlertAction.Style.default,
-                                      handler: nil)
-        )
-        self.present(alert, animated: true, completion: nil)
     }
     
     @objc private func closeButtonTapped() {
@@ -217,6 +189,6 @@ final class SettingsGameViewController: BaseViewController {
     @objc private func saveButtonTapped() {
         dismiss(animated: true)
         guard let handler = handler else { return }
-        handler(cellData)
+        handler(viewModel.getData())
     }
 }

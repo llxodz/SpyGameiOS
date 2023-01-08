@@ -109,7 +109,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         cell.configure(with: viewModel.getField(indexPath))
         cell.enableTapping { [weak self] in
             guard let self = self else { return }
-            let vc = SettingsGameViewController(cellData: (self.viewModel.getField(indexPath)))
+            let vc = SettingsGameViewController(data: (self.viewModel.getField(indexPath)))
             vc.modalTransitionStyle = .crossDissolve
             vc.modalPresentationStyle = .overCurrentContext
             self.present(vc, animated: true)
