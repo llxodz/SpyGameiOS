@@ -42,27 +42,25 @@ final class SettingsGameViewController: BaseViewController {
         label.textColor = Asset.mainBlackColor.color
         return label
     }()
-    private lazy var closeImageButton: UIButton = {
-        let button = UIButton()
+    private lazy var closeImageButton: BaseButton = {
+        let button = BaseButton()
         button.backgroundColor = Asset.buttonStartColor.color
         button.setImage(Asset.closeImage.image, for: .normal)
         button.layer.masksToBounds = true
         button.layer.cornerRadius = CGFloat.mediumRadius
-        button.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
         return button
     }()
     private lazy var minusCountButton: SettingsCountButton = SettingsCountButton(image: .minusImage)
     private lazy var plusCountButton: SettingsCountButton = SettingsCountButton(image: .plusImage)
     private lazy var stackView: UIStackView = UIStackView()
-    private lazy var saveSettingsButton: UIButton = {
-        let button = UIButton()
+    private lazy var saveSettingsButton: BaseButton = {
+        let button = BaseButton()
         button.layer.cornerRadius = .baseRadius
         button.layer.masksToBounds = true
         button.setTitle(L10n.SettingsViewController.save, for: .normal)
         button.titleLabel?.font = Constants.saveButtonFont
         button.setTitleColor(Asset.mainBlackColor.color, for: .normal)
         button.backgroundColor = Asset.buttonStartColor.color
-        button.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
         return button
     }()
     private lazy var countLabel: UILabel = {
@@ -91,6 +89,8 @@ final class SettingsGameViewController: BaseViewController {
     deinit {
         minusCountButton.disableTapping()
         plusCountButton.disableTapping()
+        saveSettingsButton.disableTapping()
+        closeImageButton.disableTapping()
     }
     
     // MARK: - Lifecycle
@@ -183,15 +183,15 @@ final class SettingsGameViewController: BaseViewController {
                 self.countLabel.text = newValue
             }
         }
-    }
-    
-    @objc private func closeButtonTapped() {
-        dismiss(animated: true)
-    }
-    
-    @objc private func saveButtonTapped() {
-        dismiss(animated: true)
-        guard let handler = handler else { return }
-        handler(viewModel.getData())
+        saveSettingsButton.enableTapping { [weak self] in
+            guard let self = self, let handler = self.handler else { return }
+            
+            self.dismiss(animated: true)
+            handler(self.viewModel.getData())
+        }
+        closeImageButton.enableTapping { [weak self] in
+            guard let self = self else { return }
+            self.dismiss(animated: true)
+        }
     }
 }
