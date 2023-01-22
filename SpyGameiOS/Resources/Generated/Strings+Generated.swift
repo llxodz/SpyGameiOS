@@ -12,6 +12,12 @@ import Foundation
 internal enum L10n {
   /// Spy Game
   internal static let spyGameiOS = L10n.tr("Localizable", "SpyGameiOS", fallback: #"Spy Game"#)
+  internal enum CategoriesTableViewCell {
+    /// Categories
+    internal static let categories = L10n.tr("Localizable", "CategoriesTableViewCell.Categories", fallback: #"Categories"#)
+    /// Select all
+    internal static let selectAll = L10n.tr("Localizable", "CategoriesTableViewCell.SelectAll", fallback: #"Select all"#)
+  }
   internal enum FooterView {
     /// Start game
     internal static let startGame = L10n.tr("Localizable", "FooterView.StartGame", fallback: #"Start game"#)
