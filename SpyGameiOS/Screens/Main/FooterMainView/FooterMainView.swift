@@ -26,7 +26,7 @@ final class FooterMainView: UIView {
         button.layer.masksToBounds = true
         button.setTitle(L10n.FooterView.startGame, for: .normal)
         button.titleLabel?.font = Constants.titleFont
-        button.setTitleColor(Asset.mainBlackColor.color, for: .normal)
+        button.setTitleColor(Asset.blackTextColor.color, for: .normal)
         button.setTitleColor(UIColor.init(
             white: Constants.whiteSelected,
             alpha: Constants.selectedAlpha),
@@ -41,10 +41,9 @@ final class FooterMainView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .clear
-        
         addViews()
         configureLayout()
+        backgroundColor = .clear
     }
     
     required init?(coder: NSCoder) {
