@@ -23,6 +23,11 @@
 		64871D8028A995210004B773 /* XCAssets+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64871D7B28A995210004B773 /* XCAssets+Generated.swift */; };
 		64871D8128A995210004B773 /* IB-Scenes+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64871D7C28A995210004B773 /* IB-Scenes+Generated.swift */; };
 		64871D8228A995210004B773 /* IB-Segues+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64871D7D28A995210004B773 /* IB-Segues+Generated.swift */; };
+		64F0D321297D62A700728750 /* CategoriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F0D320297D62A700728750 /* CategoriesTableViewCell.swift */; };
+		64F0D323297D8BD100728750 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F0D322297D8BD100728750 /* Category.swift */; };
+		64F0D325297D929400728750 /* AutoTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F0D324297D929400728750 /* AutoTableView.swift */; };
+		64F0D327297D93F300728750 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F0D326297D93F300728750 /* CategoryTableViewCell.swift */; };
+		64F0D329297D987F00728750 /* Collection+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F0D328297D987F00728750 /* Collection+Extension.swift */; };
 		7DE9EAE86547A52B88FFB77C /* Pods_SpyGameiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AD0D9AAA4A666D0623D23D3 /* Pods_SpyGameiOS.framework */; };
 		CE329E2928AE6CA900508E25 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE329E2828AE6CA900508E25 /* UIView+Extension.swift */; };
 		CE7CA78128AD3395001320AD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE7CA78328AD3395001320AD /* InfoPlist.strings */; };
@@ -57,6 +62,11 @@
 		64871D7B28A995210004B773 /* XCAssets+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCAssets+Generated.swift"; sourceTree = "<group>"; };
 		64871D7C28A995210004B773 /* IB-Scenes+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IB-Scenes+Generated.swift"; sourceTree = "<group>"; };
 		64871D7D28A995210004B773 /* IB-Segues+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IB-Segues+Generated.swift"; sourceTree = "<group>"; };
+		64F0D320297D62A700728750 /* CategoriesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesTableViewCell.swift; sourceTree = "<group>"; };
+		64F0D322297D8BD100728750 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		64F0D324297D929400728750 /* AutoTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoTableView.swift; sourceTree = "<group>"; };
+		64F0D326297D93F300728750 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
+		64F0D328297D987F00728750 /* Collection+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Extension.swift"; sourceTree = "<group>"; };
 		6AD0D9AAA4A666D0623D23D3 /* Pods_SpyGameiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpyGameiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE329E2828AE6CA900508E25 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		CE7CA78228AD3395001320AD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -94,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				644FDBFE28AAF6FE0097F55D /* SettingsCellType.swift */,
+				64F0D322297D8BD100728750 /* Category.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -138,6 +149,7 @@
 				64871D6B28A990EE0004B773 /* BaseConstants.swift */,
 				64871D6A28A990EE0004B773 /* BaseViewController.swift */,
 				64871D6928A990EE0004B773 /* Configurable.swift */,
+				64F0D324297D929400728750 /* AutoTableView.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -196,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				CE329E2828AE6CA900508E25 /* UIView+Extension.swift */,
+				64F0D328297D987F00728750 /* Collection+Extension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -242,6 +255,8 @@
 			isa = PBXGroup;
 			children = (
 				CEE8667128A99E65006AC0FB /* SettingsTableViewCell.swift */,
+				64F0D320297D62A700728750 /* CategoriesTableViewCell.swift */,
+				64F0D326297D93F300728750 /* CategoryTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -388,6 +403,7 @@
 			files = (
 				64871D7F28A995210004B773 /* Fonts+Generated.swift in Sources */,
 				64871D6C28A990EE0004B773 /* Configurable.swift in Sources */,
+				64F0D323297D8BD100728750 /* Category.swift in Sources */,
 				64871D6E28A990EE0004B773 /* BaseConstants.swift in Sources */,
 				64871D5A28A989C00004B773 /* SpyGameiOS.xcdatamodeld in Sources */,
 				64871D5428A989C00004B773 /* MainViewController.swift in Sources */,
@@ -396,6 +412,8 @@
 				CE329E2928AE6CA900508E25 /* UIView+Extension.swift in Sources */,
 				64871D8128A995210004B773 /* IB-Scenes+Generated.swift in Sources */,
 				CE7CA78728AD5F67001320AD /* HeaderMainView.swift in Sources */,
+				64F0D329297D987F00728750 /* Collection+Extension.swift in Sources */,
+				64F0D327297D93F300728750 /* CategoryTableViewCell.swift in Sources */,
 				64871D5228A989C00004B773 /* SceneDelegate.swift in Sources */,
 				64871D7E28A995210004B773 /* Strings+Generated.swift in Sources */,
 				64871D8228A995210004B773 /* IB-Segues+Generated.swift in Sources */,
@@ -403,6 +421,8 @@
 				644FDBFF28AAF6FE0097F55D /* SettingsCellType.swift in Sources */,
 				CE7CA78A28AD8F2D001320AD /* FooterMainView.swift in Sources */,
 				CEE8667228A99E65006AC0FB /* SettingsTableViewCell.swift in Sources */,
+				64F0D325297D929400728750 /* AutoTableView.swift in Sources */,
+				64F0D321297D62A700728750 /* CategoriesTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
