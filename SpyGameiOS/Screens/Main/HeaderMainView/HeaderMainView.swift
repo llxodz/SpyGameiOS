@@ -11,6 +11,7 @@ import SnapKit
 private enum Constants {
     static let titleFont = FontFamily.Montserrat.bold.font(size: 16)
     static let heightSeparator: CGFloat = 0.5
+    static let alphaSeparator: CGFloat = 0.5
 }
 
 final class HeaderMainView: UIView {
@@ -19,7 +20,7 @@ final class HeaderMainView: UIView {
     private lazy var titleLabel = UILabel()
     private lazy var separatorView: UIView = {
         let view = UIView()
-        view.backgroundColor = .gray
+        view.backgroundColor = .gray.withAlphaComponent(Constants.alphaSeparator)
         return view
     }()
     
@@ -53,9 +54,9 @@ final class HeaderMainView: UIView {
     }
     
     private func configureAppearance() {
-        backgroundColor = .white
-        
+        backgroundColor = Asset.mainBackgroundColor.color
         titleLabel.text = L10n.spyGameiOS
         titleLabel.font = Constants.titleFont
+        titleLabel.textColor = Asset.mainTextColor.color
     }
 }
