@@ -1,8 +1,8 @@
 //
-//  SettingsGameViewController.swift
+//  SettingsTimeViewController.swift
 //  SpyGameiOS
 //
-//  Created by Ilya Gavrilov on 17.12.2022.
+//  Created by Ilya Gavrilov on 23.01.2023.
 //
 
 import UIKit
@@ -12,21 +12,20 @@ private enum Constants {
     static let labelFont: UIFont = FontFamily.Montserrat.bold.font(size: 18)
     static let saveButtonFont: UIFont = FontFamily.Montserrat.medium.font(size: 16)
     
-    static let heightCountButton: CGFloat = 48
     static let heightSaveButton: CGFloat = 56
     static let heightCloseButton: CGFloat = 32
-    static let heightView: CGFloat = 256
+    static let heightView: CGFloat = 320
     
     static let alphaBackground: CGFloat = 0.5
 }
 
-final class SettingsGameViewController: BaseViewController {
+final class SettingsTimeViewController: BaseViewController {
     
     // Public property
     public var handler: ((SettingsTableViewCell.Model) -> Void)?
     
     // Private property
-    private var viewModel: SettingsGameViewModel
+    private var viewModel: SettingsTimeViewModel
     
     // UI
     private lazy var backgroundView: UIView = {
@@ -50,9 +49,7 @@ final class SettingsGameViewController: BaseViewController {
         button.layer.cornerRadius = CGFloat.mediumRadius
         return button
     }()
-    private lazy var minusCountButton: SettingsCountButton = SettingsCountButton(imageType: .minus)
-    private lazy var plusCountButton: SettingsCountButton = SettingsCountButton(imageType: .plus)
-    private lazy var stackView: UIStackView = UIStackView()
+    private lazy var datePicker = UIDatePicker()
     private lazy var saveSettingsButton: TappableView = {
         let button = TappableView()
         button.layer.cornerRadius = .baseRadius
@@ -63,31 +60,16 @@ final class SettingsGameViewController: BaseViewController {
         button.backgroundColor = Asset.buttonStartColor.color
         return button
     }()
-    private lazy var countLabel: UILabel = {
-        let label = UILabel()
-        label.font = Constants.labelFont
-        label.textColor = Asset.mainBlackColor.color
-        label.text = String(describing: viewModel.getData().countText)
-        return label
-    }()
     
     // MARK: - Init
     
-    init(data: SettingsTableViewCell.Model, handler: ((SettingsTableViewCell.Model) -> Void)? = nil) {
-        self.handler = handler
-        self.viewModel = SettingsGameViewModel(data: data)
+    init(data: SettingsTableViewCell.Model) {
+        self.viewModel = SettingsTimeViewModel(data: data)
         super.init()
     }
     
     required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    deinit {
-        minusCountButton.disableTapping()
-        plusCountButton.disableTapping()
-        saveSettingsButton.disableTapping()
-        closeImageButton.disableTapping()
     }
     
     // MARK: - Lifecycle
@@ -97,21 +79,18 @@ final class SettingsGameViewController: BaseViewController {
         addViews()
         configureLayout()
         configureAppearance()
+        configureButtons()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureButtons()
     }
     
     // MARK: - Private
     
     private func addViews() {
         view.addSubview(backgroundView)
-        backgroundView.addSubviews(titleLabel, closeImageButton, stackView, saveSettingsButton)
-        stackView.addArrangedSubview(minusCountButton)
-        stackView.addArrangedSubview(countLabel)
-        stackView.addArrangedSubview(plusCountButton)
+        backgroundView.addSubviews(titleLabel, closeImageButton, datePicker, saveSettingsButton)
     }
     
     private func configureLayout() {
@@ -132,18 +111,10 @@ final class SettingsGameViewController: BaseViewController {
             $0.leading.equalTo(titleLabel.snp.trailing)
             $0.trailing.equalTo(backgroundView.snp.trailing).inset(CGFloat.baseMargin)
         }
-        stackView.snp.makeConstraints {
-            $0.leading.greaterThanOrEqualToSuperview()
-            $0.trailing.lessThanOrEqualToSuperview()
-            $0.centerX.equalToSuperview()
+        datePicker.snp.makeConstraints {
             $0.top.equalTo(closeImageButton.snp.bottom)
+            $0.leading.trailing.equalToSuperview()
             $0.bottom.equalTo(saveSettingsButton.snp.top)
-        }
-        minusCountButton.snp.makeConstraints {
-            $0.height.width.equalTo(Constants.heightCountButton)
-        }
-        plusCountButton.snp.makeConstraints {
-            $0.height.width.equalTo(Constants.heightCountButton)
         }
         saveSettingsButton.snp.makeConstraints {
             $0.height.equalTo(Constants.heightSaveButton)
@@ -155,12 +126,9 @@ final class SettingsGameViewController: BaseViewController {
     
     private func configureAppearance() {
         backgroundView.backgroundColor = .white
-        
-        stackView.axis = .horizontal
-        stackView.spacing = .extraLargeSpace
-        stackView.alignment = .center
-        
         view.backgroundColor = .gray.withAlphaComponent(Constants.alphaBackground)
+        
+        datePicker.datePickerMode = .countDownTimer
     }
     
     private func configureButtons() {
