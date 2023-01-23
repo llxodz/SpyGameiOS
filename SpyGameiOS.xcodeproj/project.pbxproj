@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3341C75B297F2863008D61E1 /* SettingsTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341C75A297F2863008D61E1 /* SettingsTimeViewController.swift */; };
+		3341C75E297F2C79008D61E1 /* SettingsTimeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341C75D297F2C79008D61E1 /* SettingsTimeViewModel.swift */; };
 		33657F82296475D300680536 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33657F81296475D300680536 /* MainViewModel.swift */; };
 		33DD5519296B2D1D0068F79B /* SettingsGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD5518296B2D1D0068F79B /* SettingsGameViewModel.swift */; };
-		33DD551B296B46490068F79B /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD551A296B46490068F79B /* BaseButton.swift */; };
+		33DD551B296B46490068F79B /* TappableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD551A296B46490068F79B /* TappableView.swift */; };
 		33E3AEB7294E5B02000E0C03 /* SettingsGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E3AEB6294E5B02000E0C03 /* SettingsGameViewController.swift */; };
 		33E3AEBA294E5D11000E0C03 /* SettingsCountButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E3AEB9294E5D11000E0C03 /* SettingsCountButton.swift */; };
 		644FDBFF28AAF6FE0097F55D /* SettingsCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644FDBFE28AAF6FE0097F55D /* SettingsCellType.swift */; };
@@ -42,9 +44,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3341C75A297F2863008D61E1 /* SettingsTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTimeViewController.swift; sourceTree = "<group>"; };
+		3341C75D297F2C79008D61E1 /* SettingsTimeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTimeViewModel.swift; sourceTree = "<group>"; };
 		33657F81296475D300680536 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		33DD5518296B2D1D0068F79B /* SettingsGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsGameViewModel.swift; sourceTree = "<group>"; };
-		33DD551A296B46490068F79B /* BaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
+		33DD551A296B46490068F79B /* TappableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TappableView.swift; sourceTree = "<group>"; };
 		33E3AEB6294E5B02000E0C03 /* SettingsGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsGameViewController.swift; sourceTree = "<group>"; };
 		33E3AEB9294E5D11000E0C03 /* SettingsCountButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCountButton.swift; sourceTree = "<group>"; };
 		433FC07363D81E5A1D472859 /* Pods-SpyGameiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpyGameiOS.debug.xcconfig"; path = "Target Support Files/Pods-SpyGameiOS/Pods-SpyGameiOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -100,6 +104,23 @@
 				6AD0D9AAA4A666D0623D23D3 /* Pods_SpyGameiOS.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3341C759297F284E008D61E1 /* SettingsTime */ = {
+			isa = PBXGroup;
+			children = (
+				3341C75C297F2C6B008D61E1 /* ViewModel */,
+				3341C75A297F2863008D61E1 /* SettingsTimeViewController.swift */,
+			);
+			path = SettingsTime;
+			sourceTree = "<group>";
+		};
+		3341C75C297F2C6B008D61E1 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3341C75D297F2C79008D61E1 /* SettingsTimeViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		33657F80296475C300680536 /* ViewModel */ = {
@@ -190,7 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				64F8F5F3296459C900477407 /* Tappable.swift */,
-				33DD551A296B46490068F79B /* BaseButton.swift */,
+				33DD551A296B46490068F79B /* TappableView.swift */,
 				64871D6B28A990EE0004B773 /* BaseConstants.swift */,
 				64871D6A28A990EE0004B773 /* BaseViewController.swift */,
 				64871D6928A990EE0004B773 /* Configurable.swift */,
@@ -215,6 +236,7 @@
 			children = (
 				CEE8667D28AA7EBE006AC0FB /* Main */,
 				33E3AEB5294E5AF2000E0C03 /* SettingsGame */,
+				3341C759297F284E008D61E1 /* SettingsTime */,
 				64871D5D28A989C30004B773 /* LaunchScreen.storyboard */,
 			);
 			path = Screens;
@@ -452,8 +474,9 @@
 				64871D8028A995210004B773 /* XCAssets+Generated.swift in Sources */,
 				64871D5028A989C00004B773 /* AppDelegate.swift in Sources */,
 				CE329E2928AE6CA900508E25 /* UIView+Extension.swift in Sources */,
+				3341C75E297F2C79008D61E1 /* SettingsTimeViewModel.swift in Sources */,
 				64871D8128A995210004B773 /* IB-Scenes+Generated.swift in Sources */,
-				33DD551B296B46490068F79B /* BaseButton.swift in Sources */,
+				33DD551B296B46490068F79B /* TappableView.swift in Sources */,
 				33DD5519296B2D1D0068F79B /* SettingsGameViewModel.swift in Sources */,
 				33E3AEB7294E5B02000E0C03 /* SettingsGameViewController.swift in Sources */,
 				CE7CA78728AD5F67001320AD /* HeaderMainView.swift in Sources */,
@@ -464,6 +487,7 @@
 				64F8F5F4296459C900477407 /* Tappable.swift in Sources */,
 				64871D8228A995210004B773 /* IB-Segues+Generated.swift in Sources */,
 				64871D6D28A990EE0004B773 /* BaseViewController.swift in Sources */,
+				3341C75B297F2863008D61E1 /* SettingsTimeViewController.swift in Sources */,
 				644FDBFF28AAF6FE0097F55D /* SettingsCellType.swift in Sources */,
 				CE7CA78A28AD8F2D001320AD /* FooterMainView.swift in Sources */,
 				CEE8667228A99E65006AC0FB /* SettingsTableViewCell.swift in Sources */,

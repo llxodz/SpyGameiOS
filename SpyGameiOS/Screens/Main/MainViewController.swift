@@ -109,13 +109,23 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         cell.configure(with: viewModel.getField(indexPath))
         cell.enableTapping { [weak self] in
             guard let self = self else { return }
-            let vc = SettingsGameViewController(data: self.viewModel.getFields(), position: indexPath.row)
-            vc.modalTransitionStyle = .crossDissolve
-            vc.modalPresentationStyle = .overCurrentContext
-            self.present(vc, animated: true)
-            vc.handler = { [weak self] (value) in
-                self?.viewModel.setValuesInField(indexPath: indexPath, field: value)
-                self?.tableView.reloadRows(at: [indexPath], with: .automatic)
+            let data = self.viewModel.getFields()[indexPath.row]
+            
+            switch data.fieldType {
+            case .number:
+                let vc = SettingsGameViewController(data: data)
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overCurrentContext
+                self.present(vc, animated: true)
+                vc.handler = { [weak self] (value) in
+                    self?.viewModel.setValuesInField(indexPath: indexPath, field: value)
+                    self?.tableView.reloadRows(at: [indexPath], with: .automatic)
+                }
+            case .timer:
+                let vc = SettingsTimeViewController(data: data)
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overCurrentContext
+                self.present(vc, animated: true)
             }
         }
         return cell

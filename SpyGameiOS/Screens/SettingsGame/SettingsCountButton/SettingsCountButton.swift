@@ -8,8 +8,8 @@
 import UIKit
 import SnapKit
 
-enum ImageInButton {
-    case plusImage, minusImage
+enum CountButtonType {
+    case plus, minus
 }
 
 private enum Constants {
@@ -19,12 +19,12 @@ private enum Constants {
     static let normalAlpha: CGFloat = 1
 }
 
-final class SettingsCountButton: UIView, Tappable {
+final class SettingsCountButton: TappableView {
     
-    /// External properties
-    private var image: ImageInButton = .plusImage
+    // Private property
+    private let imageType: CountButtonType
     
-    /// UI
+    // UI
     private lazy var backgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = Asset.buttonStartColor.color
@@ -36,9 +36,9 @@ final class SettingsCountButton: UIView, Tappable {
     
     // MARK: - Init
     
-    init(image: ImageInButton) {
+    init(imageType: CountButtonType) {
+        self.imageType = imageType
         super.init(frame: .zero)
-        self.image = image
         addViews()
         configureLayout()
         configureAppearance()
@@ -46,18 +46,6 @@ final class SettingsCountButton: UIView, Tappable {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        animateTapButton(alpha: Constants.selectedAlpha)
-    }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        animateTapButton(alpha: Constants.normalAlpha)
-    }
-    
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        animateTapButton(alpha: Constants.normalAlpha)
     }
     
     // MARK: - Private
@@ -77,9 +65,9 @@ final class SettingsCountButton: UIView, Tappable {
     }
     
     private func configureAppearance() {
-        switch image {
-        case .plusImage: imageButton.image = Asset.plusImage.image
-        case .minusImage: imageButton.image = Asset.minusImage.image
+        switch imageType {
+        case .plus: imageButton.image = Asset.plusImage.image
+        case .minus: imageButton.image = Asset.minusImage.image
         }
     }
 }
