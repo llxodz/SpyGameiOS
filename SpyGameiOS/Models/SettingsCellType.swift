@@ -66,11 +66,11 @@ extension SettingsCellType {
     }
     
     // TODO: Надо брать значения из UserDefaults
-    private var countText: Int {
+    private var countText: String {
         switch self {
-        case .players: return 4
-        case .spies: return 1
-        case .timer: return 10
+        case .players: return "4"
+        case .spies: return "1"
+        case .timer: return "10"
         }
     }
     
