@@ -7,7 +7,7 @@
 
 import UIKit
 
-open class TappableView: UIView, Tappable {
+open class TappableButton: UIButton, Tappable {
     
     override init(frame: CGRect) {
         super.init(frame: frame)

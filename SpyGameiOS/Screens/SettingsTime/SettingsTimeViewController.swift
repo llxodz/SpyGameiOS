@@ -38,11 +38,11 @@ final class SettingsTimeViewController: BaseViewController {
         let label = UILabel()
         label.text = viewModel.getData().titleText
         label.font = Constants.labelFont
-        label.textColor = Asset.mainBlackColor.color
+        label.textColor = Asset.mainTextColor.color
         return label
     }()
-    private lazy var closeImageButton: TappableView = {
-        let button = TappableView()
+    private lazy var closeImageButton: TappableButton = {
+        let button = TappableButton()
         button.backgroundColor = Asset.buttonStartColor.color
         button.setImage(Asset.closeImage.image, for: .normal)
         button.layer.masksToBounds = true
@@ -50,13 +50,13 @@ final class SettingsTimeViewController: BaseViewController {
         return button
     }()
     private lazy var datePicker = UIDatePicker()
-    private lazy var saveSettingsButton: TappableView = {
-        let button = TappableView()
+    private lazy var saveSettingsButton: TappableButton = {
+        let button = TappableButton()
         button.layer.cornerRadius = .baseRadius
         button.layer.masksToBounds = true
         button.setTitle(L10n.SettingsViewController.save, for: .normal)
         button.titleLabel?.font = Constants.saveButtonFont
-        button.setTitleColor(Asset.mainBlackColor.color, for: .normal)
+        button.setTitleColor(Asset.mainBackgroundColor.color, for: .normal)
         button.backgroundColor = Asset.buttonStartColor.color
         return button
     }()

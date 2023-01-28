@@ -39,11 +39,11 @@ final class SettingsGameViewController: BaseViewController {
         let label = UILabel()
         label.text = viewModel.getData().titleText
         label.font = Constants.labelFont
-        label.textColor = Asset.mainBlackColor.color
+        label.textColor = Asset.mainTextColor.color
         return label
     }()
-    private lazy var closeImageButton: TappableView = {
-        let button = TappableView()
+    private lazy var closeImageButton: TappableButton = {
+        let button = TappableButton()
         button.backgroundColor = Asset.buttonStartColor.color
         button.setImage(Asset.closeImage.image, for: .normal)
         button.layer.masksToBounds = true
@@ -53,20 +53,20 @@ final class SettingsGameViewController: BaseViewController {
     private lazy var minusCountButton: SettingsCountButton = SettingsCountButton(imageType: .minus)
     private lazy var plusCountButton: SettingsCountButton = SettingsCountButton(imageType: .plus)
     private lazy var stackView: UIStackView = UIStackView()
-    private lazy var saveSettingsButton: TappableView = {
-        let button = TappableView()
+    private lazy var saveSettingsButton: TappableButton = {
+        let button = TappableButton()
         button.layer.cornerRadius = .baseRadius
         button.layer.masksToBounds = true
         button.setTitle(L10n.SettingsViewController.save, for: .normal)
         button.titleLabel?.font = Constants.saveButtonFont
-        button.setTitleColor(Asset.mainBlackColor.color, for: .normal)
+        button.setTitleColor(Asset.mainBackgroundColor.color, for: .normal)
         button.backgroundColor = Asset.buttonStartColor.color
         return button
     }()
     private lazy var countLabel: UILabel = {
         let label = UILabel()
         label.font = Constants.labelFont
-        label.textColor = Asset.mainBlackColor.color
+        label.textColor = Asset.mainTextColor.color
         label.text = String(describing: viewModel.getData().countText)
         return label
     }()
