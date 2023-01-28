@@ -21,7 +21,7 @@ extension UIView {
     }
     
     /// Анимация нажатия Custom'ных кнопок
-    func animateTapButton(alpha: CGFloat, duration: CGFloat = 0.1) {
+    func animateTapView(alpha: CGFloat, duration: CGFloat = 0.1) {
         UIView.animate(
             withDuration: duration,
             delay: 0,
