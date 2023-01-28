@@ -17,7 +17,18 @@ private enum Constants {
     static let separatorHeight: CGFloat = 0.5
 }
 
-final class SettingsTableViewCell: UITableViewCell {
+final class SettingsTableViewCell: UITableViewCell, Tappable {
+    
+    // Public property
+    public static var identifier: String { "SettingsTableViewCell" }
+    public var separatorHidden: Bool {
+        set {
+            separator.isHidden = newValue
+        }
+        get {
+            return separator.isHidden
+        }
+    }
     
     // UI
     private lazy var titleTextLabel: UILabel = {
@@ -44,17 +55,6 @@ final class SettingsTableViewCell: UITableViewCell {
         return separator
     }()
     
-    // Public property
-    public static var identifier: String { "SettingsTableViewCell" }
-    public var separatorHidden: Bool {
-        set {
-            separator.isHidden = newValue
-        }
-        get {
-            return separator.isHidden
-        }
-    }
-    
     // MARK: - Init
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -71,15 +71,20 @@ final class SettingsTableViewCell: UITableViewCell {
     // MARK: - Lifecycle
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        startAnimation(alpha: Constants.selectedAlpha)
+        animateTapView(alpha: Constants.selectedAlpha)
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        startAnimation(alpha: Constants.normalAlpha)
+        animateTapView(alpha: Constants.normalAlpha)
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        startAnimation(alpha: Constants.normalAlpha)
+        animateTapView(alpha: Constants.normalAlpha)
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        disableTapping()
     }
     
     // MARK: - Private
@@ -120,16 +125,6 @@ final class SettingsTableViewCell: UITableViewCell {
             $0.trailing.equalToSuperview()
         }
     }
-    
-    private func startAnimation(alpha: CGFloat) {
-        UIView.animate(
-            withDuration: Constants.animateDuration,
-            delay: 0,
-            options: UIView.AnimationOptions()
-        ) {
-            self.alpha = alpha
-        }
-    }
 }
 
 // MARK: - Configurable
@@ -144,14 +139,19 @@ extension SettingsTableViewCell: Configurable {
     struct Model {
         let icon: UIImage
         let titleText: String
-        let countText: String
+        var countText: String
         let maxValue: Int
+        let minValue: Int
         let fieldType: FieldType
     }
     
     func configure(with model: Model) {
         infoImageView.image = model.icon.withTintColor(Asset.mainTextColor.color)
         titleTextLabel.text = model.titleText
-        countTextLabel.text = model.countText
+        
+        switch model.fieldType {
+        case .number: countTextLabel.text = String(model.countText)
+        case .timer: countTextLabel.text = "\(model.countText) \(L10n.SettingsCell.minute)"
+        }
     }
 }

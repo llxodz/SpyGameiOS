@@ -29,9 +29,12 @@ internal enum Asset {
   internal static let blackTextColor = ColorAsset(name: "BlackTextColor")
   internal static let buttonStartColor = ColorAsset(name: "ButtonStartColor")
   internal static let clockImage = ImageAsset(name: "ClockImage")
+  internal static let closeImage = ImageAsset(name: "CloseImage")
   internal static let mainBackgroundColor = ColorAsset(name: "MainBackgroundColor")
   internal static let mainTextColor = ColorAsset(name: "MainTextColor")
+  internal static let minusImage = ImageAsset(name: "MinusImage")
   internal static let playerImage = ImageAsset(name: "PlayerImage")
+  internal static let plusImage = ImageAsset(name: "PlusImage")
   internal static let spyImage = ImageAsset(name: "SpyImage")
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name

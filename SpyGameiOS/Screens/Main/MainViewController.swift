@@ -29,6 +29,9 @@ class MainViewController: BaseViewController {
     private lazy var headerView = HeaderMainView()
     private lazy var footerView = FooterMainView()
     
+    // Private property
+    private let viewModel = MainViewModel()
+    
     // MARK: - Init
     
     override init() {
