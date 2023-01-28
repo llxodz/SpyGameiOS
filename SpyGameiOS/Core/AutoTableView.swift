@@ -7,14 +7,14 @@
 
 import UIKit
 
-class AutoTableView: UITableView {
+public class AutoTableView: UITableView {
  
-    override func layoutSubviews() {
+    public override func layoutSubviews() {
         super.layoutSubviews()
         self.invalidateIntrinsicContentSize()
     }
     
-    override var intrinsicContentSize: CGSize {
+    public override var intrinsicContentSize: CGSize {
         get {
             var height: CGFloat = 0
             for s in 0..<self.numberOfSections {

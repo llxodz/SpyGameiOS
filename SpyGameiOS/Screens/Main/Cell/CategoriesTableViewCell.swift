@@ -70,12 +70,20 @@ final class CategoriesTableViewCell: UITableViewCell {
     private func configureAppearance() {
         backgroundColor = Asset.mainBackgroundColor.color
         switchAll.transform = CGAffineTransform(scaleX: Constants.switchScale, y: Constants.switchScale)
+        configureTableView()
+        configureLabels()
+    }
+    
+    private func configureTableView() {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(CategoryTableViewCell.self, forCellReuseIdentifier: CategoryTableViewCell.identifier)
         tableView.separatorStyle = .none
         tableView.isMultipleTouchEnabled = false
         tableView.backgroundColor = .clear
+    }
+    
+    private func configureLabels() {
         title.text = L10n.CategoriesTableViewCell.categories
         title.font = Constants.titleFont
         title.textColor = Asset.mainTextColor.color
