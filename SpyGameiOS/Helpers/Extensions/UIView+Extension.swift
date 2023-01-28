@@ -9,6 +9,14 @@ import UIKit
 
 extension UIView {
     
+    // MARK: - Static
+        
+    static var clearView: UIView {
+        let view = UIView()
+        view.backgroundColor = .clear
+        return view
+    }
+    
     /// Функции множественного добавления View
     func addSubviews(_ views: UIView...) {
         addSubviews(views)
