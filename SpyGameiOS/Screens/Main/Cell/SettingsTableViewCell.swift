@@ -59,15 +59,15 @@ final class SettingsTableViewCell: UITableViewCell, Tappable {
     // MARK: - Lifecycle
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        animateTapButton(alpha: Constants.selectedAlpha)
+        animateTapView(alpha: Constants.selectedAlpha)
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        animateTapButton(alpha: Constants.normalAlpha)
+        animateTapView(alpha: Constants.normalAlpha)
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        animateTapButton(alpha: Constants.normalAlpha)
+        animateTapView(alpha: Constants.normalAlpha)
     }
     
     override func prepareForReuse() {

@@ -7,7 +7,7 @@
 
 import UIKit
 
-open class TappableView: UIButton, Tappable {
+open class TappableView: UIView, Tappable {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -18,14 +18,14 @@ open class TappableView: UIButton, Tappable {
     }
     
     open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        animateTapButton(alpha: 0.5)
+        animateTapView(alpha: 0.5)
     }
     
     open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        animateTapButton(alpha: 1)
+        animateTapView(alpha: 1)
     }
     
     open override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        animateTapButton(alpha: 1)
+        animateTapView(alpha: 1)
     }
 }
