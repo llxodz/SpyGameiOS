@@ -10,15 +10,14 @@ import UIKit
 extension UIView {
     
     // MARK: - Static
-    
+        
     static var clearView: UIView {
         let view = UIView()
         view.backgroundColor = .clear
         return view
     }
     
-    // MARK: - Extensions
-    
+    /// Функции множественного добавления View
     func addSubviews(_ views: UIView...) {
         addSubviews(views)
     }
@@ -26,6 +25,17 @@ extension UIView {
     func addSubviews(_ views: [UIView]) {
         views.forEach {
             addSubview($0)
+        }
+    }
+    
+    /// Анимация нажатия Custom'ных кнопок
+    func animateTapView(alpha: CGFloat, duration: CGFloat = 0.1) {
+        UIView.animate(
+            withDuration: duration,
+            delay: 0,
+            options: UIView.AnimationOptions())
+        {
+            self.alpha = alpha
         }
     }
 }
