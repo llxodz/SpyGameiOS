@@ -19,7 +19,7 @@ private enum Constants {
     static let normalAlpha: CGFloat = 1
 }
 
-final class SettingsCountButton: TappableView {
+final class SettingsCountButton: TappableButton {
     
     // Private property
     private let imageType: CountButtonType

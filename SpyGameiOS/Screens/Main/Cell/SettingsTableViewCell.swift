@@ -11,30 +11,36 @@ import SnapKit
 private enum Constants {
     static let sizeImage: CGFloat = 24
     static let titleFont = FontFamily.Montserrat.medium.font(size: 16)
-    
     static let selectedAlpha = 0.3
     static let normalAlpha: CGFloat = 1
     static let animateDuration = 0.1
+    static let separatorHeight: CGFloat = 0.5
 }
 
 final class SettingsTableViewCell: UITableViewCell, Tappable {
     
     // Public property
-    public static var identifier: String {
-        String(describing: self)
+    public static var identifier: String { "SettingsTableViewCell" }
+    public var separatorHidden: Bool {
+        set {
+            separator.isHidden = newValue
+        }
+        get {
+            return separator.isHidden
+        }
     }
     
     // UI
     private lazy var titleTextLabel: UILabel = {
         let label = UILabel()
         label.font = Constants.titleFont
-        label.textColor = Asset.mainBlackColor.color
+        label.textColor = Asset.mainTextColor.color
         return label
     }()
     private lazy var countTextLabel: UILabel = {
         let label = UILabel()
         label.font = Constants.titleFont
-        label.textColor = Asset.mainBlackColor.color
+        label.textColor = Asset.mainTextColor.color
         return label
     }()
     private lazy var infoImageView = UIImageView()
@@ -43,6 +49,11 @@ final class SettingsTableViewCell: UITableViewCell, Tappable {
         imageView.image = Asset.arrowRightImage.image
         return imageView
     }()
+    private lazy var separator: UIView = {
+       let separator = UIView()
+        separator.backgroundColor = .gray
+        return separator
+    }()
     
     // MARK: - Init
     
@@ -50,6 +61,7 @@ final class SettingsTableViewCell: UITableViewCell, Tappable {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         addViews()
         configureLayout()
+        backgroundColor = Asset.mainBackgroundColor.color
     }
         
     required init?(coder: NSCoder) {
@@ -78,7 +90,13 @@ final class SettingsTableViewCell: UITableViewCell, Tappable {
     // MARK: - Private
     
     private func addViews() {
-        addSubviews(infoImageView, titleTextLabel, countTextLabel, arrowImageView)
+        addSubviews(
+            infoImageView,
+            titleTextLabel,
+            countTextLabel,
+            arrowImageView,
+            separator
+        )
     }
     
     private func configureLayout() {
@@ -99,6 +117,12 @@ final class SettingsTableViewCell: UITableViewCell, Tappable {
             $0.trailing.equalToSuperview().inset(CGFloat.baseMargin)
             $0.leading.equalTo(countTextLabel.snp.trailing).offset(CGFloat.smallMargin)
             $0.centerY.equalToSuperview()
+        }
+        separator.snp.makeConstraints {
+            $0.bottom.equalToSuperview()
+            $0.height.equalTo(Constants.separatorHeight)
+            $0.leading.equalToSuperview().inset(CGFloat.extraLargeMargin)
+            $0.trailing.equalToSuperview()
         }
     }
 }
@@ -122,7 +146,7 @@ extension SettingsTableViewCell: Configurable {
     }
     
     func configure(with model: Model) {
-        infoImageView.image = model.icon
+        infoImageView.image = model.icon.withTintColor(Asset.mainTextColor.color)
         titleTextLabel.text = model.titleText
         
         switch model.fieldType {

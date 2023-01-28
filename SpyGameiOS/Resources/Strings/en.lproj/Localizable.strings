@@ -13,3 +13,5 @@ SettingsCell.Timer = "Timer";
 SettingsCell.Minute = "min";
 SettingsViewController.Save = "Save";
 FooterView.StartGame = "Start game";
+CategoriesTableViewCell.Categories = "Categories";
+CategoriesTableViewCell.SelectAll = "Select all";

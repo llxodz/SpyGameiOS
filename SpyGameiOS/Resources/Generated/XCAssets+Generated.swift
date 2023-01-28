@@ -26,10 +26,12 @@ internal typealias AssetImageTypeAlias = ImageAsset.Image
 internal enum Asset {
   internal static let accentColor = ColorAsset(name: "AccentColor")
   internal static let arrowRightImage = ImageAsset(name: "ArrowRightImage")
+  internal static let blackTextColor = ColorAsset(name: "BlackTextColor")
   internal static let buttonStartColor = ColorAsset(name: "ButtonStartColor")
   internal static let clockImage = ImageAsset(name: "ClockImage")
   internal static let closeImage = ImageAsset(name: "CloseImage")
-  internal static let mainBlackColor = ColorAsset(name: "MainBlackColor")
+  internal static let mainBackgroundColor = ColorAsset(name: "MainBackgroundColor")
+  internal static let mainTextColor = ColorAsset(name: "MainTextColor")
   internal static let minusImage = ImageAsset(name: "MinusImage")
   internal static let playerImage = ImageAsset(name: "PlayerImage")
   internal static let plusImage = ImageAsset(name: "PlusImage")
