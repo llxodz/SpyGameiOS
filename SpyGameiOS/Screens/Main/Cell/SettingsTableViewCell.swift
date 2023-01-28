@@ -115,7 +115,7 @@ extension SettingsTableViewCell: Configurable {
     struct Model {
         let icon: UIImage
         let titleText: String
-        var countText: Int
+        var countText: String
         let maxValue: Int
         let minValue: Int
         let fieldType: FieldType
