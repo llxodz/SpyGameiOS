@@ -12,3 +12,5 @@ SettingsCell.Spys = "Шпионы";
 SettingsCell.Timer = "Таймер";
 SettingsCell.Minute = "мин";
 FooterView.StartGame = "Начать";
+CategoriesTableViewCell.Categories = "Категории";
+CategoriesTableViewCell.SelectAll = "Выбрать все";
