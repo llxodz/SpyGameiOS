@@ -127,7 +127,6 @@ final class CategoriesViewCell: UITableViewCell {
         
         let output = viewModel?.transform(input: input)
         output?.switchAll
-            .removeDuplicates()
             .sink { [weak self] isOn in
                 self?.allSwitch.setOn(isOn, animated: true)
             }
@@ -169,7 +168,6 @@ extension CategoriesViewCell: UITableViewDelegate, UITableViewDataSource {
                 }
                 .store(in: &cell.cancellables)
             switchAllCategories?
-                .removeDuplicates()
                 .sink { isOn in
                     cell.switchCase.setOn(isOn, animated: true)
                 }
