@@ -19,9 +19,9 @@ class MainViewController: BaseViewController {
     // Private property
     // TODO: - Удалить и вынести во viewModel
     private let categories: [Category] = [
-        Category(name: "В городе", selected: false),
-        Category(name: "Гей порно", selected: false),
-        Category(name: "Гавр хуй", selected: false)
+        Category(id: 0, name: "В городе", selected: false),
+        Category(id: 1, name: "Гей порно", selected: false),
+        Category(id: 2, name: "Гавр хуй", selected: false)
     ]
     private let viewModel = MainViewModel()
     
@@ -87,7 +87,7 @@ class MainViewController: BaseViewController {
         tableView.dataSource = self
         tableView.delaysContentTouches = false
         tableView.register(SettingsTableViewCell.self, forCellReuseIdentifier: SettingsTableViewCell.identifier)
-        tableView.register(CategoriesTableViewCell.self, forCellReuseIdentifier: CategoriesTableViewCell.identifier)
+        tableView.register(CategoriesViewCell.self, forCellReuseIdentifier: CategoriesViewCell.identifier)
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = Constants.cellRowHeight
     }
@@ -104,9 +104,9 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == SettingsCellType.allCases.count {
             guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: CategoriesTableViewCell.identifier,
+                withIdentifier: CategoriesViewCell.identifier,
                 for: indexPath
-            ) as? CategoriesTableViewCell else { return UITableViewCell() }
+            ) as? CategoriesViewCell else { return UITableViewCell() }
             cell.selectedBackgroundView = UIView.clearView
             cell.configure(with: categories)
             return cell

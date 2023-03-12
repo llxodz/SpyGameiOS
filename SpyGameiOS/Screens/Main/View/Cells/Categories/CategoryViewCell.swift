@@ -1,5 +1,5 @@
 //
-//  CategoryTableViewCell.swift
+//  CategoryViewCell.swift
 //  SpyGameiOS
 //
 //  Created by Andrey Firsenko on 22.01.2023.
@@ -7,21 +7,24 @@
 
 import UIKit
 import SnapKit
+import Combine
 
 private enum Constants {
     static let switchScale: CGFloat = 0.9
     static let nameFont = FontFamily.Montserrat.medium.font(size: 16)
 }
 
-final class CategoryTableViewCell: UITableViewCell {
+final class CategoryViewCell: UITableViewCell {
     
     // UI
     private let name = UILabel()
-    private let switchCase = UISwitch()
+    let switchCase = UISwitch()
     
     // Public property
-    public static var identifier: String { "CategoryTableViewCell" }
-    public var updateSelected: (Bool) -> Void = { _ in }
+    static var identifier: String { "CategoryTableViewCell" }
+    var cancellables = Set<AnyCancellable>()
+    let isOn = PassthroughSubject<Bool, Never>()
+    
     
     // MARK: - Init
     
@@ -37,6 +40,12 @@ final class CategoryTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        cancellables.forEach { $0.cancel() }
+        cancellables.removeAll()
+    }
+    
     // MARK: - Private
     
     private func addViews() {
@@ -44,22 +53,21 @@ final class CategoryTableViewCell: UITableViewCell {
     }
     
     private func configureLayout() {
-        switchCase.snp.makeConstraints {
-            $0.trailing.equalToSuperview().inset(CGFloat.baseMargin)
-            $0.centerY.equalToSuperview()
-        }
         name.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(CGFloat.baseMargin)
             $0.top.bottom.equalToSuperview().inset(CGFloat.smallMargin)
+        }
+        switchCase.snp.makeConstraints {
+            $0.trailing.equalToSuperview().inset(CGFloat.baseMargin)
+            $0.centerY.equalToSuperview()
         }
     }
     
     private func configureAppearance() {
         backgroundColor = Asset.mainBackgroundColor.color
-        switchCase.transform = CGAffineTransform(scaleX: Constants.switchScale, y: Constants.switchScale)
         name.font = Constants.nameFont
         name.textColor = Asset.mainTextColor.color
-        
+        switchCase.transform = CGAffineTransform(scaleX: Constants.switchScale, y: Constants.switchScale)
     }
     
     private func configureAction() {
@@ -67,13 +75,13 @@ final class CategoryTableViewCell: UITableViewCell {
     }
     
     @objc private func onSwitchValueChanged(_ switch: UISwitch) {
-        updateSelected(`switch`.isOn)
+        isOn.send(`switch`.isOn)
     }
 }
 
 // MARK: - Configurable
 
-extension CategoryTableViewCell: Configurable {
+extension CategoryViewCell: Configurable {
     
     func configure(with model: Category) {
         name.text = model.name
