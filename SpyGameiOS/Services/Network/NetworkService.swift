@@ -33,7 +33,6 @@ final class NetworkService: INetworkService {
         }
         return session.dataTaskPublisher(for: request)
             .mapError { _ in NetworkError.invalidRequest }
-            .print()
             .flatMap { data, response -> AnyPublisher<Data, Error> in
                 guard let response = response as? HTTPURLResponse else {
                     return Fail(error: NetworkError.invalidResponse).eraseToAnyPublisher()
@@ -46,6 +45,7 @@ final class NetworkService: INetworkService {
                     .eraseToAnyPublisher()
             }
             .decode(type: T.self, decoder: JSONDecoder())
+            .mapError { error in NetworkError.jsonDecodingError(error: error) }
             .eraseToAnyPublisher()
     }
 }
