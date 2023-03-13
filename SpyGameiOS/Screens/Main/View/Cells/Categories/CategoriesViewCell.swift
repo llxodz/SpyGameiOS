@@ -160,19 +160,19 @@ extension CategoriesViewCell: UITableViewDelegate, UITableViewDataSource {
         ) as? CategoryViewCell else { return UITableViewCell() }
         
         cell.selectedBackgroundView = UIView.clearView
-        if let model = viewModel?.categories[safe: indexPath.row] {
-            cell.configure(with: model)
-            cell.isOn
-                .sink { [weak self] isOn in
-                    self?.switchCategory.send(model.withSelected(isOn))
-                }
-                .store(in: &cell.cancellables)
-            switchAllCategories?
-                .sink { isOn in
-                    cell.switchCase.setOn(isOn, animated: true)
-                }
-                .store(in: &cell.cancellables)
-        }
+        guard let model = viewModel?.categories[safe: indexPath.row] else { return cell }
+       
+        cell.configure(with: model)
+        cell.isOn
+            .sink { [weak self] isOn in
+                self?.switchCategory.send(model.withSelected(isOn))
+            }
+            .store(in: &cell.cancellables)
+        switchAllCategories?
+            .sink { isOn in
+                cell.switchCase.setOn(isOn, animated: true)
+            }
+            .store(in: &cell.cancellables)
         
         return cell
     }

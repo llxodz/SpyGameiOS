@@ -87,11 +87,5 @@ final class CategoriesViewModel: BaseViewModel {
         } else {
             switchAll.send(false)
         }
-//        count.forEach { (key, value) in
-//            if value == categories.count {
-//                switchAll.send(key)
-//                return
-//            }
-//        }
     }
 }
