@@ -21,7 +21,7 @@ final class CategoryViewCell: UITableViewCell {
     let switchCase = UISwitch()
     
     // Public property
-    static var identifier: String { "CategoryTableViewCell" }
+    static var identifier: String { "CategoryViewCell" }
     var cancellables = Set<AnyCancellable>()
     let isOn = PassthroughSubject<Bool, Never>()
     
