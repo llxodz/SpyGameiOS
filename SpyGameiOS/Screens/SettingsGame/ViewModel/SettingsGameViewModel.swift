@@ -10,15 +10,15 @@ import Foundation
 final class SettingsGameViewModel {
     
     // Private property
-    private var data: SettingsTableViewCell.Model
+    private var data: SettingsViewCell.Model
     
     // MARK: - Init
     
-    init(data: SettingsTableViewCell.Model) {
+    init(data: SettingsViewCell.Model) {
         self.data = data
     }
     
-    func getData() -> SettingsTableViewCell.Model {
+    func getData() -> SettingsViewCell.Model {
         return data
     }
 }

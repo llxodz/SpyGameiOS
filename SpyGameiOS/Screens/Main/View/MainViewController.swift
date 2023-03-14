@@ -86,7 +86,7 @@ class MainViewController: BaseViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.delaysContentTouches = false
-        tableView.register(SettingsTableViewCell.self, forCellReuseIdentifier: SettingsTableViewCell.identifier)
+        tableView.register(SettingsViewCell.self, forCellReuseIdentifier: SettingsViewCell.identifier)
         tableView.register(CategoriesViewCell.self, forCellReuseIdentifier: CategoriesViewCell.identifier)
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = Constants.cellRowHeight
@@ -98,11 +98,24 @@ class MainViewController: BaseViewController {
 extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return SettingsCellType.allCases.count + 1 // Последняя ячейка с категориями
+        return viewModel.cells.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == SettingsCellType.allCases.count {
+        switch CellType(rawValue: indexPath.row) {
+        case .playes, .spies, .timer:
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: SettingsViewCell.identifier,
+                for: indexPath
+            ) as? SettingsViewCell else { return UITableViewCell() }
+            cell.selectedBackgroundView = UIView.clearView
+            if let type = SettingsCellType(rawValue: indexPath.row) {
+                cell.configure(with: type.cellModel())
+            }
+            cell.separatorHidden = indexPath.row >= SettingsCellType.allCases.count - 1
+            return cell
+            
+        case .categories:
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: CategoriesViewCell.identifier,
                 for: indexPath
@@ -110,17 +123,21 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
             cell.selectedBackgroundView = UIView.clearView
             cell.configure(with: categories)
             return cell
-        } else {
-            guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: SettingsTableViewCell.identifier,
-                for: indexPath
-            ) as? SettingsTableViewCell else { return UITableViewCell() }
-            cell.selectedBackgroundView = UIView.clearView
-            if let type = SettingsCellType(rawValue: indexPath.row) {
-                cell.configure(with: type.cellModel())
-            }
-            cell.separatorHidden = indexPath.row >= SettingsCellType.allCases.count - 1
-            return cell
+            
+        default: return UITableViewCell()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch CellType(rawValue: indexPath.row) {
+        case .playes, .spies:
+            let vc = SettingsGameViewController(data: viewModel.getField(indexPath))
+            vc.modalPresentationStyle = .overCurrentContext
+            vc.modalTransitionStyle = .crossDissolve
+            self.present(vc, animated: true)
+        case .timer: break
+        case .categories: break
+        default: break
         }
     }
 }
