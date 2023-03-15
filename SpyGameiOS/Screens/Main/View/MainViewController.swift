@@ -131,7 +131,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch CellType(rawValue: indexPath.row) {
         case .playes, .spies:
-            let vc = SettingsGameViewController(data: viewModel.getField(indexPath))
+            let vc = SettingNumberFieldViewController(data: viewModel.getField(indexPath))
             vc.modalPresentationStyle = .overCurrentContext
             vc.modalTransitionStyle = .crossDissolve
             self.present(vc, animated: true)
