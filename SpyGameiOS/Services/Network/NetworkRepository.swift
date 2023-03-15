@@ -8,36 +8,39 @@
 import UIKit
 import Combine
 
-final class NetworkRepository {
+final class NetworkRepository: BaseRepository {
     
     private let service: NetworkService
     private var cancellables = Set<AnyCancellable>()
+    private var subject = PassthroughSubject<NetworkState, Error>()
+    
+    @Published private var data: Categories?
     
     init(service: NetworkService = NetworkService(session: URLSession(configuration: .default))) {
         self.service = service
     }
     
-    func loadData() {
-        var data = ""
-        let resource = Resource<DataModel>(url: URL(string: "https://aws.random.cat/meow")!)
+    @discardableResult
+    func fetchCategories() -> AnyPublisher<NetworkState, Error> {
+        subject.send(.loading)
         
-        let cancellable = service
+        let resource = Resource<Categories>(url: SpyEndpoint.fetchCategories.url)
+        service
             .load(resource)
-            .sink { result in
+            .sink { [weak self] result in
+                guard let self = self else { return }
+                
                 switch result {
                 case .finished: break
                 case .failure(let error):
-                    print(error.localizedDescription)
+                    self.subject.send(.failed(error))
                 }
-            } receiveValue: { response in
-                data = response.file
+            } receiveValue: { [weak self] response in
+                guard let self = self else { return }
+                
+                self.subject.send(.success(response))
             }
-        self.cancellables.insert(cancellable)
-        
-        print(data)
+            .store(in: &cancellables)
+        return subject.eraseToAnyPublisher()
     }
-}
-
-struct DataModel: Decodable {
-    let file: String
 }
