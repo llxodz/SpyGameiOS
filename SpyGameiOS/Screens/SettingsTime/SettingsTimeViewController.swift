@@ -22,7 +22,7 @@ private enum Constants {
 final class SettingsTimeViewController: BaseViewController {
     
     // Public property
-    public var handler: ((SettingsTableViewCell.Model) -> Void)?
+    public var handler: ((SettingsViewCell.Model) -> Void)?
     
     // Private property
     private var viewModel: SettingsTimeViewModel
@@ -63,7 +63,7 @@ final class SettingsTimeViewController: BaseViewController {
     
     // MARK: - Init
     
-    init(data: SettingsTableViewCell.Model) {
+    init(data: SettingsViewCell.Model) {
         self.viewModel = SettingsTimeViewModel(data: data)
         super.init()
     }

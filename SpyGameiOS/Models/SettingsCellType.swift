@@ -35,8 +35,8 @@ extension SettingsCellType {
     
     // MARK: - Public
     
-    func cellModel() -> SettingsTableViewCell.Model {
-        SettingsTableViewCell.Model(
+    func cellModel() -> SettingsViewCell.Model {
+        SettingsViewCell.Model(
             icon: icon,
             titleText: titleText,
             countText: countText,
@@ -90,7 +90,7 @@ extension SettingsCellType {
         }
     }
     
-    private var fieldType: SettingsTableViewCell.FieldType {
+    private var fieldType: SettingsViewCell.FieldType {
         switch self {
         case .players: return .number
         case .spies: return .number

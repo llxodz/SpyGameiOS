@@ -23,7 +23,7 @@ private enum Constants {
 final class SettingsGameViewController: BaseViewController {
     
     // Public property
-    public var handler: ((SettingsTableViewCell.Model) -> Void)?
+    public var handler: ((SettingsViewCell.Model) -> Void)?
     
     // Private property
     private var viewModel: SettingsGameViewModel
@@ -73,7 +73,7 @@ final class SettingsGameViewController: BaseViewController {
     
     // MARK: - Init
     
-    init(data: SettingsTableViewCell.Model, handler: ((SettingsTableViewCell.Model) -> Void)? = nil) {
+    init(data: SettingsViewCell.Model, handler: ((SettingsViewCell.Model) -> Void)? = nil) {
         self.handler = handler
         self.viewModel = SettingsGameViewModel(data: data)
         super.init()

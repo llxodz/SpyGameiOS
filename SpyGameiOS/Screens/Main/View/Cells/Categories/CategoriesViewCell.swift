@@ -31,7 +31,7 @@ final class CategoriesViewCell: UITableViewCell {
     private var switchAllCategories: AnyPublisher<Bool, Never>?
     
     // Public property
-    public static var identifier: String { "CategoriesTableViewCell" }
+    public static var identifier: String { "CategoriesViewCell" }
     
     // MARK: - Init
     
