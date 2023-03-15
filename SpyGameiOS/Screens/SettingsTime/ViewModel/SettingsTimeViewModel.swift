@@ -10,17 +10,17 @@ import Foundation
 final class SettingsTimeViewModel {
     
     // Private property
-    private let data: SettingsTableViewCell.Model
+    private let data: SettingsViewCell.Model
     
     // MARK: - Init
     
-    init(data: SettingsTableViewCell.Model) {
+    init(data: SettingsViewCell.Model) {
         self.data = data
     }
     
     // MARK: - Public
     
-    func getData() -> SettingsTableViewCell.Model {
+    func getData() -> SettingsViewCell.Model {
         return data
     }
 }
