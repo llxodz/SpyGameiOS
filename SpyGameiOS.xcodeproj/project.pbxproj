@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3324659129C2775B00DCD0DA /* CategoriesModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3324659029C2775B00DCD0DA /* CategoriesModels.swift */; };
+		3324659829C27AB400DCD0DA /* NetworkEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3324659729C27AB400DCD0DA /* NetworkEndpoint.swift */; };
 		3341C75B297F2863008D61E1 /* SettingsTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341C75A297F2863008D61E1 /* SettingsTimeViewController.swift */; };
 		3341C75E297F2C79008D61E1 /* SettingsTimeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341C75D297F2C79008D61E1 /* SettingsTimeViewModel.swift */; };
 		33657F82296475D300680536 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33657F81296475D300680536 /* MainViewModel.swift */; };
+		3373B26D29C24EB3002BA716 /* BaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3373B26C29C24EB3002BA716 /* BaseRepository.swift */; };
 		33BFA57E29859822000DDD5D /* SettingsCountButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BFA57D29859822000DDD5D /* SettingsCountButton.swift */; };
 		33BFA58029859973000DDD5D /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BFA57F29859973000DDD5D /* UIView+Extension.swift */; };
 		33DD5519296B2D1D0068F79B /* SettingsGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD5518296B2D1D0068F79B /* SettingsGameViewModel.swift */; };
@@ -55,9 +58,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3324659029C2775B00DCD0DA /* CategoriesModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesModels.swift; sourceTree = "<group>"; };
+		3324659729C27AB400DCD0DA /* NetworkEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEndpoint.swift; sourceTree = "<group>"; };
 		3341C75A297F2863008D61E1 /* SettingsTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTimeViewController.swift; sourceTree = "<group>"; };
 		3341C75D297F2C79008D61E1 /* SettingsTimeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTimeViewModel.swift; sourceTree = "<group>"; };
 		33657F81296475D300680536 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		3373B26C29C24EB3002BA716 /* BaseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRepository.swift; sourceTree = "<group>"; };
 		33BFA57D29859822000DDD5D /* SettingsCountButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCountButton.swift; sourceTree = "<group>"; };
 		33BFA57F29859973000DDD5D /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		33DD5518296B2D1D0068F79B /* SettingsGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsGameViewModel.swift; sourceTree = "<group>"; };
@@ -184,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				644FDBFE28AAF6FE0097F55D /* SettingsCellType.swift */,
+				3324659029C2775B00DCD0DA /* CategoriesModels.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -233,6 +240,7 @@
 				64871D6928A990EE0004B773 /* Configurable.swift */,
 				64F0D324297D929400728750 /* AutoTableView.swift */,
 				64BB429F29BE368D00B3317A /* BaseViewModel.swift */,
+				3373B26C29C24EB3002BA716 /* BaseRepository.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -295,6 +303,7 @@
 				64AF8F4729BFC20B00C57C44 /* Resource.swift */,
 				64AF8F4829BFC20B00C57C44 /* NetworkError.swift */,
 				7F5DB4CF29C08BD90038EDED /* NetworkRepository.swift */,
+				3324659729C27AB400DCD0DA /* NetworkEndpoint.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -534,15 +543,18 @@
 				7F5DB4D029C08BD90038EDED /* NetworkRepository.swift in Sources */,
 				64871D7F28A995210004B773 /* Fonts+Generated.swift in Sources */,
 				64871D6C28A990EE0004B773 /* Configurable.swift in Sources */,
+				3373B26D29C24EB3002BA716 /* BaseRepository.swift in Sources */,
 				64871D6E28A990EE0004B773 /* BaseConstants.swift in Sources */,
 				64871D5A28A989C00004B773 /* SpyGameiOS.xcdatamodeld in Sources */,
 				33BFA57E29859822000DDD5D /* SettingsCountButton.swift in Sources */,
 				64BB429829BDF93600B3317A /* StartGameButton.swift in Sources */,
 				64BB42A429BE3B1300B3317A /* CategoriesViewModel.swift in Sources */,
+				3324659129C2775B00DCD0DA /* CategoriesModels.swift in Sources */,
 				64BB42A229BE37E700B3317A /* Category.swift in Sources */,
 				64871D5428A989C00004B773 /* MainViewController.swift in Sources */,
 				64871D8028A995210004B773 /* XCAssets+Generated.swift in Sources */,
 				64871D5028A989C00004B773 /* AppDelegate.swift in Sources */,
+				3324659829C27AB400DCD0DA /* NetworkEndpoint.swift in Sources */,
 				3341C75E297F2C79008D61E1 /* SettingsTimeViewModel.swift in Sources */,
 				64871D8128A995210004B773 /* IB-Scenes+Generated.swift in Sources */,
 				33DD551B296B46490068F79B /* TappableButton.swift in Sources */,
