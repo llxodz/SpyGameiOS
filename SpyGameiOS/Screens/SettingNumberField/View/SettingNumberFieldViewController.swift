@@ -1,5 +1,5 @@
 //
-//  SettingsGameViewController.swift
+//  SettingNumberFieldViewController.swift
 //  SpyGameiOS
 //
 //  Created by Ilya Gavrilov on 17.12.2022.
@@ -11,19 +11,14 @@ import SnapKit
 private enum Constants {
     static let labelFont: UIFont = FontFamily.Montserrat.bold.font(size: 18)
     static let saveButtonFont: UIFont = FontFamily.Montserrat.medium.font(size: 16)
-    
     static let heightCountButton: CGFloat = 48
     static let heightSaveButton: CGFloat = 56
     static let heightCloseButton: CGFloat = 32
     static let heightView: CGFloat = 256
-    
     static let alphaBackground: CGFloat = 0.5
 }
 
-final class SettingsGameViewController: BaseViewController {
-    
-    // Public property
-    public var handler: ((SettingsViewCell.Model) -> Void)?
+final class SettingNumberFieldViewController: BaseViewController {
     
     // Private property
     private var viewModel: SettingsGameViewModel
@@ -50,9 +45,9 @@ final class SettingsGameViewController: BaseViewController {
         button.layer.cornerRadius = CGFloat.mediumRadius
         return button
     }()
-    private lazy var minusCountButton: SettingsCountButton = SettingsCountButton(imageType: .minus)
-    private lazy var plusCountButton: SettingsCountButton = SettingsCountButton(imageType: .plus)
-    private lazy var stackView: UIStackView = UIStackView()
+    private let minusCountButton = CountButton(type: .minus)
+    private let plusCountButton = CountButton(type: .plus)
+    private let stackView = UIStackView()
     private lazy var saveSettingsButton: TappableButton = {
         let button = TappableButton()
         button.layer.cornerRadius = .baseRadius
@@ -74,20 +69,12 @@ final class SettingsGameViewController: BaseViewController {
     // MARK: - Init
     
     init(data: SettingsViewCell.Model, handler: ((SettingsViewCell.Model) -> Void)? = nil) {
-        self.handler = handler
         self.viewModel = SettingsGameViewModel(data: data)
         super.init()
     }
     
     required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    deinit {
-        minusCountButton.disableTapping()
-        plusCountButton.disableTapping()
-        saveSettingsButton.disableTapping()
-        closeImageButton.disableTapping()
     }
     
     // MARK: - Lifecycle
@@ -101,7 +88,7 @@ final class SettingsGameViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureButtons()
+        configureActions()
     }
     
     // MARK: - Private
@@ -155,15 +142,13 @@ final class SettingsGameViewController: BaseViewController {
     
     private func configureAppearance() {
         backgroundView.backgroundColor = .white
-        
         stackView.axis = .horizontal
         stackView.spacing = .extraLargeSpace
         stackView.alignment = .center
-        
         view.backgroundColor = .gray.withAlphaComponent(Constants.alphaBackground)
     }
     
-    private func configureButtons() {
+    private func configureActions() {
         saveSettingsButton.enableTapping { [weak self] in
             guard let self = self else { return }
             self.dismiss(animated: true)
