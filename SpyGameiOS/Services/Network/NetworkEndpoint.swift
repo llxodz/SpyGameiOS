@@ -7,10 +7,6 @@
 
 import Foundation
 
-protocol BaseEndpoint {
-    var url: URL { get }
-}
-
 enum SpyEndpoint {
     case allCategories
 }

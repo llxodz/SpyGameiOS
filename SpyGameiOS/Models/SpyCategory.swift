@@ -7,13 +7,7 @@
 
 import Foundation
 
-public enum NetworkState {
-    case loading
-    case success(Categories)
-    case failed(Error)
-}
-
-public struct Categories: Decodable {
+public struct SpyCategory: Decodable {
     let id: String
     let name: String
     let location: Location
