@@ -49,7 +49,7 @@ final class CountButton: TappableButton {
         case .plus: buttomImage.image = Asset.plusImage.image
         case .minus: buttomImage.image = Asset.minusImage.image
         }
-        backgroundColor = Asset.buttonStartColor.color
+        backgroundColor = Asset.buttonBackgroundColor.color
         layer.cornerRadius = CGFloat.smallRadius
         layer.masksToBounds = true
         setInsetsOffset(Constants.insetsButton)

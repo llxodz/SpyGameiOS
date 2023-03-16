@@ -43,7 +43,7 @@ final class SettingsTimeViewController: BaseViewController {
     }()
     private lazy var closeImageButton: TappableButton = {
         let button = TappableButton()
-        button.backgroundColor = Asset.buttonStartColor.color
+        button.backgroundColor = Asset.buttonBackgroundColor.color
         button.setImage(Asset.closeImage.image, for: .normal)
         button.layer.masksToBounds = true
         button.layer.cornerRadius = CGFloat.mediumRadius
@@ -57,7 +57,7 @@ final class SettingsTimeViewController: BaseViewController {
         button.setTitle(L10n.SettingsViewController.save, for: .normal)
         button.titleLabel?.font = Constants.saveButtonFont
         button.setTitleColor(Asset.mainBackgroundColor.color, for: .normal)
-        button.backgroundColor = Asset.buttonStartColor.color
+        button.backgroundColor = Asset.buttonBackgroundColor.color
         return button
     }()
     

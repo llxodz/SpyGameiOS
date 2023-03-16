@@ -27,7 +27,7 @@ internal enum Asset {
   internal static let accentColor = ColorAsset(name: "AccentColor")
   internal static let arrowRightImage = ImageAsset(name: "ArrowRightImage")
   internal static let blackTextColor = ColorAsset(name: "BlackTextColor")
-  internal static let buttonStartColor = ColorAsset(name: "ButtonStartColor")
+  internal static let buttonBackgroundColor = ColorAsset(name: "ButtonBackgroundColor")
   internal static let clockImage = ImageAsset(name: "ClockImage")
   internal static let closeImage = ImageAsset(name: "CloseImage")
   internal static let mainBackgroundColor = ColorAsset(name: "MainBackgroundColor")
