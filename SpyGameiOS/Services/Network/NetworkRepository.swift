@@ -24,7 +24,7 @@ final class NetworkRepository: BaseRepository {
     func fetchCategories() -> AnyPublisher<NetworkState, Error> {
         subject.send(.loading)
         
-        let resource = Resource<Categories>(url: SpyEndpoint.fetchCategories.url)
+        let resource = Resource<Categories>(url: SpyEndpoint.allCategories.url)
         service
             .load(resource)
             .sink { [weak self] result in
