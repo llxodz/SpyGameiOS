@@ -12,6 +12,7 @@ private enum Constants {
     static let cellRowHeight: CGFloat = 50
     static let headerHeight: CGFloat = 44
     static let startButtonHeight: CGFloat = 56
+    static let startButtonFont: UIFont = FontFamily.Montserrat.bold.font(size: 16)
 }
 
 class MainViewController: BaseViewController {
@@ -28,7 +29,7 @@ class MainViewController: BaseViewController {
     // UI
     private lazy var tableView = UITableView()
     private lazy var headerView = HeaderMainView()
-    private lazy var startButton = StartGameButton()
+    private lazy var startButton = TappableButton()
     
     // MARK: - Init
     
@@ -80,6 +81,12 @@ class MainViewController: BaseViewController {
         tableView.separatorStyle = .none
         tableView.backgroundColor = .clear
         view.backgroundColor = Asset.mainBackgroundColor.color
+        // Start Button
+        startButton.layer.cornerRadius = .baseRadius
+        startButton.setTitle(L10n.FooterView.startGame, for: .normal)
+        startButton.titleLabel?.font = Constants.startButtonFont
+        startButton.setTitleColor(Asset.mainTextColor.color, for: .normal)
+        startButton.backgroundColor = Asset.buttonBackgroundColor.color
     }
     
     private func configureTableView() {
@@ -131,7 +138,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch CellType(rawValue: indexPath.row) {
         case .playes, .spies:
-            let vc = SettingNumberFieldViewController(data: viewModel.getField(indexPath))
+            let vc = SettingNumberFieldViewController()
             vc.modalPresentationStyle = .overCurrentContext
             vc.modalTransitionStyle = .crossDissolve
             self.present(vc, animated: true)
