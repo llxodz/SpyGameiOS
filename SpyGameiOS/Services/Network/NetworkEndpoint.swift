@@ -12,14 +12,14 @@ protocol BaseEndpoint {
 }
 
 enum SpyEndpoint {
-    case fetchCategories
+    case allCategories
 }
 
 extension SpyEndpoint: BaseEndpoint {
     
     var url: URL {
         switch self {
-        case .fetchCategories: return URL(string: .spyBaseURL + "/allCategories")!
+        case .allCategories: return URL(string: .spyBaseURL + "/allCategories")!
         }
     }
 }
