@@ -5,16 +5,25 @@
 //  Created by Ilya Gavrilov on 14.03.2023.
 //
 
-import UIKit
+import Foundation
 import Combine
 
-final class NetworkRepository: BaseRepository {
+// MARK: - INetworkRepository
+
+protocol INetworkRepository {
     
+    @discardableResult
+    func fetchCategories() -> AnyPublisher<NetworkState, Error>
+}
+
+// MARK: - NetworkRepository
+
+final class NetworkRepository: INetworkRepository {
+    
+    // Dependencies
     private let service: NetworkService
     private var cancellables = Set<AnyCancellable>()
-    private var subject = PassthroughSubject<NetworkState, Error>()
-    
-    @Published private var data: Categories?
+    private var networkStateSubject = PassthroughSubject<NetworkState, Error>()
     
     init(service: NetworkService = NetworkService(session: URLSession(configuration: .default))) {
         self.service = service
@@ -22,25 +31,21 @@ final class NetworkRepository: BaseRepository {
     
     @discardableResult
     func fetchCategories() -> AnyPublisher<NetworkState, Error> {
-        subject.send(.loading)
+        networkStateSubject.send(.loading)
         
-        let resource = Resource<Categories>(url: SpyEndpoint.allCategories.url)
+        let resource = Resource<SpyCategory>(url: SpyEndpoint.allCategories.url)
         service
             .load(resource)
             .sink { [weak self] result in
-                guard let self = self else { return }
-                
                 switch result {
                 case .finished: break
                 case .failure(let error):
-                    self.subject.send(.failed(error))
+                    self?.networkStateSubject.send(.failed(error))
                 }
             } receiveValue: { [weak self] response in
-                guard let self = self else { return }
-                
-                self.subject.send(.success(response))
+                self?.networkStateSubject.send(.success(response))
             }
             .store(in: &cancellables)
-        return subject.eraseToAnyPublisher()
+        return networkStateSubject.eraseToAnyPublisher()
     }
 }
