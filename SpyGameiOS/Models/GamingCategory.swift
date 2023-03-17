@@ -8,7 +8,11 @@
 import Foundation
 
 public struct GamingCategory: Decodable {
-    let id: String
+    let id: Int
     let name: String
-    let location: String
+    let locations: [CategoryLocation]
+}
+
+struct CategoryLocation: Decodable {
+    let name: String
 }
