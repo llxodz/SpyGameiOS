@@ -53,8 +53,7 @@ final class SettingNumberFieldViewController: BaseViewController {
             print("log: minus")
         }
         saveButton.enableTapping { [weak self] in
-            guard let self = self else { return }
-            self.dismiss(animated: true)
+            self?.dismiss(animated: true)
         }
     }
     
