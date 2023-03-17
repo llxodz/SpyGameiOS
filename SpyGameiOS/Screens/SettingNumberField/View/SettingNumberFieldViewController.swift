@@ -46,6 +46,9 @@ final class SettingNumberFieldViewController: BaseViewController {
     // MARK: - Actions
     
     private func configureActions() {
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapBackground(_:)))
+        view.addGestureRecognizer(tapRecognizer)
+        containerView.addGestureRecognizer(UITapGestureRecognizer())
         plusCountButton.enableTapping {
             print("log: plus")
         }
@@ -55,6 +58,10 @@ final class SettingNumberFieldViewController: BaseViewController {
         saveButton.enableTapping { [weak self] in
             self?.dismiss(animated: true)
         }
+    }
+    
+    @objc private func tapBackground(_ sender: UITapGestureRecognizer) {
+        dismiss(animated: true)
     }
     
     // MARK: - Private
