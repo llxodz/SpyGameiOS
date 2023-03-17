@@ -1,5 +1,5 @@
 //
-//  NetworkEndpoint.swift
+//  SpyEndpoint.swift
 //  SpyGameiOS
 //
 //  Created by Ilya Gavrilov on 16.03.2023.

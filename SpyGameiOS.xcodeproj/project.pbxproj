@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3324659129C2775B00DCD0DA /* SpyCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3324659029C2775B00DCD0DA /* SpyCategory.swift */; };
+		3324659129C2775B00DCD0DA /* GamingCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3324659029C2775B00DCD0DA /* GamingCategory.swift */; };
 		3324659829C27AB400DCD0DA /* NetworkEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3324659729C27AB400DCD0DA /* NetworkEndpoint.swift */; };
 		3341C75B297F2863008D61E1 /* SettingsTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341C75A297F2863008D61E1 /* SettingsTimeViewController.swift */; };
 		3341C75E297F2C79008D61E1 /* SettingsTimeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341C75D297F2C79008D61E1 /* SettingsTimeViewModel.swift */; };
@@ -59,7 +59,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3324659029C2775B00DCD0DA /* SpyCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpyCategory.swift; sourceTree = "<group>"; };
+		3324659029C2775B00DCD0DA /* GamingCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamingCategory.swift; sourceTree = "<group>"; };
 		3324659729C27AB400DCD0DA /* NetworkEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEndpoint.swift; sourceTree = "<group>"; };
 		3341C75A297F2863008D61E1 /* SettingsTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTimeViewController.swift; sourceTree = "<group>"; };
 		3341C75D297F2C79008D61E1 /* SettingsTimeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTimeViewModel.swift; sourceTree = "<group>"; };
@@ -200,7 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				644FDBFE28AAF6FE0097F55D /* SettingsCellType.swift */,
-				3324659029C2775B00DCD0DA /* SpyCategory.swift */,
+				3324659029C2775B00DCD0DA /* GamingCategory.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -560,7 +560,7 @@
 				33BFA57E29859822000DDD5D /* SettingsCountButton.swift in Sources */,
 				64BB429829BDF93600B3317A /* StartGameButton.swift in Sources */,
 				64BB42A429BE3B1300B3317A /* CategoriesViewModel.swift in Sources */,
-				3324659129C2775B00DCD0DA /* SpyCategory.swift in Sources */,
+				3324659129C2775B00DCD0DA /* GamingCategory.swift in Sources */,
 				64BB42A229BE37E700B3317A /* Category.swift in Sources */,
 				64871D5428A989C00004B773 /* MainViewController.swift in Sources */,
 				64871D8028A995210004B773 /* XCAssets+Generated.swift in Sources */,
