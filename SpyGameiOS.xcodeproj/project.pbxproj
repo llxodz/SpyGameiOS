@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3324659129C2775B00DCD0DA /* GamingCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3324659029C2775B00DCD0DA /* GamingCategory.swift */; };
-		3324659829C27AB400DCD0DA /* NetworkEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3324659729C27AB400DCD0DA /* NetworkEndpoint.swift */; };
+		3324659829C27AB400DCD0DA /* SpyEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3324659729C27AB400DCD0DA /* SpyEndpoint.swift */; };
 		3341C75B297F2863008D61E1 /* SettingsTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341C75A297F2863008D61E1 /* SettingsTimeViewController.swift */; };
 		3341C75E297F2C79008D61E1 /* SettingsTimeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341C75D297F2C79008D61E1 /* SettingsTimeViewModel.swift */; };
 		33657F82296475D300680536 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33657F81296475D300680536 /* MainViewModel.swift */; };
@@ -60,7 +60,7 @@
 
 /* Begin PBXFileReference section */
 		3324659029C2775B00DCD0DA /* GamingCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamingCategory.swift; sourceTree = "<group>"; };
-		3324659729C27AB400DCD0DA /* NetworkEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEndpoint.swift; sourceTree = "<group>"; };
+		3324659729C27AB400DCD0DA /* SpyEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpyEndpoint.swift; sourceTree = "<group>"; };
 		3341C75A297F2863008D61E1 /* SettingsTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTimeViewController.swift; sourceTree = "<group>"; };
 		3341C75D297F2C79008D61E1 /* SettingsTimeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTimeViewModel.swift; sourceTree = "<group>"; };
 		33657F81296475D300680536 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
@@ -313,7 +313,7 @@
 				64AF8F4629BFC20B00C57C44 /* NetworkService.swift */,
 				64AF8F4729BFC20B00C57C44 /* Resource.swift */,
 				64AF8F4829BFC20B00C57C44 /* NetworkError.swift */,
-				3324659729C27AB400DCD0DA /* NetworkEndpoint.swift */,
+				3324659729C27AB400DCD0DA /* SpyEndpoint.swift */,
 				338BE57E29C3BE140074C333 /* NetworkState.swift */,
 			);
 			path = Network;
@@ -565,7 +565,7 @@
 				64871D5428A989C00004B773 /* MainViewController.swift in Sources */,
 				64871D8028A995210004B773 /* XCAssets+Generated.swift in Sources */,
 				64871D5028A989C00004B773 /* AppDelegate.swift in Sources */,
-				3324659829C27AB400DCD0DA /* NetworkEndpoint.swift in Sources */,
+				3324659829C27AB400DCD0DA /* SpyEndpoint.swift in Sources */,
 				3341C75E297F2C79008D61E1 /* SettingsTimeViewModel.swift in Sources */,
 				64871D8128A995210004B773 /* IB-Scenes+Generated.swift in Sources */,
 				33DD551B296B46490068F79B /* TappableButton.swift in Sources */,
