@@ -25,6 +25,8 @@ final class NetworkRepository: INetworkRepository {
     private var cancellables = Set<AnyCancellable>()
     private var networkStateSubject = PassthroughSubject<NetworkState, Error>()
     
+    // MARK: - Init
+    
     init(service: NetworkService = NetworkService(session: URLSession(configuration: .default))) {
         self.service = service
     }
@@ -33,7 +35,7 @@ final class NetworkRepository: INetworkRepository {
     func fetchCategories() -> AnyPublisher<NetworkState, Error> {
         networkStateSubject.send(.loading)
         
-        let resource = Resource<SpyCategory>(url: SpyEndpoint.allCategories.url)
+        let resource = Resource<GamingCategory>(url: SpyEndpoint.allCategories.url)
         service
             .load(resource)
             .sink { [weak self] result in

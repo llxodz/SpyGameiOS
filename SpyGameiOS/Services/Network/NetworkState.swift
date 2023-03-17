@@ -9,6 +9,6 @@ import Foundation
 
 enum NetworkState {
     case loading
-    case success(SpyCategory)
+    case success(GamingCategory)
     case failed(Error)
 }
