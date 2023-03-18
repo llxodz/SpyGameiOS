@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3341C75B297F2863008D61E1 /* SettingsTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341C75A297F2863008D61E1 /* SettingsTimeViewController.swift */; };
-		3341C75E297F2C79008D61E1 /* SettingsTimeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341C75D297F2C79008D61E1 /* SettingsTimeViewModel.swift */; };
+		3341C75B297F2863008D61E1 /* SettingsTimeFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341C75A297F2863008D61E1 /* SettingsTimeFieldViewController.swift */; };
 		33657F82296475D300680536 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33657F81296475D300680536 /* MainViewModel.swift */; };
 		33BFA57E29859822000DDD5D /* CountButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BFA57D29859822000DDD5D /* CountButton.swift */; };
 		33BFA58029859973000DDD5D /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BFA57F29859973000DDD5D /* UIView+Extension.swift */; };
@@ -56,8 +55,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3341C75A297F2863008D61E1 /* SettingsTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTimeViewController.swift; sourceTree = "<group>"; };
-		3341C75D297F2C79008D61E1 /* SettingsTimeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTimeViewModel.swift; sourceTree = "<group>"; };
+		3341C75A297F2863008D61E1 /* SettingsTimeFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTimeFieldViewController.swift; sourceTree = "<group>"; };
 		33657F81296475D300680536 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		33BFA57D29859822000DDD5D /* CountButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountButton.swift; sourceTree = "<group>"; };
 		33BFA57F29859973000DDD5D /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
@@ -133,18 +131,9 @@
 		3341C759297F284E008D61E1 /* SettingTimeField */ = {
 			isa = PBXGroup;
 			children = (
-				3341C75C297F2C6B008D61E1 /* ViewModel */,
-				3341C75A297F2863008D61E1 /* SettingsTimeViewController.swift */,
+				3341C75A297F2863008D61E1 /* SettingsTimeFieldViewController.swift */,
 			);
 			path = SettingTimeField;
-			sourceTree = "<group>";
-		};
-		3341C75C297F2C6B008D61E1 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				3341C75D297F2C79008D61E1 /* SettingsTimeViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		33E3AEB5294E5AF2000E0C03 /* SettingNumberField */ = {
@@ -579,7 +568,6 @@
 				64871D8028A995210004B773 /* XCAssets+Generated.swift in Sources */,
 				644C66B329C0FD3900EA5384 /* TappableButton.swift in Sources */,
 				64871D5028A989C00004B773 /* AppDelegate.swift in Sources */,
-				3341C75E297F2C79008D61E1 /* SettingsTimeViewModel.swift in Sources */,
 				64871D8128A995210004B773 /* IB-Scenes+Generated.swift in Sources */,
 				33DD551B296B46490068F79B /* AnimatedPressButton.swift in Sources */,
 				33E3AEB7294E5B02000E0C03 /* SettingNumberFieldViewController.swift in Sources */,
@@ -595,7 +583,7 @@
 				64F8F5F4296459C900477407 /* Tappable.swift in Sources */,
 				64871D8228A995210004B773 /* IB-Segues+Generated.swift in Sources */,
 				64871D6D28A990EE0004B773 /* BaseViewController.swift in Sources */,
-				3341C75B297F2863008D61E1 /* SettingsTimeViewController.swift in Sources */,
+				3341C75B297F2863008D61E1 /* SettingsTimeFieldViewController.swift in Sources */,
 				644FDBFF28AAF6FE0097F55D /* SettingsCellType.swift in Sources */,
 				64AF8F4B29BFC20B00C57C44 /* NetworkError.swift in Sources */,
 				33BFA58029859973000DDD5D /* UIView+Extension.swift in Sources */,
