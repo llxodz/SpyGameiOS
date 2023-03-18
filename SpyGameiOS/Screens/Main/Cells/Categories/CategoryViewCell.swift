@@ -40,10 +40,22 @@ final class CategoryViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Lifecycle
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         cancellables.forEach { $0.cancel() }
         cancellables.removeAll()
+    }
+    
+    // MARK: - Actions
+    
+    private func configureAction() {
+        switchCase.addTarget(self, action: #selector(onSwitchValueChanged(_:)), for: .valueChanged)
+    }
+    
+    @objc private func onSwitchValueChanged(_ switch: UISwitch) {
+        isOn.send(`switch`.isOn)
     }
     
     // MARK: - Private
@@ -68,14 +80,6 @@ final class CategoryViewCell: UITableViewCell {
         name.font = Constants.nameFont
         name.textColor = Asset.mainTextColor.color
         switchCase.transform = CGAffineTransform(scaleX: Constants.switchScale, y: Constants.switchScale)
-    }
-    
-    private func configureAction() {
-        switchCase.addTarget(self, action: #selector(onSwitchValueChanged(_:)), for: .valueChanged)
-    }
-    
-    @objc private func onSwitchValueChanged(_ switch: UISwitch) {
-        isOn.send(`switch`.isOn)
     }
 }
 
