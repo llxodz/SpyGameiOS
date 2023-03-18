@@ -47,6 +47,8 @@ final class CategoriesViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Lifecycle
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         cancellables.forEach { $0.cancel() }
@@ -55,6 +57,35 @@ final class CategoriesViewCell: UITableViewCell {
         switchAllCategories = nil
         
     }
+    
+    // MARK: - Binding & Actions
+    
+    private func binding() {
+        cancellables.forEach { $0.cancel() }
+        cancellables.removeAll()
+        
+        let input = CategoriesViewModelInput(
+            switchAll: switchAll.eraseToAnyPublisher(),
+            switchCategory: switchCategory.eraseToAnyPublisher()
+        )
+        
+        let output = viewModel?.transform(input: input)
+        output?.switchAll
+            .sink { [weak self] isOn in
+                self?.allSwitch.setOn(isOn, animated: true)
+            }
+            .store(in: &cancellables)
+        switchAllCategories = output?.switchAllCategories
+    }
+    
+    private func configureAction() {
+        allSwitch.addTarget(self, action: #selector(onSwitchValueChanged(_:)), for: .valueChanged)
+    }
+    
+    @objc private func onSwitchValueChanged(_ switch: UISwitch) {
+        switchAll.send(`switch`.isOn)
+    }
+    
     // MARK: - Private
     
     private func addViews() {
@@ -104,34 +135,6 @@ final class CategoriesViewCell: UITableViewCell {
         selectAllLabel.text = L10n.CategoriesTableViewCell.selectAll
         selectAllLabel.font = Constants.selectAllFont
         selectAllLabel.textColor = Asset.mainTextColor.color
-    }
-    
-    private func configureAction() {
-        allSwitch.addTarget(self, action: #selector(onSwitchValueChanged(_:)), for: .valueChanged)
-    }
-    
-    @objc private func onSwitchValueChanged(_ switch: UISwitch) {
-        switchAll.send(`switch`.isOn)
-    }
-    
-    // MARK: - Binding
-    
-    private func binding() {
-        cancellables.forEach { $0.cancel() }
-        cancellables.removeAll()
-        
-        let input = CategoriesViewModelInput(
-            switchAll: switchAll.eraseToAnyPublisher(),
-            switchCategory: switchCategory.eraseToAnyPublisher()
-        )
-        
-        let output = viewModel?.transform(input: input)
-        output?.switchAll
-            .sink { [weak self] isOn in
-                self?.allSwitch.setOn(isOn, animated: true)
-            }
-            .store(in: &cancellables)
-        switchAllCategories = output?.switchAllCategories
     }
 }
 
