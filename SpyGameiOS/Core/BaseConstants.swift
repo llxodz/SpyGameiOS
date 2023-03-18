@@ -7,6 +7,13 @@
 
 import UIKit
 
+// MARK: - URL
+
+extension String {
+    /// Базовый URL бека, откуда получаем данные
+    public static let spyBaseURL: String = "http://localhost:3000"
+}
+
 // MARK: - Margin
 
 extension CGFloat {
