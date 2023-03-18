@@ -1,5 +1,5 @@
 //
-//  SettingsTaleViewCell.swift
+//  SettingsViewCell.swift
 //  SpyGameiOS
 //
 //  Created by Ilya Gavrilov on 15.08.2022.
@@ -11,49 +11,24 @@ import SnapKit
 private enum Constants {
     static let sizeImage: CGFloat = 24
     static let titleFont = FontFamily.Montserrat.medium.font(size: 16)
-    static let selectedAlpha = 0.3
-    static let normalAlpha: CGFloat = 1
-    static let animateDuration = 0.1
     static let separatorHeight: CGFloat = 0.5
 }
 
-final class SettingsTableViewCell: UITableViewCell, Tappable {
+final class SettingsViewCell: AnimatedPressTableCell {
     
     // Public property
-    public static var identifier: String { "SettingsTableViewCell" }
+    public static var identifier: String { "SettingsViewCell" }
     public var separatorHidden: Bool {
-        set {
-            separator.isHidden = newValue
-        }
-        get {
-            return separator.isHidden
-        }
+        set { separator.isHidden = newValue }
+        get { return separator.isHidden }
     }
     
     // UI
-    private lazy var titleTextLabel: UILabel = {
-        let label = UILabel()
-        label.font = Constants.titleFont
-        label.textColor = Asset.mainTextColor.color
-        return label
-    }()
-    private lazy var countTextLabel: UILabel = {
-        let label = UILabel()
-        label.font = Constants.titleFont
-        label.textColor = Asset.mainTextColor.color
-        return label
-    }()
-    private lazy var infoImageView = UIImageView()
-    private lazy var arrowImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = Asset.arrowRightImage.image
-        return imageView
-    }()
-    private lazy var separator: UIView = {
-       let separator = UIView()
-        separator.backgroundColor = .gray
-        return separator
-    }()
+    private let titleTextLabel = UILabel()
+    private let countTextLabel = UILabel()
+    private let infoImageView = UIImageView()
+    private let arrowImageView = UIImageView()
+    private let separator = UIView()
     
     // MARK: - Init
     
@@ -61,42 +36,21 @@ final class SettingsTableViewCell: UITableViewCell, Tappable {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         addViews()
         configureLayout()
-        backgroundColor = Asset.mainBackgroundColor.color
+        configureAppearance()
     }
         
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Lifecycle
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        animateTapView(alpha: Constants.selectedAlpha)
-    }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        animateTapView(alpha: Constants.normalAlpha)
-    }
-    
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        animateTapView(alpha: Constants.normalAlpha)
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        disableTapping()
-    }
-    
     // MARK: - Private
     
     private func addViews() {
-        addSubviews(
-            infoImageView,
-            titleTextLabel,
-            countTextLabel,
-            arrowImageView,
-            separator
-        )
+        addSubview(infoImageView)
+        addSubview(titleTextLabel)
+        addSubview(countTextLabel)
+        addSubview(arrowImageView)
+        addSubview(separator)
     }
     
     private func configureLayout() {
@@ -125,11 +79,24 @@ final class SettingsTableViewCell: UITableViewCell, Tappable {
             $0.trailing.equalToSuperview()
         }
     }
+    
+    private func configureAppearance() {
+        backgroundColor = Asset.mainBackgroundColor.color
+        // Labels
+        titleTextLabel.font = Constants.titleFont
+        titleTextLabel.textColor = Asset.mainTextColor.color
+        countTextLabel.font = Constants.titleFont
+        countTextLabel.textColor = Asset.mainTextColor.color
+        // Image
+        arrowImageView.image = Asset.arrowRightImage.image
+        // Separator
+        separator.backgroundColor = .gray
+    }
 }
 
 // MARK: - Configurable
 
-extension SettingsTableViewCell: Configurable {
+extension SettingsViewCell: Configurable {
     
     enum FieldType {
         case number
