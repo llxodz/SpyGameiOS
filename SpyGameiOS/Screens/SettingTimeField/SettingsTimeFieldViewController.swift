@@ -64,14 +64,12 @@ final class SettingsTimeFieldViewController: BaseViewController {
     
     private func configureLayout() {
         containerView.snp.makeConstraints {
-            $0.leading.equalTo(view.snp.leading).offset(CGFloat.extraLargeMargin)
-            $0.trailing.equalTo(view.snp.trailing).inset(CGFloat.extraLargeMargin)
-            $0.center.equalTo(view.center)
+            $0.center.leading.trailing.equalToSuperview().inset(CGFloat.extraLargeMargin)
             $0.height.equalTo(Constants.heightView)
         }
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(CGFloat.baseMargin)
-            $0.centerX.equalTo(containerView.snp.centerX)
+            $0.leading.trailing.equalToSuperview()
         }
         datePicker.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom)
@@ -80,21 +78,19 @@ final class SettingsTimeFieldViewController: BaseViewController {
         }
         saveButton.snp.makeConstraints {
             $0.height.equalTo(Constants.heightSaveButton)
-            $0.leading.equalTo(containerView.snp.leading).offset(CGFloat.baseMargin)
-            $0.trailing.equalTo(containerView.snp.trailing).inset(CGFloat.baseMargin)
-            $0.bottom.equalTo(containerView.snp.bottom).inset(CGFloat.baseMargin)
+            $0.leading.trailing.bottom.equalToSuperview().inset(CGFloat.baseMargin)
         }
     }
     
     private func configureAppearance() {
         containerView.backgroundColor = .white
-        containerView.layer.masksToBounds = true
         containerView.layer.cornerRadius = .baseRadius
         view.backgroundColor = .gray.withAlphaComponent(Constants.alphaBackground)
         // Label
         titleLabel.text = "Title"
         titleLabel.font = Constants.labelFont
         titleLabel.textColor = Asset.mainTextColor.color
+        titleLabel.textAlignment = .center
         // Date picker
         datePicker.delegate = self
         datePicker.dataSource = self
