@@ -12,6 +12,11 @@
 		33657F82296475D300680536 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33657F81296475D300680536 /* MainViewModel.swift */; };
 		33BFA57E29859822000DDD5D /* CountButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BFA57D29859822000DDD5D /* CountButton.swift */; };
 		33BFA58029859973000DDD5D /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BFA57F29859973000DDD5D /* UIView+Extension.swift */; };
+		33C52A2929C5EFD100C716E8 /* NetworkRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C52A2829C5EFD100C716E8 /* NetworkRepository.swift */; };
+		33C52A2B29C5EFEB00C716E8 /* NetworkState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C52A2A29C5EFEB00C716E8 /* NetworkState.swift */; };
+		33C52A2D29C5EFF400C716E8 /* SpyEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C52A2C29C5EFF400C716E8 /* SpyEndpoint.swift */; };
+		33C52A2F29C5F01900C716E8 /* GamingCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C52A2E29C5F01900C716E8 /* GamingCategory.swift */; };
+		33C52A3129C5F03B00C716E8 /* BaseEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C52A3029C5F03B00C716E8 /* BaseEndpoint.swift */; };
 		33DD551B296B46490068F79B /* AnimatedPressButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD551A296B46490068F79B /* AnimatedPressButton.swift */; };
 		33E3AEB7294E5B02000E0C03 /* SettingNumberFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E3AEB6294E5B02000E0C03 /* SettingNumberFieldViewController.swift */; };
 		640CAD6429C253FF001562F2 /* CountButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640CAD6329C253FF001562F2 /* CountButtonType.swift */; };
@@ -61,6 +66,11 @@
 		33657F81296475D300680536 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		33BFA57D29859822000DDD5D /* CountButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountButton.swift; sourceTree = "<group>"; };
 		33BFA57F29859973000DDD5D /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		33C52A2829C5EFD100C716E8 /* NetworkRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkRepository.swift; sourceTree = "<group>"; };
+		33C52A2A29C5EFEB00C716E8 /* NetworkState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkState.swift; sourceTree = "<group>"; };
+		33C52A2C29C5EFF400C716E8 /* SpyEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpyEndpoint.swift; sourceTree = "<group>"; };
+		33C52A2E29C5F01900C716E8 /* GamingCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamingCategory.swift; sourceTree = "<group>"; };
+		33C52A3029C5F03B00C716E8 /* BaseEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseEndpoint.swift; sourceTree = "<group>"; };
 		33DD551A296B46490068F79B /* AnimatedPressButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedPressButton.swift; sourceTree = "<group>"; };
 		33E3AEB6294E5B02000E0C03 /* SettingNumberFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingNumberFieldViewController.swift; sourceTree = "<group>"; };
 		433FC07363D81E5A1D472859 /* Pods-SpyGameiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpyGameiOS.debug.xcconfig"; path = "Target Support Files/Pods-SpyGameiOS/Pods-SpyGameiOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -147,10 +157,17 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		33C52A2729C5EFD100C716E8 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				33C52A2829C5EFD100C716E8 /* NetworkRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
 		33E3AEB5294E5AF2000E0C03 /* SettingNumberField */ = {
 			isa = PBXGroup;
 			children = (
-				640CAD6629C25421001562F2 /* ViewModel */,
 				640CAD6529C25415001562F2 /* Model */,
 				640CAD6729C2542B001562F2 /* View */,
 			);
@@ -172,13 +189,6 @@
 				640CAD6329C253FF001562F2 /* CountButtonType.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		640CAD6629C25421001562F2 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		640CAD6729C2542B001562F2 /* View */ = {
@@ -204,6 +214,7 @@
 		644C66AB29C0F60900EA5384 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				33C52A3029C5F03B00C716E8 /* BaseEndpoint.swift */,
 				64BB429F29BE368D00B3317A /* BaseViewModel.swift */,
 				64871D6928A990EE0004B773 /* Configurable.swift */,
 				64F8F5F3296459C900477407 /* Tappable.swift */,
@@ -223,6 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				644FDBFE28AAF6FE0097F55D /* SettingsCellType.swift */,
+				33C52A2E29C5F01900C716E8 /* GamingCategory.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -318,6 +330,7 @@
 		64AF8F4429BFC20B00C57C44 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				33C52A2729C5EFD100C716E8 /* Repositories */,
 				64AF8F4529BFC20B00C57C44 /* Network */,
 			);
 			path = Services;
@@ -326,6 +339,8 @@
 		64AF8F4529BFC20B00C57C44 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				33C52A2C29C5EFF400C716E8 /* SpyEndpoint.swift */,
+				33C52A2A29C5EFEB00C716E8 /* NetworkState.swift */,
 				64AF8F4629BFC20B00C57C44 /* NetworkService.swift */,
 				64AF8F4729BFC20B00C57C44 /* Resource.swift */,
 				64AF8F4829BFC20B00C57C44 /* NetworkError.swift */,
@@ -566,10 +581,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33C52A2B29C5EFEB00C716E8 /* NetworkState.swift in Sources */,
+				33C52A3129C5F03B00C716E8 /* BaseEndpoint.swift in Sources */,
 				64871D7F28A995210004B773 /* Fonts+Generated.swift in Sources */,
 				644C66A929C0F49A00EA5384 /* AnimatedPressTableCell.swift in Sources */,
 				64871D6C28A990EE0004B773 /* Configurable.swift in Sources */,
 				64871D6E28A990EE0004B773 /* BaseConstants.swift in Sources */,
+				33C52A2929C5EFD100C716E8 /* NetworkRepository.swift in Sources */,
 				64871D5A28A989C00004B773 /* SpyGameiOS.xcdatamodeld in Sources */,
 				33BFA57E29859822000DDD5D /* CountButton.swift in Sources */,
 				64BB42A429BE3B1300B3317A /* CategoriesViewModel.swift in Sources */,
@@ -597,10 +615,12 @@
 				64871D6D28A990EE0004B773 /* BaseViewController.swift in Sources */,
 				3341C75B297F2863008D61E1 /* SettingsTimeViewController.swift in Sources */,
 				644FDBFF28AAF6FE0097F55D /* SettingsCellType.swift in Sources */,
+				33C52A2D29C5EFF400C716E8 /* SpyEndpoint.swift in Sources */,
 				64AF8F4B29BFC20B00C57C44 /* NetworkError.swift in Sources */,
 				33BFA58029859973000DDD5D /* UIView+Extension.swift in Sources */,
 				CEE8667228A99E65006AC0FB /* SettingsViewCell.swift in Sources */,
 				64F0D325297D929400728750 /* AutoTableView.swift in Sources */,
+				33C52A2F29C5F01900C716E8 /* GamingCategory.swift in Sources */,
 				64F0D321297D62A700728750 /* CategoriesViewCell.swift in Sources */,
 				64AF8F4A29BFC20B00C57C44 /* Resource.swift in Sources */,
 			);
