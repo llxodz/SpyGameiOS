@@ -10,18 +10,21 @@ import Combine
 
 // MARK: - Input & Output
 
-struct CategoriesViewModelInput {
-    /// Изменение "Выбрать все"
-    let switchAll: AnyPublisher<Bool, Never>
-    /// Изменение категории
-    let switchCategory: AnyPublisher<Category, Never>
-}
+extension CategoriesViewModel {
+    
+    struct Input {
+        /// Изменение "Выбрать все"
+        let switchAll: AnyPublisher<Bool, Never>
+        /// Изменение категории
+        let switchCategory: AnyPublisher<Category, Never>
+    }
 
-struct CategoriesViewModelOutput {
-    /// Измененить положение "Выбрать все"
-    let switchAll: AnyPublisher<Bool, Never>
-    /// Измененить все переключатели
-    let switchAllCategories: AnyPublisher<Bool, Never>
+    struct Output {
+        /// Измененить положение "Выбрать все"
+        let switchAll: AnyPublisher<Bool, Never>
+        /// Измененить все переключатели
+        let switchAllCategories: AnyPublisher<Bool, Never>
+    }
 }
 
 // MARK: - CategoriesViewModel
@@ -44,7 +47,7 @@ final class CategoriesViewModel: BaseViewModel {
     
     // MARK: - Transform
     
-    func transform(input: CategoriesViewModelInput) -> CategoriesViewModelOutput {
+    func transform(input: Input) -> Output {
         cancellables.forEach { $0.cancel() }
         cancellables.removeAll()
         
@@ -68,7 +71,7 @@ final class CategoriesViewModel: BaseViewModel {
             }
             .store(in: &cancellables)
         
-        return CategoriesViewModelOutput(
+        return Output(
             switchAll: switchAll.eraseToAnyPublisher(),
             switchAllCategories: switchAllCategories.eraseToAnyPublisher()
         )
