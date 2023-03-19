@@ -142,7 +142,11 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
             vc.modalPresentationStyle = .overCurrentContext
             vc.modalTransitionStyle = .crossDissolve
             self.present(vc, animated: true)
-        case .timer: break
+        case .timer:
+            let vc = SettingsTimeFieldViewController()
+            vc.modalPresentationStyle = .overCurrentContext
+            vc.modalTransitionStyle = .crossDissolve
+            self.present(vc, animated: true)
         case .categories: break
         default: break
         }
