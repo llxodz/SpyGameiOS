@@ -64,7 +64,8 @@ final class SettingsTimeFieldViewController: BaseViewController {
     
     private func configureLayout() {
         containerView.snp.makeConstraints {
-            $0.center.leading.trailing.equalToSuperview().inset(CGFloat.extraLargeMargin)
+            $0.leading.trailing.equalToSuperview().inset(CGFloat.extraLargeMargin)
+            $0.center.equalToSuperview()
             $0.height.equalTo(Constants.heightView)
         }
         titleLabel.snp.makeConstraints {
