@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Combine
 
 private enum Constants {
     static let labelFont: UIFont = FontFamily.Montserrat.bold.font(size: 18)
@@ -28,6 +29,9 @@ final class SettingNumberFieldViewController: BaseViewController {
     private let plusCountButton = CountButton(type: .plus)
     private let saveButton = TappableButton()
     private let stackView = UIStackView()
+    
+    // Private
+    private var model: Model?
     
     // MARK: - Init
     
@@ -51,6 +55,7 @@ final class SettingNumberFieldViewController: BaseViewController {
         containerView.addGestureRecognizer(UITapGestureRecognizer())
         plusCountButton.enableTapping {
             print("log: plus")
+            
         }
         minusCountButton.enableTapping {
             print("log: minus")
@@ -119,13 +124,28 @@ final class SettingNumberFieldViewController: BaseViewController {
         titleLabel.textColor = Asset.mainTextColor.color
         countLabel.font = Constants.labelFont
         countLabel.textColor = Asset.mainTextColor.color
-        countLabel.text = "3"
-        titleLabel.text = "Title"
         // Save Button
         saveButton.layer.cornerRadius = .baseRadius
         saveButton.setTitle(L10n.SettingsViewController.save, for: .normal)
         saveButton.titleLabel?.font = Constants.saveButtonFont
         saveButton.setTitleColor(Asset.mainTextColor.color, for: .normal)
         saveButton.backgroundColor = Asset.buttonBackgroundColor.color
+    }
+}
+
+// MARK: - Configurable
+
+extension SettingNumberFieldViewController: Configurable {
+    
+    struct Model {
+        let title: String
+        let number: Int
+        let updateNumber: PassthroughSubject<Int, Never>
+    }
+    
+    func configure(with model: Model) {
+        self.model = model
+        countLabel.text = "\(model.number)"
+        titleLabel.text = model.title
     }
 }
