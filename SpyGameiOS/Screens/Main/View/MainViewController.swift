@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Combine
 
 private enum Constants {
     static let cellRowHeight: CGFloat = 50
@@ -141,6 +142,11 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
             let vc = SettingNumberFieldViewController()
             vc.modalPresentationStyle = .overCurrentContext
             vc.modalTransitionStyle = .crossDissolve
+            vc.configure(with: SettingNumberFieldViewController.Model(
+                title: L10n.SettingsCell.players,
+                number: 4,
+                updateNumber: PassthroughSubject<Int, Never>()
+            ))
             self.present(vc, animated: true)
         case .timer:
             let vc = SettingsTimeFieldViewController()
