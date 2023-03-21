@@ -31,7 +31,11 @@ final class SettingNumberFieldViewController: BaseViewController {
     private let stackView = UIStackView()
     
     // Private
-    private var model: Model?
+    private let viewModel = SettingNumberFieldViewModel()
+    private var cancellables = Set<AnyCancellable>()
+    // Input
+    private let configureNumber = CurrentValueSubject<Int, Never>(0)
+    private let tap = PassthroughSubject<CountButtonType, Never>()
     
     // MARK: - Init
     
@@ -41,10 +45,25 @@ final class SettingNumberFieldViewController: BaseViewController {
         configureLayout()
         configureAppearance()
         configureActions()
+        binding()
     }
     
     required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Binding
+    
+    private func binding() {
+        let output = viewModel.transform(input: SettingNumberFieldViewModel.Input(
+            tap: tap.eraseToAnyPublisher(),
+            configureNumber: configureNumber.eraseToAnyPublisher()
+        ))
+        output.updateNumber
+            .sink { [weak self] value in
+                self?.countLabel.text = "\(value)"
+            }
+            .store(in: &cancellables)
     }
     
     // MARK: - Actions
@@ -53,12 +72,11 @@ final class SettingNumberFieldViewController: BaseViewController {
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapBackground(_:)))
         view.addGestureRecognizer(tapRecognizer)
         containerView.addGestureRecognizer(UITapGestureRecognizer())
-        plusCountButton.enableTapping {
-            print("log: plus")
-            
+        plusCountButton.enableTapping { [weak self] in
+            self?.tap.send(.plus)
         }
-        minusCountButton.enableTapping {
-            print("log: minus")
+        minusCountButton.enableTapping { [weak self] in
+            self?.tap.send(.minus)
         }
         saveButton.enableTapping { [weak self] in
             self?.dismiss(animated: true)
@@ -144,8 +162,7 @@ extension SettingNumberFieldViewController: Configurable {
     }
     
     func configure(with model: Model) {
-        self.model = model
-        countLabel.text = "\(model.number)"
         titleLabel.text = model.title
+        configureNumber.send(model.number)
     }
 }

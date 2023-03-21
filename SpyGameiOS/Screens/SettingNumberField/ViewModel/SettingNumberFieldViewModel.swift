@@ -16,6 +16,8 @@ extension SettingNumberFieldViewModel {
     struct Input {
         /// Нажали на кнопки
         let tap: AnyPublisher<CountButtonType, Never>
+        /// Начальное значение
+        let configureNumber: AnyPublisher<Int, Never>
     }
 
     struct Output {
@@ -28,8 +30,33 @@ extension SettingNumberFieldViewModel {
 
 final class SettingNumberFieldViewModel: BaseViewModel {
     
+    // Private
+    private var cancellables = Set<AnyCancellable>()
+    private let number = CurrentValueSubject<Int, Never>(0)
+    
+    // MARK: - Public
+    
     func transform(input: Input) -> Output {
-        let subject = PassthroughSubject<Int, Never>()
-        return Output(updateNumber: subject.eraseToAnyPublisher())
+        input.configureNumber
+            .sink { [weak self] value in
+                var value = value
+                if value < 0 { value = 0 }
+                self?.number.send(value)
+            }
+            .store(in: &cancellables)
+        input.tap
+            .sink { [weak self] type in
+                guard let self = self else { return }
+                switch type {
+                case .minus:
+                    let value = max(0, self.number.value - 1)
+                    self.number.send(value)
+                case .plus:
+                    self.number.send(self.number.value + 1)
+                }
+            }
+            .store(in: &cancellables)
+        
+        return Output(updateNumber: number.eraseToAnyPublisher())
     }
 }
