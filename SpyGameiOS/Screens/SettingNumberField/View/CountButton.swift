@@ -11,12 +11,20 @@ import SnapKit
 private enum Constants {
     static let imageSize: CGFloat = 16
     static let insetsButton: CGFloat = 16
+    static let offAlpha: CGFloat = 0.25
 }
 
 final class CountButton: TappableButton {
     
     // UI
     private let buttomImage = UIImageView()
+    
+    override var isEnabled: Bool {
+        didSet {
+            backgroundColor = isEnabled ? backgroundColor?.withAlphaComponent(1) : backgroundColor?.withAlphaComponent(Constants.offAlpha)
+            buttomImage.alpha = isEnabled ? 1 : Constants.offAlpha
+        }
+    }
     
     // MARK: - Init
     
