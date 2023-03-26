@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum CategoriesState: Equatable {
+enum CategoriesState {
     case loading
     case success([GamingCategory])
     case failed
