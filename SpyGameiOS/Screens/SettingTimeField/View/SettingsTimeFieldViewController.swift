@@ -32,7 +32,6 @@ final class SettingsTimeFieldViewController: BaseViewController {
     
     // Private
     private let configureNumber = CurrentValueSubject<Int, Never>(0)
-    private let tap = PassthroughSubject<Int, Never>()
     private var cancellables = Set<AnyCancellable>()
     private var valueBounds: (min: Int, max: Int) = (0, 0)
     private var updateNumber: PassthroughSubject<Int, Never>?
@@ -119,19 +118,18 @@ final class SettingsTimeFieldViewController: BaseViewController {
         containerView.backgroundColor = .white
         containerView.layer.cornerRadius = .baseRadius
         view.backgroundColor = .gray.withAlphaComponent(Constants.alphaBackground)
-        // Title label
+        // Labels
         titleLabel.font = Constants.boldFont
         titleLabel.textColor = Asset.mainTextColor.color
         titleLabel.textAlignment = .center
-        // Date picker
-        minutesPicker.delegate = self
-        minutesPicker.dataSource = self
-        // Count of minutes label
         countOfMinutesLabel.text = L10n.SettingsCell.minute
         countOfMinutesLabel.font = Constants.boldFont
         countOfMinutesLabel.textAlignment = .right
         countOfMinutesLabel.font = Constants.mediumFont
         countOfMinutesLabel.textColor = Asset.mainTextColor.color
+        // Date picker
+        minutesPicker.delegate = self
+        minutesPicker.dataSource = self
         // Button
         saveButton.layer.cornerRadius = .baseRadius
         saveButton.layer.masksToBounds = true
