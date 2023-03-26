@@ -9,7 +9,7 @@ import UIKit
 import Combine
 
 protocol MainNavigation: AnyObject {
-    func goToNumberField()
+    func goToNumberField(with model: SettingNumberFieldViewController.Model)
     func goToTimeField()
     func goToGame()
 }
@@ -44,16 +44,11 @@ final class AppCoordinator: Coordinator {
 
 extension AppCoordinator: MainNavigation {
     
-    func goToNumberField() {
+    func goToNumberField(with model: SettingNumberFieldViewController.Model) {
         let vc = SettingNumberFieldViewController()
         vc.modalPresentationStyle = .overCurrentContext
         vc.modalTransitionStyle = .crossDissolve
-        vc.configure(with: SettingNumberFieldViewController.Model(
-            title: L10n.SettingsCell.players,
-            number: 4,
-            valueBounds: (min: 1, max: 6),
-            updateNumber: PassthroughSubject<Int, Never>()
-        ))
+        vc.configure(with: model)
         navigationController.present(vc, animated: true)
     }
     
