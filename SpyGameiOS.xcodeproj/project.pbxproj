@@ -12,7 +12,7 @@
 		33BFA57E29859822000DDD5D /* CountButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BFA57D29859822000DDD5D /* CountButton.swift */; };
 		33BFA58029859973000DDD5D /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BFA57F29859973000DDD5D /* UIView+Extension.swift */; };
 		33C52A2929C5EFD100C716E8 /* NetworkRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C52A2829C5EFD100C716E8 /* NetworkRepository.swift */; };
-		33C52A2B29C5EFEB00C716E8 /* NetworkState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C52A2A29C5EFEB00C716E8 /* NetworkState.swift */; };
+		33C52A2B29C5EFEB00C716E8 /* CategoriesState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C52A2A29C5EFEB00C716E8 /* CategoriesState.swift */; };
 		33C52A2D29C5EFF400C716E8 /* SpyEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C52A2C29C5EFF400C716E8 /* SpyEndpoint.swift */; };
 		33C52A2F29C5F01900C716E8 /* GamingCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C52A2E29C5F01900C716E8 /* GamingCategory.swift */; };
 		33C52A3129C5F03B00C716E8 /* BaseEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C52A3029C5F03B00C716E8 /* BaseEndpoint.swift */; };
@@ -67,7 +67,7 @@
 		33BFA57D29859822000DDD5D /* CountButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountButton.swift; sourceTree = "<group>"; };
 		33BFA57F29859973000DDD5D /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		33C52A2829C5EFD100C716E8 /* NetworkRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkRepository.swift; sourceTree = "<group>"; };
-		33C52A2A29C5EFEB00C716E8 /* NetworkState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkState.swift; sourceTree = "<group>"; };
+		33C52A2A29C5EFEB00C716E8 /* CategoriesState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesState.swift; sourceTree = "<group>"; };
 		33C52A2C29C5EFF400C716E8 /* SpyEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpyEndpoint.swift; sourceTree = "<group>"; };
 		33C52A2E29C5F01900C716E8 /* GamingCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamingCategory.swift; sourceTree = "<group>"; };
 		33C52A3029C5F03B00C716E8 /* BaseEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseEndpoint.swift; sourceTree = "<group>"; };
@@ -199,7 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				33C52A2E29C5F01900C716E8 /* GamingCategory.swift */,
-				33C52A2A29C5EFEB00C716E8 /* NetworkState.swift */,
+				33C52A2A29C5EFEB00C716E8 /* CategoriesState.swift */,
 				33C52A2C29C5EFF400C716E8 /* SpyEndpoint.swift */,
 			);
 			path = Model;
@@ -585,7 +585,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				641E215729D07C5700ADCAE0 /* AppCoordinator.swift in Sources */,
-				33C52A2B29C5EFEB00C716E8 /* NetworkState.swift in Sources */,
+				33C52A2B29C5EFEB00C716E8 /* CategoriesState.swift in Sources */,
 				33C52A3129C5F03B00C716E8 /* BaseEndpoint.swift in Sources */,
 				641E215429D07BDA00ADCAE0 /* Coordinator.swift in Sources */,
 				64871D7F28A995210004B773 /* Fonts+Generated.swift in Sources */,

@@ -21,6 +21,9 @@ private enum Constants {
 
 final class SettingNumberFieldViewController: BaseViewController {
     
+    // Dependencies
+    private let viewModel = SettingNumberFieldViewModel()
+    
     // UI
     private let containerView = UIView()
     private let titleLabel = UILabel()
@@ -31,28 +34,26 @@ final class SettingNumberFieldViewController: BaseViewController {
     private let stackView = UIStackView()
     
     // Private
-    private let viewModel = SettingNumberFieldViewModel()
-    private var cancellables = Set<AnyCancellable>()
-    // Input
     private let configureNumber = CurrentValueSubject<Int, Never>(0)
     private let tap = PassthroughSubject<CountButtonType, Never>()
+    private var cancellables = Set<AnyCancellable>()
+
+    // MARK: - Lifecycle
     
-    // MARK: - Init
-    
-    override init() {
-        super.init()
+    override func loadView() {
+        super.loadView()
         addViews()
         configureLayout()
         configureAppearance()
-        configureActions()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         binding()
+        configureActions()
     }
     
-    required public init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    // MARK: - Binding
+    // MARK: - Binding & Actions
     
     private func binding() {
         let output = viewModel.transform(input: SettingNumberFieldViewModel.Input(
@@ -65,8 +66,6 @@ final class SettingNumberFieldViewController: BaseViewController {
             }
             .store(in: &cancellables)
     }
-    
-    // MARK: - Actions
     
     private func configureActions() {
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapBackground(_:)))

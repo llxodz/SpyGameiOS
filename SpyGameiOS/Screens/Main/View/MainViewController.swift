@@ -13,6 +13,7 @@ private enum Constants {
     static let cellRowHeight: CGFloat = 50
     static let headerHeight: CGFloat = 44
     static let startButtonHeight: CGFloat = 56
+    static let indicatorSize: CGFloat = 44
     static let startButtonFont: UIFont = FontFamily.Montserrat.bold.font(size: 16)
 }
 
@@ -25,10 +26,12 @@ class MainViewController: BaseViewController {
     private let tableView = UITableView()
     private let headerView = HeaderMainView()
     private let startButton = TappableButton()
+    private let indicator = UIActivityIndicatorView(style: .large)
     
     // Private property
     private let clickedOnCell = PassthroughSubject<CellType?, Never>()
     private let clickedStart = PassthroughSubject<Void, Never>()
+    private let viewDidLoadEvent = PassthroughSubject<Void, Never>()
     private var cancellables = Set<AnyCancellable>()
     
     // MARK: - Init
@@ -36,14 +39,6 @@ class MainViewController: BaseViewController {
     init(viewModel: MainViewModel) {
         self.viewModel = viewModel
         super.init()
-        
-        addViews()
-        configureLayout()
-        configureTableView()
-        configureAppearance()
-        
-        binding()
-        configureActions()
     }
     
     required public init?(coder: NSCoder) {
@@ -51,6 +46,21 @@ class MainViewController: BaseViewController {
     }
     
     // MARK: - Lifecycle
+    
+    override func loadView() {
+        super.loadView()
+        addViews()
+        configureLayout()
+        configureTableView()
+        configureAppearance()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        binding()
+        configureActions()
+        viewDidLoadEvent.send()
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -62,11 +72,32 @@ class MainViewController: BaseViewController {
     private func binding() {
         let output = viewModel.transform(input: MainViewModel.Input(
             clickedOnCell: clickedOnCell.eraseToAnyPublisher(),
-            clickedStart: clickedStart.eraseToAnyPublisher()
+            clickedStart: clickedStart.eraseToAnyPublisher(),
+            viewDidLoad: viewDidLoadEvent.eraseToAnyPublisher()
         ))
         output.availabilityStart
             .sink { enableButton in
                 print("log: enableButton \(enableButton)")
+            }
+            .store(in: &cancellables)
+        output.categoriesState
+            .sink { [weak self] state in
+                guard let self = self else { return }
+                switch state {
+                case .loading:
+                    // TODO: - Show skeleton
+                    self.tableView.isHidden = true
+                    self.indicator.startAnimating()
+                case .failed:
+                    // TODO: - Show reload button
+                    self.tableView.isHidden = true
+                    self.indicator.stopAnimating()
+                case .success(_):
+                    // TODO: - Remove skeleton
+                    self.indicator.stopAnimating()
+                    self.tableView.isHidden = false
+                    self.tableView.reloadData()
+                }
             }
             .store(in: &cancellables)
     }
@@ -80,7 +111,7 @@ class MainViewController: BaseViewController {
     // MARK: - Private
     
     private func addViews() {
-        view.addSubviews(headerView, tableView, startButton)
+        view.addSubviews(headerView, tableView, startButton, indicator)
     }
     
     private func configureLayout() {
@@ -97,6 +128,10 @@ class MainViewController: BaseViewController {
             $0.height.equalTo(Constants.startButtonHeight)
             $0.leading.trailing.equalToSuperview().inset(CGFloat.baseMargin)
             $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+        }
+        indicator.snp.makeConstraints {
+            $0.height.width.equalTo(Constants.indicatorSize)
+            $0.center.equalToSuperview()
         }
     }
     
@@ -153,7 +188,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
                 for: indexPath
             ) as? CategoriesViewCell else { return UITableViewCell() }
             cell.selectedBackgroundView = UIView.clearView
-//            cell.configure(with: categories)
+            cell.configure(with: viewModel.categories)
             return cell
             
         default: return UITableViewCell()

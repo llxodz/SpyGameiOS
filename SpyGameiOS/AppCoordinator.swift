@@ -22,17 +22,19 @@ final class AppCoordinator: Coordinator {
     var parentCoordinator: Coordinator?
     var children: [Coordinator] = []
     var navigationController: UINavigationController
+    private let networkRepository: INetworkRepository
     
     // MARK: - Init
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, networkRepository: INetworkRepository) {
         self.navigationController = navigationController
+        self.networkRepository = networkRepository
     }
     
     // MARK: - Coordinator
     
     func start() {
-        let vm = MainViewModel(navigation: self)
+        let vm = MainViewModel(navigation: self, networkRepository: networkRepository)
         let vc = MainViewController(viewModel: vm)
         navigationController.setViewControllers([vc], animated: false)
     }
