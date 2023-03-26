@@ -11,7 +11,7 @@ open class AnimatedPressTableCell: UITableViewCell  {
     
     open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
-        animateTapView(alpha: 0.3)
+        animateTapView(alpha: 0.5)
     }
     
     open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {

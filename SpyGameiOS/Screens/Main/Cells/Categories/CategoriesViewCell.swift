@@ -126,6 +126,7 @@ final class CategoriesViewCell: UITableViewCell {
         tableView.separatorStyle = .none
         tableView.isMultipleTouchEnabled = false
         tableView.backgroundColor = .clear
+        tableView.isScrollEnabled = false
     }
     
     private func configureLabels() {
@@ -145,6 +146,8 @@ extension CategoriesViewCell: Configurable {
     func configure(with model: [Category]) {
         viewModel = CategoriesViewModel(categories: model)
         binding()
+        tableView.reloadData()
+        tableView.layoutIfNeeded()
     }
 }
 
