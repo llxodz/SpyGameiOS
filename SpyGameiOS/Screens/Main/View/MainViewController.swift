@@ -27,11 +27,12 @@ class MainViewController: BaseViewController {
     private let headerView = HeaderMainView()
     private let startButton = TappableButton()
     private let indicator = UIActivityIndicatorView(style: .large)
+    private let refreshButton = TappableButton()
     
     // Private property
     private let clickedOnCell = PassthroughSubject<CellType?, Never>()
     private let clickedStart = PassthroughSubject<Void, Never>()
-    private let viewDidLoadEvent = PassthroughSubject<Void, Never>()
+    private let needFetchCategories = PassthroughSubject<Void, Never>()
     private var cancellables = Set<AnyCancellable>()
     
     // MARK: - Init
@@ -59,7 +60,7 @@ class MainViewController: BaseViewController {
         super.viewDidLoad()
         binding()
         configureActions()
-        viewDidLoadEvent.send()
+        needFetchCategories.send()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -73,7 +74,7 @@ class MainViewController: BaseViewController {
         let output = viewModel.transform(input: MainViewModel.Input(
             clickedOnCell: clickedOnCell.eraseToAnyPublisher(),
             clickedStart: clickedStart.eraseToAnyPublisher(),
-            viewDidLoad: viewDidLoadEvent.eraseToAnyPublisher()
+            viewDidLoad: needFetchCategories.eraseToAnyPublisher()
         ))
         output.availabilityStart
             .sink { enableButton in
@@ -86,14 +87,20 @@ class MainViewController: BaseViewController {
                 switch state {
                 case .loading:
                     // TODO: - Show skeleton
+                    self.refreshButton.isHidden = true
+                    self.refreshButton.isEnabled = false
                     self.tableView.isHidden = true
                     self.indicator.startAnimating()
                 case .failed:
                     // TODO: - Show reload button
+                    self.refreshButton.isHidden = false
+                    self.refreshButton.isEnabled = true
                     self.tableView.isHidden = true
                     self.indicator.stopAnimating()
                 case .success(_):
                     // TODO: - Remove skeleton
+                    self.refreshButton.isHidden = true
+                    self.refreshButton.isEnabled = false
                     self.indicator.stopAnimating()
                     self.tableView.isHidden = false
                     self.tableView.reloadData()
@@ -111,12 +118,15 @@ class MainViewController: BaseViewController {
         startButton.enableTapping { [weak self] in
             self?.clickedStart.send()
         }
+        refreshButton.enableTapping { [weak self] in
+            self?.needFetchCategories.send()
+        }
     }
     
     // MARK: - Private
     
     private func addViews() {
-        view.addSubviews(headerView, tableView, startButton, indicator)
+        view.addSubviews(headerView, tableView, startButton, indicator, refreshButton)
     }
     
     private func configureLayout() {
@@ -135,7 +145,10 @@ class MainViewController: BaseViewController {
             $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
         indicator.snp.makeConstraints {
-            $0.height.width.equalTo(Constants.indicatorSize)
+            $0.size.equalTo(Constants.indicatorSize)
+            $0.center.equalToSuperview()
+        }
+        refreshButton.snp.makeConstraints {
             $0.center.equalToSuperview()
         }
     }
@@ -152,6 +165,12 @@ class MainViewController: BaseViewController {
         startButton.titleLabel?.font = Constants.startButtonFont
         startButton.setTitleColor(Asset.mainTextColor.color, for: .normal)
         startButton.backgroundColor = Asset.buttonBackgroundColor.color
+        // Refresh Button
+        refreshButton.isHidden = true
+        refreshButton.setTitle(L10n.SettingsViewController.refresh, for: .normal)
+        refreshButton.titleLabel?.font = Constants.startButtonFont
+        refreshButton.setTitleColor(Asset.mainTextColor.color, for: .normal)
+        refreshButton.setInsetsOffset(CGFloat.mediumSpace)
     }
     
     private func configureTableView() {

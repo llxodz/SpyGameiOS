@@ -16,8 +16,21 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppIconSplash" translatesAutoresizingMaskIntoConstraints="NO" id="LwZ-xf-qxP">
+                                <rect key="frame" x="124.66666666666669" y="366.66666666666669" width="144" height="144"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="144" id="jWF-TX-ON6"/>
+                                    <constraint firstAttribute="width" constant="144" id="vq0-vx-7fu"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemPurpleColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="LwZ-xf-qxP" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="KXE-03-qzR"/>
+                            <constraint firstItem="LwZ-xf-qxP" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="nC5-3C-NBp"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -26,8 +39,9 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemPurpleColor">
-            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <image name="AppIconSplash" width="512" height="512"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>
