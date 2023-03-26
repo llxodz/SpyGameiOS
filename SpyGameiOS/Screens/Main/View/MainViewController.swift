@@ -100,6 +100,11 @@ class MainViewController: BaseViewController {
                 }
             }
             .store(in: &cancellables)
+        output.updateSettings
+            .sink { [weak self] in
+                self?.tableView.reloadData()
+            }
+            .store(in: &cancellables)
     }
     
     private func configureActions() {

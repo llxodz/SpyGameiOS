@@ -26,6 +26,8 @@ extension MainViewModel {
         let availabilityStart: AnyPublisher<Bool, Never>
         /// Информация о загрузке категорий
         let categoriesState: AnyPublisher<CategoriesState, Never>
+        /// Обновить ячейки с числами
+        let updateSettings: AnyPublisher<Void, Never>
     }
 }
 
@@ -44,8 +46,9 @@ final class MainViewModel: BaseViewModel {
     // Private property
     private let availabilityStart = PassthroughSubject<Bool, Never>()
     private let categoriesState = PassthroughSubject<CategoriesState, Never>()
+    private let updatePlayersCount = PassthroughSubject<Int, Never>()
+    private let updateSpiesCount = PassthroughSubject<Int, Never>()
     private var cancellables = Set<AnyCancellable>()
-    private var concellablesNetwork = Set<AnyCancellable>()
     
     // MARK: - Init
     
@@ -85,9 +88,26 @@ final class MainViewModel: BaseViewModel {
             }
             .store(in: &cancellables)
         
+        // Работа с обновлением настроек
+        updatePlayersCount
+            .sink { value in
+                UserDefaults.standard.settingPlayersCount = value
+            }
+            .store(in: &cancellables)
+        updateSpiesCount
+            .sink { value in
+                UserDefaults.standard.settingSpiesCount = value
+            }
+            .store(in: &cancellables)
+        
+        let updateSettings = updatePlayersCount
+            .merge(with: updateSpiesCount)
+            .map { _ in return () }
+        
         return Output(
             availabilityStart: availabilityStart.receive(on: DispatchQueue.main).eraseToAnyPublisher(),
-            categoriesState: categoriesState.receive(on: DispatchQueue.main).eraseToAnyPublisher()
+            categoriesState: categoriesState.receive(on: DispatchQueue.main).eraseToAnyPublisher(),
+            updateSettings: updateSettings.receive(on: DispatchQueue.main).eraseToAnyPublisher()
         )
     }
     
@@ -99,13 +119,13 @@ final class MainViewModel: BaseViewModel {
             return SettingsViewCell.Model(
                 icon: Asset.playerImage.image,
                 titleText: L10n.SettingsCell.players,
-                secondText: "5"
+                secondText: "\(UserDefaults.standard.settingPlayersCount)"
             )
         case .spies:
             return SettingsViewCell.Model(
                 icon: Asset.spyImage.image,
                 titleText: L10n.SettingsCell.spys,
-                secondText: "2"
+                secondText: "\(UserDefaults.standard.settingSpiesCount)"
             )
         case .timer:
             return SettingsViewCell.Model(
@@ -123,11 +143,19 @@ final class MainViewModel: BaseViewModel {
     private func clickedOnCell(type: CellType?) {
         switch type {
         case .playes:
-            // TODO: - Настроить
-            navigation.goToNumberField()
+            navigation.goToNumberField(with: SettingNumberFieldViewController.Model(
+                title: L10n.SettingsCell.players,
+                number: UserDefaults.standard.settingPlayersCount,
+                valueBounds: (UserDefaults.minPlayersCount, UserDefaults.maxPlayersCount),
+                updateNumber: updatePlayersCount
+            ))
         case .spies:
-            // TODO: - Настроить
-            navigation.goToNumberField()
+            navigation.goToNumberField(with: SettingNumberFieldViewController.Model(
+                title: L10n.SettingsCell.spys,
+                number: UserDefaults.standard.settingSpiesCount,
+                valueBounds: (UserDefaults.minSpiesCount, UserDefaults.maxSpiesCount),
+                updateNumber: updateSpiesCount
+            ))
         case .timer:
             // TODO: - Настроить
             navigation.goToTimeField()
