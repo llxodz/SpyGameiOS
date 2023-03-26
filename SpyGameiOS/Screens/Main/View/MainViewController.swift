@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Combine
 
 private enum Constants {
     static let cellRowHeight: CGFloat = 50
@@ -17,28 +18,32 @@ private enum Constants {
 
 class MainViewController: BaseViewController {
     
-    // Private property
-    // TODO: - Удалить и вынести во viewModel
-    private let categories: [Category] = [
-        Category(id: 0, name: "В городе", selected: false),
-        Category(id: 1, name: "Гей порно", selected: false),
-        Category(id: 2, name: "Гавр хуй", selected: false)
-    ]
-    private let viewModel = MainViewModel()
-    
+    // Dependencies
+    private let viewModel: MainViewModel
+
     // UI
-    private lazy var tableView = UITableView()
-    private lazy var headerView = HeaderMainView()
-    private lazy var startButton = TappableButton()
+    private let tableView = UITableView()
+    private let headerView = HeaderMainView()
+    private let startButton = TappableButton()
+    
+    // Private property
+    private let clickedOnCell = PassthroughSubject<CellType?, Never>()
+    private let clickedStart = PassthroughSubject<Void, Never>()
+    private var cancellables = Set<AnyCancellable>()
     
     // MARK: - Init
     
-    override init() {
+    init(viewModel: MainViewModel) {
+        self.viewModel = viewModel
         super.init()
+        
         addViews()
         configureLayout()
         configureTableView()
         configureAppearance()
+        
+        binding()
+        configureActions()
     }
     
     required public init?(coder: NSCoder) {
@@ -50,6 +55,26 @@ class MainViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    // MARK: - Binding & Actions
+    
+    private func binding() {
+        let output = viewModel.transform(input: MainViewModel.Input(
+            clickedOnCell: clickedOnCell.eraseToAnyPublisher(),
+            clickedStart: clickedStart.eraseToAnyPublisher()
+        ))
+        output.availabilityStart
+            .sink { enableButton in
+                print("log: enableButton \(enableButton)")
+            }
+            .store(in: &cancellables)
+    }
+    
+    private func configureActions() {
+        startButton.enableTapping { [weak self] in
+            self?.clickedStart.send()
+        }
     }
     
     // MARK: - Private
@@ -116,10 +141,10 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
                 for: indexPath
             ) as? SettingsViewCell else { return UITableViewCell() }
             cell.selectedBackgroundView = UIView.clearView
-            if let type = SettingsCellType(rawValue: indexPath.row) {
-                cell.configure(with: type.cellModel())
-            }
-            cell.separatorHidden = indexPath.row >= SettingsCellType.allCases.count - 1
+//            if let type = SettingsCellType(rawValue: indexPath.row) {
+//                cell.configure(with: type.cellModel())
+//            }
+//            cell.separatorHidden = indexPath.row >= SettingsCellType.allCases.count - 1
             return cell
             
         case .categories:
@@ -128,7 +153,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
                 for: indexPath
             ) as? CategoriesViewCell else { return UITableViewCell() }
             cell.selectedBackgroundView = UIView.clearView
-            cell.configure(with: categories)
+//            cell.configure(with: categories)
             return cell
             
         default: return UITableViewCell()
@@ -136,19 +161,6 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch CellType(rawValue: indexPath.row) {
-        case .playes, .spies:
-            let vc = SettingNumberFieldViewController()
-            vc.modalPresentationStyle = .overCurrentContext
-            vc.modalTransitionStyle = .crossDissolve
-            self.present(vc, animated: true)
-        case .timer:
-            let vc = SettingsTimeFieldViewController()
-            vc.modalPresentationStyle = .overCurrentContext
-            vc.modalTransitionStyle = .crossDissolve
-            self.present(vc, animated: true)
-        case .categories: break
-        default: break
-        }
+        clickedOnCell.send(CellType(rawValue: indexPath.row))
     }
 }
