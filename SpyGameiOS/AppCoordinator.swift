@@ -51,6 +51,7 @@ extension AppCoordinator: MainNavigation {
         vc.configure(with: SettingNumberFieldViewController.Model(
             title: L10n.SettingsCell.players,
             number: 4,
+            valueBounds: (min: 1, max: 6),
             updateNumber: PassthroughSubject<Int, Never>()
         ))
         navigationController.present(vc, animated: true)

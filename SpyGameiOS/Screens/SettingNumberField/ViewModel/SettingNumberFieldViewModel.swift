@@ -30,9 +30,11 @@ extension SettingNumberFieldViewModel {
 
 final class SettingNumberFieldViewModel: BaseViewModel {
     
-    // Private
+    // Public property
+    let number = CurrentValueSubject<Int, Never>(0)
+    
+    // Private property
     private var cancellables = Set<AnyCancellable>()
-    private let number = CurrentValueSubject<Int, Never>(0)
     
     // MARK: - Public
     

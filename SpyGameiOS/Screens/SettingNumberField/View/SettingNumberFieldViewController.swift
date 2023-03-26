@@ -37,6 +37,8 @@ final class SettingNumberFieldViewController: BaseViewController {
     private let configureNumber = CurrentValueSubject<Int, Never>(0)
     private let tap = PassthroughSubject<CountButtonType, Never>()
     private var cancellables = Set<AnyCancellable>()
+    private var valueBounds: (min: Int, max: Int) = (0, 0)
+    private var updateNumber: PassthroughSubject<Int, Never>?
 
     // MARK: - Lifecycle
     
@@ -62,7 +64,10 @@ final class SettingNumberFieldViewController: BaseViewController {
         ))
         output.updateNumber
             .sink { [weak self] value in
-                self?.countLabel.text = "\(value)"
+                guard let self = self else { return }
+                self.countLabel.text = "\(value)"
+                self.minusCountButton.isEnabled = value > self.valueBounds.min
+                self.plusCountButton.isEnabled = value < self.valueBounds.max
             }
             .store(in: &cancellables)
     }
@@ -78,7 +83,9 @@ final class SettingNumberFieldViewController: BaseViewController {
             self?.tap.send(.minus)
         }
         saveButton.enableTapping { [weak self] in
-            self?.dismiss(animated: true)
+            guard let self = self else { return }
+            self.updateNumber?.send(self.viewModel.number.value)
+            self.dismiss(animated: true)
         }
     }
     
@@ -157,11 +164,14 @@ extension SettingNumberFieldViewController: Configurable {
     struct Model {
         let title: String
         let number: Int
+        let valueBounds: (min: Int, max: Int)
         let updateNumber: PassthroughSubject<Int, Never>
     }
     
     func configure(with model: Model) {
         titleLabel.text = model.title
         configureNumber.send(model.number)
+        valueBounds = model.valueBounds
+        updateNumber = model.updateNumber
     }
 }
