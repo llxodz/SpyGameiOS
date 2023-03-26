@@ -9,7 +9,7 @@ import UIKit
 import Combine
 
 protocol MainNavigation: AnyObject {
-    func goToNumberField()
+    func goToNumberField(with model: SettingNumberFieldViewController.Model)
     func goToTimeField()
     func goToGame()
 }
@@ -22,17 +22,19 @@ final class AppCoordinator: Coordinator {
     var parentCoordinator: Coordinator?
     var children: [Coordinator] = []
     var navigationController: UINavigationController
+    private let networkRepository: INetworkRepository
     
     // MARK: - Init
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, networkRepository: INetworkRepository) {
         self.navigationController = navigationController
+        self.networkRepository = networkRepository
     }
     
     // MARK: - Coordinator
     
     func start() {
-        let vm = MainViewModel(navigation: self)
+        let vm = MainViewModel(navigation: self, networkRepository: networkRepository)
         let vc = MainViewController(viewModel: vm)
         navigationController.setViewControllers([vc], animated: false)
     }
@@ -42,15 +44,11 @@ final class AppCoordinator: Coordinator {
 
 extension AppCoordinator: MainNavigation {
     
-    func goToNumberField() {
+    func goToNumberField(with model: SettingNumberFieldViewController.Model) {
         let vc = SettingNumberFieldViewController()
         vc.modalPresentationStyle = .overCurrentContext
         vc.modalTransitionStyle = .crossDissolve
-        vc.configure(with: SettingNumberFieldViewController.Model(
-            title: L10n.SettingsCell.players,
-            number: 4,
-            updateNumber: PassthroughSubject<Int, Never>()
-        ))
+        vc.configure(with: model)
         navigationController.present(vc, animated: true)
     }
     

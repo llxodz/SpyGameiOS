@@ -33,6 +33,8 @@ internal enum L10n {
     internal static let timer = L10n.tr("Localizable", "SettingsCell.Timer", fallback: #"Timer"#)
   }
   internal enum SettingsViewController {
+    /// Refresh
+    internal static let refresh = L10n.tr("Localizable", "SettingsViewController.Refresh", fallback: #"Refresh"#)
     /// Save
     internal static let save = L10n.tr("Localizable", "SettingsViewController.Save", fallback: #"Save"#)
   }

@@ -25,18 +25,18 @@ final class SettingsTimeFieldViewController: BaseViewController {
     private let datePicker = UIPickerView()
     private let saveButton = TappableButton()
     
-    // MARK: - Init
+    // MARK: - Lifecycle
     
-    override init() {
-        super.init()
+    override func loadView() {
+        super.loadView()
         addViews()
         configureLayout()
         configureAppearance()
-        configureActions()
     }
     
-    required public init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureActions()
     }
     
     // MARK: - Actions
