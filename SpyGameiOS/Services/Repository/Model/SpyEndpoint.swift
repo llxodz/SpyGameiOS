@@ -7,15 +7,15 @@
 
 import Foundation
 
-enum SpyEndpoint {
-    case allCategories
+enum SpyEndpoint: String {
+    case allCategories = "/allCategories"
 }
 
 extension SpyEndpoint: BaseEndpoint {
     
+    private static let baseUrl: String = "http://192.168.0.103:3000"
+    
     var url: URL {
-        switch self {
-        case .allCategories: return URL(string: .spyBaseURL + "/allCategories")!
-        }
+        URL(string: SpyEndpoint.baseUrl + self.rawValue)!
     }
 }

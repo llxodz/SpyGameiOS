@@ -13,7 +13,7 @@ import Combine
 protocol INetworkRepository {
     
     @discardableResult
-    func fetchCategories() -> AnyPublisher<NetworkState, Never>
+    func fetchCategories() -> AnyPublisher<CategoriesState, Never>
 }
 
 // MARK: - NetworkRepository
@@ -23,7 +23,6 @@ final class NetworkRepository: INetworkRepository {
     // Dependencies
     private let service: NetworkService
     private var cancellables = Set<AnyCancellable>()
-    private var networkStateSubject = PassthroughSubject<NetworkState, Never>()
     
     // MARK: - Init
     
@@ -32,22 +31,21 @@ final class NetworkRepository: INetworkRepository {
     }
     
     @discardableResult
-    func fetchCategories() -> AnyPublisher<NetworkState, Never> {
-        networkStateSubject.send(.loading)
-        
+    func fetchCategories() -> AnyPublisher<CategoriesState, Never> {
+        let categoriesState = CurrentValueSubject<CategoriesState, Never>(.loading)
         let resource = Resource<[GamingCategory]>(url: SpyEndpoint.allCategories.url)
         service
             .load(resource)
-            .sink { [weak self] result in
+            .sink { result in
                 switch result {
                 case .finished: break
-                case .failure(let error):
-                    self?.networkStateSubject.send(.failed(error))
+                case .failure(_):
+                    categoriesState.send(.failed)
                 }
-            } receiveValue: { [weak self] response in
-                self?.networkStateSubject.send(.success(response))
+            } receiveValue: { response in
+                categoriesState.send(.success(response))
             }
             .store(in: &cancellables)
-        return networkStateSubject.eraseToAnyPublisher()
+        return categoriesState.eraseToAnyPublisher()
     }
 }
