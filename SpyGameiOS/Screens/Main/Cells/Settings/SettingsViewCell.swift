@@ -25,7 +25,7 @@ final class SettingsViewCell: AnimatedPressTableCell {
     
     // UI
     private let titleTextLabel = UILabel()
-    private let countTextLabel = UILabel()
+    private let secondTextLabel = UILabel()
     private let infoImageView = UIImageView()
     private let arrowImageView = UIImageView()
     private let separator = UIView()
@@ -48,7 +48,7 @@ final class SettingsViewCell: AnimatedPressTableCell {
     private func addViews() {
         addSubview(infoImageView)
         addSubview(titleTextLabel)
-        addSubview(countTextLabel)
+        addSubview(secondTextLabel)
         addSubview(arrowImageView)
         addSubview(separator)
     }
@@ -63,13 +63,13 @@ final class SettingsViewCell: AnimatedPressTableCell {
             $0.leading.equalTo(infoImageView.snp.trailing).offset(CGFloat.smallMargin)
             $0.centerY.equalToSuperview()
         }
-        countTextLabel.snp.makeConstraints {
+        secondTextLabel.snp.makeConstraints {
             $0.centerY.equalToSuperview()
         }
         arrowImageView.snp.makeConstraints {
             $0.height.width.equalTo(Constants.sizeImage)
             $0.trailing.equalToSuperview().inset(CGFloat.baseMargin)
-            $0.leading.equalTo(countTextLabel.snp.trailing).offset(CGFloat.smallMargin)
+            $0.leading.equalTo(secondTextLabel.snp.trailing).offset(CGFloat.smallMargin)
             $0.centerY.equalToSuperview()
         }
         separator.snp.makeConstraints {
@@ -85,8 +85,8 @@ final class SettingsViewCell: AnimatedPressTableCell {
         // Labels
         titleTextLabel.font = Constants.titleFont
         titleTextLabel.textColor = Asset.mainTextColor.color
-        countTextLabel.font = Constants.titleFont
-        countTextLabel.textColor = Asset.mainTextColor.color
+        secondTextLabel.font = Constants.titleFont
+        secondTextLabel.textColor = Asset.mainTextColor.color
         // Image
         arrowImageView.image = Asset.arrowRightImage.image
         // Separator
@@ -98,27 +98,15 @@ final class SettingsViewCell: AnimatedPressTableCell {
 
 extension SettingsViewCell: Configurable {
     
-    enum FieldType {
-        case number
-        case timer
-    }
-    
     struct Model {
         let icon: UIImage
         let titleText: String
-        var countText: String
-        let maxValue: Int
-        let minValue: Int
-        let fieldType: FieldType
+        var secondText: String
     }
     
     func configure(with model: Model) {
         infoImageView.image = model.icon.withTintColor(Asset.mainTextColor.color)
         titleTextLabel.text = model.titleText
-        
-        switch model.fieldType {
-        case .number: countTextLabel.text = String(model.countText)
-        case .timer: countTextLabel.text = "\(model.countText) \(L10n.SettingsCell.minute)"
-        }
+        secondTextLabel.text = model.secondText
     }
 }

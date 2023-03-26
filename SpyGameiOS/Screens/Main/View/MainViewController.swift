@@ -169,17 +169,16 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch CellType(rawValue: indexPath.row) {
+        let type = CellType(rawValue: indexPath.row)
+        switch type {
         case .playes, .spies, .timer:
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: SettingsViewCell.identifier,
                 for: indexPath
             ) as? SettingsViewCell else { return UITableViewCell() }
             cell.selectedBackgroundView = UIView.clearView
-//            if let type = SettingsCellType(rawValue: indexPath.row) {
-//                cell.configure(with: type.cellModel())
-//            }
-//            cell.separatorHidden = indexPath.row >= SettingsCellType.allCases.count - 1
+            cell.configure(with: viewModel.settingCellModel(for: type))
+            cell.separatorHidden = indexPath.row >= viewModel.cells.count - 1
             return cell
             
         case .categories:

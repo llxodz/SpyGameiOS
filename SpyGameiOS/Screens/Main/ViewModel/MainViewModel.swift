@@ -5,7 +5,7 @@
 //  Created by Ilya Gavrilov on 03.01.2023.
 //
 
-import Foundation
+import UIKit
 import Combine
 
 // MARK: - Input & Output
@@ -89,6 +89,33 @@ final class MainViewModel: BaseViewModel {
             availabilityStart: availabilityStart.receive(on: DispatchQueue.main).eraseToAnyPublisher(),
             categoriesState: categoriesState.receive(on: DispatchQueue.main).eraseToAnyPublisher()
         )
+    }
+    
+    // MARK: - Helpers
+    
+    func settingCellModel(for type: CellType?) -> SettingsViewCell.Model {
+        switch type {
+        case .playes:
+            return SettingsViewCell.Model(
+                icon: Asset.playerImage.image,
+                titleText: L10n.SettingsCell.players,
+                secondText: "5"
+            )
+        case .spies:
+            return SettingsViewCell.Model(
+                icon: Asset.spyImage.image,
+                titleText: L10n.SettingsCell.spys,
+                secondText: "2"
+            )
+        case .timer:
+            return SettingsViewCell.Model(
+                icon: Asset.clockImage.image,
+                titleText: L10n.SettingsCell.timer,
+                secondText: "40 мин"
+            )
+        default:
+            return SettingsViewCell.Model(icon: UIImage(), titleText: "", secondText: "")
+        }
     }
     
     // MARK: - Private
