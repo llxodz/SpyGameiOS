@@ -10,7 +10,7 @@ import Combine
 
 protocol MainNavigation: AnyObject {
     func goToNumberField(with model: SettingNumberFieldViewController.Model)
-    func goToTimeField()
+    func goToTimeField(with model: SettingsTimeFieldViewController.Model)
     func goToGame()
 }
 
@@ -52,10 +52,11 @@ extension AppCoordinator: MainNavigation {
         navigationController.present(vc, animated: true)
     }
     
-    func goToTimeField() {
+    func goToTimeField(with model: SettingsTimeFieldViewController.Model) {
         let vc = SettingsTimeFieldViewController()
         vc.modalPresentationStyle = .overCurrentContext
         vc.modalTransitionStyle = .crossDissolve
+        vc.configure(with: model)
         navigationController.present(vc, animated: true)
     }
     
