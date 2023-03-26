@@ -64,7 +64,7 @@ final class CategoriesViewCell: UITableViewCell {
         cancellables.forEach { $0.cancel() }
         cancellables.removeAll()
         
-        let input = CategoriesViewModelInput(
+        let input = CategoriesViewModel.Input(
             switchAll: switchAll.eraseToAnyPublisher(),
             switchCategory: switchCategory.eraseToAnyPublisher()
         )

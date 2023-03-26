@@ -6,29 +6,76 @@
 //
 
 import Foundation
+import Combine
 
-final class MainViewModel {
+// MARK: - Input & Output
+
+extension MainViewModel {
     
+    struct Input {
+        /// Нажатие на ячейку
+        let clickedOnCell: AnyPublisher<CellType?, Never>
+        /// Старт
+        let clickedStart: AnyPublisher<Void, Never>
+    }
+    
+    struct Output {
+        /// Доступность кнопки старт
+        let availabilityStart: AnyPublisher<Bool, Never>
+    }
+}
+
+// MARK: - MainViewModel
+
+final class MainViewModel: BaseViewModel {
+    
+    // Dependencies
+    private let navigation: MainNavigation
+    
+    // Public property
     let cells: [CellType] = CellType.allCases
     
     // Private property
-    private var fields: [SettingsViewCell.Model] = [
-        SettingsCellType.players.cellModel(),
-        SettingsCellType.spies.cellModel(),
-        SettingsCellType.timer.cellModel()
-    ]
+    private let availabilityStart = PassthroughSubject<Bool, Never>()
+    private var cancellables = Set<AnyCancellable>()
     
-    // MARK: - Public functions
+    // MARK: - Init
     
-    func getFields() -> [SettingsViewCell.Model] {
-        return fields
+    init(navigation: MainNavigation) {
+        self.navigation = navigation
     }
     
-    func getField(_ indexPath: IndexPath) -> SettingsViewCell.Model {
-        return fields[indexPath.row]
+    // MARK: - Transform
+    
+    func transform(input: Input) -> Output {
+        input.clickedOnCell
+            .sink { [weak self] type in
+                self?.clickedOnCell(type: type)
+            }
+            .store(in: &cancellables)
+        input.clickedStart
+            .sink { [weak self] in
+                self?.navigation.goToGame()
+            }
+            .store(in: &cancellables)
+        
+        return Output(availabilityStart: availabilityStart.eraseToAnyPublisher())
     }
     
-    func setValuesInField(indexPath: IndexPath, field: SettingsViewCell.Model) {
-        fields[indexPath.row] = field
+    // MARK: - Private
+    
+    private func clickedOnCell(type: CellType?) {
+        switch type {
+        case .playes:
+            // TODO: - Настроить
+            navigation.goToNumberField()
+        case .spies:
+            // TODO: - Настроить
+            navigation.goToNumberField()
+        case .timer:
+            // TODO: - Настроить
+            navigation.goToTimeField()
+        default: break
+        }
     }
 }
