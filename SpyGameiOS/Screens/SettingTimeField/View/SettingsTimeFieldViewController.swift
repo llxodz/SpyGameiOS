@@ -19,9 +19,6 @@ private enum Constants {
 
 final class SettingsTimeFieldViewController: BaseViewController {
     
-    // Dependencies
-    private let viewModel = SettingsTimeFieldViewModel()
-    
     // UI
     private let containerView = UIView()
     private let titleLabel = UILabel()
@@ -30,8 +27,7 @@ final class SettingsTimeFieldViewController: BaseViewController {
     private let saveButton = TappableButton()
     
     // Private
-    private let configureNumber = CurrentValueSubject<Int, Never>(0)
-    private var cancellables = Set<AnyCancellable>()
+    private var currentCountOfinutes: Int = 0
     private var valueBounds: (min: Int, max: Int) = (0, 0)
     private var updateNumber: PassthroughSubject<Int, Never>?
     
@@ -46,23 +42,10 @@ final class SettingsTimeFieldViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        binding()
         configureActions()
     }
     
-    // MARK: - Binding & Actions
-    
-    private func binding() {
-        let output = viewModel.transform(input: SettingsTimeFieldViewModel.Input(
-            configureNumber: configureNumber.eraseToAnyPublisher()
-        ))
-        
-        output.updateNumber
-            .sink { [weak self] value in
-                self?.minutesPicker.selectRow(value - 1, inComponent: 0, animated: true)
-            }
-            .store(in: &cancellables)
-    }
+    // MARK: - Actions
     
     private func configureActions() {
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapBackground(_:)))
@@ -71,8 +54,11 @@ final class SettingsTimeFieldViewController: BaseViewController {
         
         saveButton.enableTapping { [weak self] in
             guard let self = self else { return }
-            self.updateNumber?.send(self.viewModel.number.value)
-            self.dismiss(animated: true)
+            let value = self.minutesPicker.selectedRow(inComponent: 0) + 1
+            if self.valueBounds.min <= value && self.valueBounds.max >= value {
+                self.updateNumber?.send(value)
+                self.dismiss(animated: true)
+            }
         }
     }
     
@@ -129,6 +115,7 @@ final class SettingsTimeFieldViewController: BaseViewController {
         // Date picker
         minutesPicker.delegate = self
         minutesPicker.dataSource = self
+        minutesPicker.selectRow(currentCountOfinutes - 1, inComponent: 0, animated: true)
         // Button
         saveButton.layer.cornerRadius = .baseRadius
         saveButton.layer.masksToBounds = true
@@ -156,7 +143,7 @@ extension SettingsTimeFieldViewController: UIPickerViewDelegate, UIPickerViewDat
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent  component: Int) {
-        self.viewModel.number.send(row + 1)
+        self.currentCountOfinutes = row + 1
     }
 }
 
@@ -173,8 +160,8 @@ extension SettingsTimeFieldViewController: Configurable {
     
     func configure(with model: Model) {
         titleLabel.text = model.title
-        configureNumber.send(model.number)
         updateNumber = model.updateNumber
+        currentCountOfinutes = model.number
         valueBounds = model.valueBounds
     }
 }

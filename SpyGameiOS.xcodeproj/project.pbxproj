@@ -18,7 +18,6 @@
 		33C52A3129C5F03B00C716E8 /* BaseEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C52A3029C5F03B00C716E8 /* BaseEndpoint.swift */; };
 		33DD551B296B46490068F79B /* AnimatedPressButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD551A296B46490068F79B /* AnimatedPressButton.swift */; };
 		33E3AEB7294E5B02000E0C03 /* SettingNumberFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E3AEB6294E5B02000E0C03 /* SettingNumberFieldViewController.swift */; };
-		33F276BA29D0E1FE00B1265D /* SettingsTimeFieldViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F276B929D0E1FE00B1265D /* SettingsTimeFieldViewModel.swift */; };
 		640CAD6429C253FF001562F2 /* CountButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640CAD6329C253FF001562F2 /* CountButtonType.swift */; };
 		641E215429D07BDA00ADCAE0 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641E215329D07BDA00ADCAE0 /* Coordinator.swift */; };
 		641E215729D07C5700ADCAE0 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641E215629D07C5700ADCAE0 /* AppCoordinator.swift */; };
@@ -75,7 +74,6 @@
 		33C52A3029C5F03B00C716E8 /* BaseEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseEndpoint.swift; sourceTree = "<group>"; };
 		33DD551A296B46490068F79B /* AnimatedPressButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedPressButton.swift; sourceTree = "<group>"; };
 		33E3AEB6294E5B02000E0C03 /* SettingNumberFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingNumberFieldViewController.swift; sourceTree = "<group>"; };
-		33F276B929D0E1FE00B1265D /* SettingsTimeFieldViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTimeFieldViewModel.swift; sourceTree = "<group>"; };
 		433FC07363D81E5A1D472859 /* Pods-SpyGameiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpyGameiOS.debug.xcconfig"; path = "Target Support Files/Pods-SpyGameiOS/Pods-SpyGameiOS.debug.xcconfig"; sourceTree = "<group>"; };
 		4360E8475BB1DFC6325BDD72 /* Pods-SpyGameiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpyGameiOS.release.xcconfig"; path = "Target Support Files/Pods-SpyGameiOS/Pods-SpyGameiOS.release.xcconfig"; sourceTree = "<group>"; };
 		640CAD6329C253FF001562F2 /* CountButtonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountButtonType.swift; sourceTree = "<group>"; };
@@ -149,7 +147,6 @@
 		3341C759297F284E008D61E1 /* SettingTimeField */ = {
 			isa = PBXGroup;
 			children = (
-				33F276B829D0E12B00B1265D /* ViewModel */,
 				33F276B729D0E12400B1265D /* View */,
 			);
 			path = SettingTimeField;
@@ -190,14 +187,6 @@
 				3341C75A297F2863008D61E1 /* SettingsTimeFieldViewController.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		33F276B829D0E12B00B1265D /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				33F276B929D0E1FE00B1265D /* SettingsTimeFieldViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		640CAD6529C25415001562F2 /* Model */ = {
@@ -629,7 +618,6 @@
 				33DD551B296B46490068F79B /* AnimatedPressButton.swift in Sources */,
 				33E3AEB7294E5B02000E0C03 /* SettingNumberFieldViewController.swift in Sources */,
 				CE7CA78728AD5F67001320AD /* HeaderMainView.swift in Sources */,
-				33F276BA29D0E1FE00B1265D /* SettingsTimeFieldViewModel.swift in Sources */,
 				649FB44F29CA48B200B51F99 /* SettingNumberFieldViewModel.swift in Sources */,
 				64F0D329297D987F00728750 /* Collection+Extension.swift in Sources */,
 				64F0D327297D93F300728750 /* CategoryViewCell.swift in Sources */,
