@@ -138,7 +138,7 @@ final class MainViewModel: BaseViewModel {
             return SettingsViewCell.Model(
                 icon: Asset.clockImage.image,
                 titleText: L10n.SettingsCell.timer,
-                secondText: "\(UserDefaults.standard.settingMinutesCount)"
+                secondText: "\(UserDefaults.standard.settingMinutesCount) \(L10n.SettingsCell.minute)"
             )
         default:
             return SettingsViewCell.Model(icon: UIImage(), titleText: "", secondText: "")
