@@ -58,7 +58,7 @@ extension UserDefaults {
     var settingMinutesCount: Int {
         get {
             let result = object(forKey: UserDefaults.settingMinutesKey) as? Int
-            return result ?? UserDefaults.minMinutesCount
+            return result ?? UserDefaults.maxMinutesCount
         }
         set {
             var value = max(newValue, UserDefaults.minMinutesCount)

@@ -168,7 +168,8 @@ final class MainViewModel: BaseViewModel {
                 title: L10n.SettingsCell.timer,
                 number: UserDefaults.standard.settingMinutesCount,
                 valueBounds: (UserDefaults.minMinutesCount, UserDefaults.maxMinutesCount),
-                updateNumber: updateMinutesCount))
+                updateNumber: updateMinutesCount
+            ))
         default: break
         }
     }
