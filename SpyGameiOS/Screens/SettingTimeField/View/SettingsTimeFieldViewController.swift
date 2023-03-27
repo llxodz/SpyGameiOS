@@ -15,7 +15,6 @@ private enum Constants {
     static let heightSaveButton: CGFloat = 56
     static let heightView: CGFloat = 320
     static let alphaBackground: CGFloat = 0.5
-    static let minutesOfGame: [Int] = Array(1...120)
 }
 
 final class SettingsTimeFieldViewController: BaseViewController {
@@ -32,8 +31,9 @@ final class SettingsTimeFieldViewController: BaseViewController {
     
     // Private
     private let configureNumber = CurrentValueSubject<Int, Never>(0)
+    private let configureMinutesOfGame = CurrentValueSubject<[Int], Never>([])
     private var cancellables = Set<AnyCancellable>()
-    private var valueBounds: (min: Int, max: Int) = (0, 0)
+    private var minutesOfGame: [Int] = []
     private var updateNumber: PassthroughSubject<Int, Never>?
     
     // MARK: - Lifecycle
@@ -55,9 +55,15 @@ final class SettingsTimeFieldViewController: BaseViewController {
     
     private func binding() {
         let output = viewModel.transform(input: SettingsTimeFieldViewModel.Input(
-            configureNumber: configureNumber.eraseToAnyPublisher()
+            configureNumber: configureNumber.eraseToAnyPublisher(),
+            minutesOfGame: configureMinutesOfGame.eraseToAnyPublisher()
         ))
         
+        output.updateMinutesOfGame
+            .sink { [weak self] value in
+                self?.minutesOfGame = value
+            }
+            .store(in: &cancellables)
         output.updateNumber
             .sink { [weak self] value in
                 self?.minutesPicker.selectRow(value - 1, inComponent: 0, animated: true)
@@ -149,15 +155,19 @@ extension SettingsTimeFieldViewController: UIPickerViewDelegate, UIPickerViewDat
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return Constants.minutesOfGame.count
+        return minutesOfGame.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return String(Constants.minutesOfGame[row])
+        guard let value = minutesOfGame[safe: row] else { return "" }
+        
+        return String(value)
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent  component: Int) {
-        self.viewModel.number.send(Constants.minutesOfGame[row])
+        guard let value = minutesOfGame[safe: row] else { return }
+        
+        self.viewModel.number.send(value)
     }
 }
 
@@ -175,7 +185,7 @@ extension SettingsTimeFieldViewController: Configurable {
     func configure(with model: Model) {
         titleLabel.text = model.title
         configureNumber.send(model.number)
-        valueBounds = model.valueBounds
+        configureMinutesOfGame.send(Array(model.valueBounds.min...model.valueBounds.max))
         updateNumber = model.updateNumber
     }
 }
