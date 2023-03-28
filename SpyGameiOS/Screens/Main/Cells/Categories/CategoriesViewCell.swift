@@ -29,6 +29,7 @@ final class CategoriesViewCell: UITableViewCell {
     private let switchAll = PassthroughSubject<Bool, Never>()
     private let switchCategory = PassthroughSubject<Category, Never>()
     private var switchAllCategories: AnyPublisher<Bool, Never>?
+    private var availabilityStart: CurrentValueSubject<Bool, Never>?
     
     // Public property
     public static var identifier: String { "CategoriesViewCell" }
@@ -73,6 +74,12 @@ final class CategoriesViewCell: UITableViewCell {
         output?.switchAll
             .sink { [weak self] isOn in
                 self?.allSwitch.setOn(isOn, animated: true)
+            }
+            .store(in: &cancellables)
+        output?.availabilityStart
+            .removeDuplicates()
+            .sink { [weak self] isAvailability in
+                self?.availabilityStart?.send(isAvailability)
             }
             .store(in: &cancellables)
         switchAllCategories = output?.switchAllCategories
@@ -143,8 +150,15 @@ final class CategoriesViewCell: UITableViewCell {
 
 extension CategoriesViewCell: Configurable {
     
-    func configure(with model: [Category]) {
-        viewModel = CategoriesViewModel(categories: model)
+    struct Model {
+        let categories: [Category]
+        /// Доступность кнопки старт
+        let availabilityStart: CurrentValueSubject<Bool, Never>
+    }
+    
+    func configure(with model: Model) {
+        self.availabilityStart = model.availabilityStart
+        viewModel = CategoriesViewModel(categories: model.categories)
         binding()
         tableView.reloadData()
         tableView.layoutIfNeeded()

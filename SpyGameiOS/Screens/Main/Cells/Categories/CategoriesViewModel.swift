@@ -24,6 +24,8 @@ extension CategoriesViewModel {
         let switchAll: AnyPublisher<Bool, Never>
         /// Измененить все переключатели
         let switchAllCategories: AnyPublisher<Bool, Never>
+        /// Доступность кнопки старт
+        let availabilityStart: AnyPublisher<Bool, Never>
     }
 }
 
@@ -38,6 +40,7 @@ final class CategoriesViewModel: BaseViewModel {
     private var cancellables = Set<AnyCancellable>()
     private let switchAll = PassthroughSubject<Bool, Never>()
     private let switchAllCategories = PassthroughSubject<Bool, Never>()
+    private var availabilityStart = PassthroughSubject<Bool, Never>()
     
     // MARK: - Init
     
@@ -58,6 +61,7 @@ final class CategoriesViewModel: BaseViewModel {
                     self.categories[index].selected = isOn
                 }
                 self.switchAllCategories.send(isOn)
+                self.sendAvailabilityStartIfNeeded()
             }
             .store(in: &cancellables)
         input.switchCategory
@@ -68,12 +72,14 @@ final class CategoriesViewModel: BaseViewModel {
                 }
                 self.categories[index] = item
                 self.sendSwitchAllIfNeeded()
+                self.sendAvailabilityStartIfNeeded()
             }
             .store(in: &cancellables)
         
         return Output(
             switchAll: switchAll.eraseToAnyPublisher(),
-            switchAllCategories: switchAllCategories.eraseToAnyPublisher()
+            switchAllCategories: switchAllCategories.eraseToAnyPublisher(),
+            availabilityStart: availabilityStart.eraseToAnyPublisher()
         )
     }
     
@@ -89,6 +95,19 @@ final class CategoriesViewModel: BaseViewModel {
             switchAll.send(true)
         } else {
             switchAll.send(false)
+        }
+    }
+    
+    private func sendAvailabilityStartIfNeeded() {
+        var count = [Bool: Int]()
+        categories.forEach {
+            let val = count[$0.selected] ?? 0
+            count[$0.selected] = val + 1
+        }
+        if count[false] == categories.count {
+            availabilityStart.send(false)
+        } else {
+            availabilityStart.send(true)
         }
     }
 }
