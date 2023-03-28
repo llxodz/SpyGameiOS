@@ -15,6 +15,7 @@ private enum Constants {
     static let startButtonHeight: CGFloat = 56
     static let indicatorSize: CGFloat = 44
     static let startButtonFont: UIFont = FontFamily.Montserrat.bold.font(size: 16)
+    static let offAlpha: CGFloat = 0.25
 }
 
 class MainViewController: BaseViewController {
@@ -77,8 +78,10 @@ class MainViewController: BaseViewController {
             viewDidLoad: needFetchCategories.eraseToAnyPublisher()
         ))
         output.availabilityStart
-            .sink { enableButton in
-                print("log: enableButton \(enableButton)")
+            .removeDuplicates()
+            .sink { [weak self] enableButton in
+                guard let self = self else { return }
+                self.startButton.isEnabled = enableButton
             }
             .store(in: &cancellables)
         output.categoriesState
@@ -164,6 +167,10 @@ class MainViewController: BaseViewController {
         startButton.setTitle(L10n.FooterView.startGame, for: .normal)
         startButton.titleLabel?.font = Constants.startButtonFont
         startButton.setTitleColor(Asset.mainTextColor.color, for: .normal)
+        startButton.setTitleColor(
+            Asset.mainTextColor.color.withAlphaComponent(Constants.offAlpha),
+            for: .disabled
+        )
         startButton.backgroundColor = Asset.buttonBackgroundColor.color
         // Refresh Button
         refreshButton.isHidden = true
@@ -211,7 +218,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
                 for: indexPath
             ) as? CategoriesViewCell else { return UITableViewCell() }
             cell.selectedBackgroundView = UIView.clearView
-            cell.configure(with: viewModel.categories)
+            cell.configure(with: viewModel.modelForCategoriesCell)
             return cell
             
         default: return UITableViewCell()
