@@ -62,5 +62,9 @@ extension AppCoordinator: MainNavigation {
     
     func goToGame() {
         // TODO: go to gameVC
+        let vc = GameViewController()
+        vc.modalPresentationStyle = .fullScreen
+        vc.modalTransitionStyle = .coverVertical
+        navigationController.present(vc, animated: true)
     }
 }
