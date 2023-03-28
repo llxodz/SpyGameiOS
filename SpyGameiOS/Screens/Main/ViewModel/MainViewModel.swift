@@ -48,6 +48,7 @@ final class MainViewModel: BaseViewModel {
     private let categoriesState = PassthroughSubject<CategoriesState, Never>()
     private let updatePlayersCount = PassthroughSubject<Int, Never>()
     private let updateSpiesCount = PassthroughSubject<Int, Never>()
+    private let updateMinutesCount = PassthroughSubject<Int, Never>()
     private var cancellables = Set<AnyCancellable>()
     
     // MARK: - Init
@@ -99,9 +100,15 @@ final class MainViewModel: BaseViewModel {
                 UserDefaults.standard.settingSpiesCount = value
             }
             .store(in: &cancellables)
+        updateMinutesCount
+            .sink { value in
+                UserDefaults.standard.settingMinutesCount = value
+            }
+            .store(in: &cancellables)
         
         let updateSettings = updatePlayersCount
             .merge(with: updateSpiesCount)
+            .merge(with: updateMinutesCount)
             .map { _ in return () }
         
         return Output(
@@ -131,7 +138,7 @@ final class MainViewModel: BaseViewModel {
             return SettingsViewCell.Model(
                 icon: Asset.clockImage.image,
                 titleText: L10n.SettingsCell.timer,
-                secondText: "40 мин"
+                secondText: "\(UserDefaults.standard.settingMinutesCount) \(L10n.SettingsCell.minute)"
             )
         default:
             return SettingsViewCell.Model(icon: UIImage(), titleText: "", secondText: "")
@@ -157,8 +164,12 @@ final class MainViewModel: BaseViewModel {
                 updateNumber: updateSpiesCount
             ))
         case .timer:
-            // TODO: - Настроить
-            navigation.goToTimeField()
+            navigation.goToTimeField(with: SettingsTimeFieldViewController.Model(
+                title: L10n.SettingsCell.timer,
+                number: UserDefaults.standard.settingMinutesCount,
+                valueBounds: (UserDefaults.minMinutesCount, UserDefaults.maxMinutesCount),
+                updateNumber: updateMinutesCount
+            ))
         default: break
         }
     }

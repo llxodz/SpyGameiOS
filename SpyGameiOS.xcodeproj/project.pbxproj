@@ -147,7 +147,7 @@
 		3341C759297F284E008D61E1 /* SettingTimeField */ = {
 			isa = PBXGroup;
 			children = (
-				3341C75A297F2863008D61E1 /* SettingsTimeFieldViewController.swift */,
+				33F276B729D0E12400B1265D /* View */,
 			);
 			path = SettingTimeField;
 			sourceTree = "<group>";
@@ -179,6 +179,14 @@
 				64C1547229D0CA6800D3A0E9 /* UserDefaults+Settings.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		33F276B729D0E12400B1265D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3341C75A297F2863008D61E1 /* SettingsTimeFieldViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		640CAD6529C25415001562F2 /* Model */ = {

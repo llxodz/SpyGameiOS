@@ -7,14 +7,14 @@
 
 import UIKit
 import SnapKit
+import Combine
 
 private enum Constants {
-    static let labelFont: UIFont = FontFamily.Montserrat.bold.font(size: 18)
-    static let saveButtonFont: UIFont = FontFamily.Montserrat.medium.font(size: 16)
+    static let boldFont: UIFont = FontFamily.Montserrat.bold.font(size: 18)
+    static let mediumFont: UIFont = FontFamily.Montserrat.medium.font(size: 16)
     static let heightSaveButton: CGFloat = 56
     static let heightView: CGFloat = 320
     static let alphaBackground: CGFloat = 0.5
-    static let minutesOfGame: [Int] = Array(1...120)
 }
 
 final class SettingsTimeFieldViewController: BaseViewController {
@@ -22,8 +22,14 @@ final class SettingsTimeFieldViewController: BaseViewController {
     // UI
     private let containerView = UIView()
     private let titleLabel = UILabel()
-    private let datePicker = UIPickerView()
+    private let minutesPicker = UIPickerView()
+    private let countOfMinutesLabel = UILabel()
     private let saveButton = TappableButton()
+    
+    // Private
+    private var currentCountOfinutes: Int = 0
+    private var valueBounds: (min: Int, max: Int) = (0, 0)
+    private var updateNumber: PassthroughSubject<Int, Never>?
     
     // MARK: - Lifecycle
     
@@ -47,7 +53,12 @@ final class SettingsTimeFieldViewController: BaseViewController {
         containerView.addGestureRecognizer(UITapGestureRecognizer())
         
         saveButton.enableTapping { [weak self] in
-            self?.dismiss(animated: true)
+            guard let self = self else { return }
+            let value = self.minutesPicker.selectedRow(inComponent: 0) + 1
+            if self.valueBounds.min <= value && self.valueBounds.max >= value {
+                self.updateNumber?.send(value)
+                self.dismiss(animated: true)
+            }
         }
     }
     
@@ -59,7 +70,8 @@ final class SettingsTimeFieldViewController: BaseViewController {
     
     private func addViews() {
         view.addSubview(containerView)
-        containerView.addSubviews(titleLabel, datePicker, saveButton)
+        containerView.addSubviews(titleLabel, minutesPicker, saveButton)
+        minutesPicker.addSubview(countOfMinutesLabel)
     }
     
     private func configureLayout() {
@@ -72,10 +84,14 @@ final class SettingsTimeFieldViewController: BaseViewController {
             $0.top.equalToSuperview().offset(CGFloat.baseMargin)
             $0.leading.trailing.equalToSuperview()
         }
-        datePicker.snp.makeConstraints {
+        minutesPicker.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom)
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalTo(saveButton.snp.top)
+        }
+        countOfMinutesLabel.snp.makeConstraints {
+            $0.center.equalToSuperview()
+            $0.trailing.equalToSuperview().inset(CGFloat.extraLargeMargin)
         }
         saveButton.snp.makeConstraints {
             $0.height.equalTo(Constants.heightSaveButton)
@@ -87,20 +103,24 @@ final class SettingsTimeFieldViewController: BaseViewController {
         containerView.backgroundColor = .white
         containerView.layer.cornerRadius = .baseRadius
         view.backgroundColor = .gray.withAlphaComponent(Constants.alphaBackground)
-        // Label
-        titleLabel.text = "Title"
-        titleLabel.font = Constants.labelFont
+        // Labels
+        titleLabel.font = Constants.boldFont
         titleLabel.textColor = Asset.mainTextColor.color
         titleLabel.textAlignment = .center
+        countOfMinutesLabel.text = L10n.SettingsCell.minute
+        countOfMinutesLabel.font = Constants.boldFont
+        countOfMinutesLabel.textAlignment = .right
+        countOfMinutesLabel.font = Constants.mediumFont
+        countOfMinutesLabel.textColor = Asset.mainTextColor.color
         // Date picker
-        datePicker.delegate = self
-        datePicker.dataSource = self
-        datePicker.selectRow(9, inComponent: 0, animated: true)
+        minutesPicker.delegate = self
+        minutesPicker.dataSource = self
+        minutesPicker.selectRow(currentCountOfinutes - 1, inComponent: 0, animated: true)
         // Button
         saveButton.layer.cornerRadius = .baseRadius
         saveButton.layer.masksToBounds = true
         saveButton.setTitle(L10n.SettingsViewController.save, for: .normal)
-        saveButton.titleLabel?.font = Constants.saveButtonFont
+        saveButton.titleLabel?.font = Constants.mediumFont
         saveButton.setTitleColor(Asset.mainTextColor.color, for: .normal)
         saveButton.backgroundColor = Asset.buttonBackgroundColor.color
     }
@@ -115,10 +135,33 @@ extension SettingsTimeFieldViewController: UIPickerViewDelegate, UIPickerViewDat
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return Constants.minutesOfGame.count
+        return valueBounds.max
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return "\(Constants.minutesOfGame[row]) \(L10n.SettingsCell.minute)"
+        return String(row + 1)
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent  component: Int) {
+        self.currentCountOfinutes = row + 1
+    }
+}
+
+// MARK: - Configurable
+
+extension SettingsTimeFieldViewController: Configurable {
+    
+    struct Model {
+        let title: String
+        let number: Int
+        let valueBounds: (min: Int, max: Int)
+        let updateNumber: PassthroughSubject<Int, Never>
+    }
+    
+    func configure(with model: Model) {
+        titleLabel.text = model.title
+        updateNumber = model.updateNumber
+        currentCountOfinutes = model.number
+        valueBounds = model.valueBounds
     }
 }
