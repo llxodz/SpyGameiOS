@@ -80,8 +80,7 @@ class MainViewController: BaseViewController {
         output.availabilityStart
             .removeDuplicates()
             .sink { [weak self] enableButton in
-                guard let self = self else { return }
-                self.startButton.isEnabled = enableButton
+                self?.startButton.isEnabled = enableButton
             }
             .store(in: &cancellables)
         output.categoriesState
