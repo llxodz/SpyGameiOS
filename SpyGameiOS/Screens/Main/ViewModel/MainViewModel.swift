@@ -41,15 +41,21 @@ final class MainViewModel: BaseViewModel {
     
     // Public property
     let cells: [CellType] = CellType.allCases
-    private(set) var categories: [Category] = []
+    var modelForCategoriesCell: CategoriesViewCell.Model {
+        CategoriesViewCell.Model(
+            categories: categories,
+            availabilityStart: availabilityStart
+        )
+    }
     
     // Private property
-    private let availabilityStart = PassthroughSubject<Bool, Never>()
+    private let availabilityStart = CurrentValueSubject<Bool, Never>(false)
     private let categoriesState = PassthroughSubject<CategoriesState, Never>()
     private let updatePlayersCount = PassthroughSubject<Int, Never>()
     private let updateSpiesCount = PassthroughSubject<Int, Never>()
     private let updateMinutesCount = PassthroughSubject<Int, Never>()
     private var cancellables = Set<AnyCancellable>()
+    private var categories: [Category] = []
     
     // MARK: - Init
     
