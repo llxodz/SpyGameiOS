@@ -48,4 +48,22 @@ extension UserDefaults {
             set(value, forKey: UserDefaults.settingSpiesKey)
         }
     }
+    
+    // MARK: - Minutes
+    
+    private static let settingMinutesKey: String = "SpyGameiOS.UserDefaults.settingMinutesCount"
+    static let minMinutesCount: Int = 1
+    static let maxMinutesCount: Int = 120
+    
+    var settingMinutesCount: Int {
+        get {
+            let result = object(forKey: UserDefaults.settingMinutesKey) as? Int
+            return result ?? UserDefaults.maxMinutesCount
+        }
+        set {
+            var value = max(newValue, UserDefaults.minMinutesCount)
+            value = min(value, UserDefaults.maxMinutesCount)
+            set(value, forKey: UserDefaults.settingMinutesKey)
+        }
+    }
 }
