@@ -54,9 +54,9 @@ final class HeaderMainView: UIView {
     }
     
     private func configureAppearance() {
-        backgroundColor = Asset.mainBackgroundColor.color
+        backgroundColor = Asset.Colors.mainBackgroundColor.color
         titleLabel.text = L10n.spyGameiOS
         titleLabel.font = Constants.titleFont
-        titleLabel.textColor = Asset.mainTextColor.color
+        titleLabel.textColor = Asset.Colors.mainTextColor.color
     }
 }

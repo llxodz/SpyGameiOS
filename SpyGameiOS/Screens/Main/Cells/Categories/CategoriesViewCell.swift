@@ -120,7 +120,7 @@ final class CategoriesViewCell: UITableViewCell {
     }
     
     private func configureAppearance() {
-        backgroundColor = Asset.mainBackgroundColor.color
+        backgroundColor = Asset.Colors.mainBackgroundColor.color
         allSwitch.transform = CGAffineTransform(scaleX: Constants.switchScale, y: Constants.switchScale)
         configureTableView()
         configureLabels()
@@ -139,10 +139,10 @@ final class CategoriesViewCell: UITableViewCell {
     private func configureLabels() {
         title.text = L10n.CategoriesTableViewCell.categories
         title.font = Constants.titleFont
-        title.textColor = Asset.mainTextColor.color
+        title.textColor = Asset.Colors.mainTextColor.color
         selectAllLabel.text = L10n.CategoriesTableViewCell.selectAll
         selectAllLabel.font = Constants.selectAllFont
-        selectAllLabel.textColor = Asset.mainTextColor.color
+        selectAllLabel.textColor = Asset.Colors.mainTextColor.color
     }
 }
 
