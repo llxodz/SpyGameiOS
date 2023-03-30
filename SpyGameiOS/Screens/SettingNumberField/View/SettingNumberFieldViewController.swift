@@ -136,7 +136,7 @@ final class SettingNumberFieldViewController: BaseViewController {
     }
     
     private func configureAppearance() {
-        containerView.backgroundColor = .white
+        containerView.backgroundColor = Asset.Colors.mainBackgroundColor.color
         containerView.layer.cornerRadius = .baseRadius
         stackView.axis = .horizontal
         stackView.spacing = .extraLargeSpace
@@ -145,15 +145,15 @@ final class SettingNumberFieldViewController: BaseViewController {
         // Labels
         titleLabel.textAlignment = .center
         titleLabel.font = Constants.labelFont
-        titleLabel.textColor = Asset.mainTextColor.color
+        titleLabel.textColor = Asset.Colors.mainTextColor.color
         countLabel.font = Constants.labelFont
-        countLabel.textColor = Asset.mainTextColor.color
+        countLabel.textColor = Asset.Colors.mainTextColor.color
         // Save Button
         saveButton.layer.cornerRadius = .baseRadius
         saveButton.setTitle(L10n.SettingsViewController.save, for: .normal)
         saveButton.titleLabel?.font = Constants.saveButtonFont
-        saveButton.setTitleColor(Asset.mainTextColor.color, for: .normal)
-        saveButton.backgroundColor = Asset.buttonBackgroundColor.color
+        saveButton.setTitleColor(Asset.Colors.mainTextColor.color, for: .normal)
+        saveButton.backgroundColor = Asset.Colors.buttonBackgroundColor.color
     }
 }
 

@@ -53,11 +53,14 @@ final class CountButton: TappableButton {
     }
     
     private func configureAppearance(type: CountButtonType) {
+        let tintColor = Asset.Colors.mainTextColor.color
         switch type {
-        case .plus: buttomImage.image = Asset.plusImage.image
-        case .minus: buttomImage.image = Asset.minusImage.image
+        case .plus:
+            buttomImage.image = Asset.ImageCell.plusImage.image.withTintColor(tintColor)
+        case .minus:
+            buttomImage.image = Asset.ImageCell.minusImage.image.withTintColor(tintColor)
         }
-        backgroundColor = Asset.buttonBackgroundColor.color
+        backgroundColor = Asset.Colors.buttonBackgroundColor.color
         layer.cornerRadius = CGFloat.smallRadius
         layer.masksToBounds = true
         setInsetsOffset(Constants.insetsButton)

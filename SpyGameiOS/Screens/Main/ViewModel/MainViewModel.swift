@@ -130,19 +130,19 @@ final class MainViewModel: BaseViewModel {
         switch type {
         case .playes:
             return SettingsViewCell.Model(
-                icon: Asset.playerImage.image,
+                icon: Asset.ImageCell.playerImage.image,
                 titleText: L10n.SettingsCell.players,
                 secondText: "\(UserDefaults.standard.settingPlayersCount)"
             )
         case .spies:
             return SettingsViewCell.Model(
-                icon: Asset.spyImage.image,
+                icon: Asset.ImageCell.spyImage.image,
                 titleText: L10n.SettingsCell.spys,
                 secondText: "\(UserDefaults.standard.settingSpiesCount)"
             )
         case .timer:
             return SettingsViewCell.Model(
-                icon: Asset.clockImage.image,
+                icon: Asset.ImageCell.clockImage.image,
                 titleText: L10n.SettingsCell.timer,
                 secondText: "\(UserDefaults.standard.settingMinutesCount) \(L10n.SettingsCell.minute)"
             )
