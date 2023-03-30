@@ -30,6 +30,7 @@
 		33AE08CE29D55F9A00A598DA /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AE08BA29D55F9A00A598DA /* CGPoint+Extensions.swift */; };
 		33AE08CF29D55F9A00A598DA /* TapGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AE08BB29D55F9A00A598DA /* TapGestureRecognizer.swift */; };
 		33AE08D329D55FAD00A598DA /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AE08D229D55FAD00A598DA /* GameViewController.swift */; };
+		33AE08D529D560C000A598DA /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AE08D429D560C000A598DA /* CardView.swift */; };
 		33BFA57E29859822000DDD5D /* CountButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BFA57D29859822000DDD5D /* CountButton.swift */; };
 		33BFA58029859973000DDD5D /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BFA57F29859973000DDD5D /* UIView+Extension.swift */; };
 		33C52A2929C5EFD100C716E8 /* NetworkRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C52A2829C5EFD100C716E8 /* NetworkRepository.swift */; };
@@ -107,6 +108,7 @@
 		33AE08BA29D55F9A00A598DA /* CGPoint+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extensions.swift"; sourceTree = "<group>"; };
 		33AE08BB29D55F9A00A598DA /* TapGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TapGestureRecognizer.swift; sourceTree = "<group>"; };
 		33AE08D229D55FAD00A598DA /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		33AE08D429D560C000A598DA /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		33BFA57D29859822000DDD5D /* CountButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountButton.swift; sourceTree = "<group>"; };
 		33BFA57F29859973000DDD5D /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		33C52A2829C5EFD100C716E8 /* NetworkRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkRepository.swift; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				33AE08D229D55FAD00A598DA /* GameViewController.swift */,
+				33AE08D429D560C000A598DA /* CardView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -382,7 +385,6 @@
 				641E215629D07C5700ADCAE0 /* AppCoordinator.swift */,
 				64AF8F4429BFC20B00C57C44 /* Services */,
 				CE329E2728AE6C7B00508E25 /* Helpers */,
-				33AE08A429D55F9A00A598DA /* Shuffle */,
 				64871D6828A98E310004B773 /* Screens */,
 				64871D6728A98DFF0004B773 /* Resources */,
 				64871D6628A98DEF0004B773 /* Core */,
@@ -531,6 +533,7 @@
 			children = (
 				644C66B129C0FD2E00EA5384 /* Views */,
 				33E3AEB8294E5CA4000E0C03 /* Extensions */,
+				33AE08A429D55F9A00A598DA /* Shuffle */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -771,6 +774,7 @@
 				33AE08C029D55F9A00A598DA /* SwipeCard.swift in Sources */,
 				64F0D321297D62A700728750 /* CategoriesViewCell.swift in Sources */,
 				33AE08C829D55F9A00A598DA /* Array+Extensions.swift in Sources */,
+				33AE08D529D560C000A598DA /* CardView.swift in Sources */,
 				64AF8F4A29BFC20B00C57C44 /* Resource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
