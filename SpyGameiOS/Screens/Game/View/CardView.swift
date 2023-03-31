@@ -9,9 +9,8 @@ import UIKit
 import SnapKit
 
 private enum Constants {
-    static let labelFont: UIFont = FontFamily.Montserrat.bold.font(size: 18)
-    static let saveButtonFont: UIFont = FontFamily.Montserrat.semiBold.font(size: 16)
-    static let alphaBackground: CGFloat = 0.5
+    static let boldFont: UIFont = FontFamily.Montserrat.bold.font(size: 18)
+    static let semiBoldFont: UIFont = FontFamily.Montserrat.semiBold.font(size: 14)
 }
 
 final class CardView: UIView {
@@ -44,23 +43,24 @@ final class CardView: UIView {
             $0.center.equalToSuperview()
         }
         descriptionOfTypeLabel.snp.makeConstraints {
-            $0.leading.trailing.equalToSuperview().inset(16)
-            $0.bottom.equalToSuperview().inset(16)
+            $0.leading.equalToSuperview().offset(CGFloat.baseMargin)
+            $0.trailing.equalToSuperview().inset(CGFloat.baseMargin).priority(.high)
+            $0.bottom.equalToSuperview().inset(CGFloat.baseMargin)
         }
     }
     
     private func configureAppearance() {
         self.backgroundColor = .white
         self.layer.borderWidth = 2
-        self.layer.borderColor = UIColor.black.cgColor
+        self.layer.borderColor = Asset.mainTextColor.color.cgColor
         self.layer.masksToBounds = true
         self.layer.cornerRadius = .largeRadius
-        
+        // Labels
         typeOfPlayerLabel.textAlignment = .center
-        typeOfPlayerLabel.font = Constants.labelFont
+        typeOfPlayerLabel.font = Constants.boldFont
         typeOfPlayerLabel.textColor = Asset.mainTextColor.color
         typeOfPlayerLabel.text = "Игрок"
-        descriptionOfTypeLabel.font = Constants.labelFont
+        descriptionOfTypeLabel.font = Constants.semiBoldFont
         descriptionOfTypeLabel.textColor = Asset.mainTextColor.color
         descriptionOfTypeLabel.textAlignment = .center
         descriptionOfTypeLabel.numberOfLines = 0
