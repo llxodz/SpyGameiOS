@@ -36,6 +36,7 @@ internal enum Asset {
   internal static let minusImage = ImageAsset(name: "MinusImage")
   internal static let playerImage = ImageAsset(name: "PlayerImage")
   internal static let plusImage = ImageAsset(name: "PlusImage")
+  internal static let spyColor = ColorAsset(name: "SpyColor")
   internal static let spyImage = ImageAsset(name: "SpyImage")
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name

@@ -12,6 +12,18 @@ import Foundation
 internal enum L10n {
   /// Spy Game
   internal static let spyGameiOS = L10n.tr("Localizable", "SpyGameiOS", fallback: #"Spy Game"#)
+  internal enum CardView {
+    /// You're local. Your task is to figure out the spy. Ask questions to other players to figure out the spy
+    internal static let commonPlayerDescription = L10n.tr("Localizable", "CardView.commonPlayerDescription", fallback: #"You're local. Your task is to figure out the spy. Ask questions to other players to figure out the spy"#)
+    /// Try to understand about what talk about
+    internal static let spyDescription = L10n.tr("Localizable", "CardView.spyDescription", fallback: #"Try to understand about what talk about"#)
+    /// You're a spy
+    internal static let spyName = L10n.tr("Localizable", "CardView.spyName", fallback: #"You're a spy"#)
+    /// Tap here to view your role
+    internal static let startDescription = L10n.tr("Localizable", "CardView.startDescription", fallback: #"Tap here to view your role"#)
+    /// Who are you?
+    internal static let startName = L10n.tr("Localizable", "CardView.startName", fallback: #"Who are you?"#)
+  }
   internal enum CategoriesTableViewCell {
     /// Categories
     internal static let categories = L10n.tr("Localizable", "CategoriesTableViewCell.Categories", fallback: #"Categories"#)

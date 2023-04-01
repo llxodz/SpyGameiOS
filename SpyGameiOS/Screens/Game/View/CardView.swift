@@ -11,6 +11,7 @@ import SnapKit
 private enum Constants {
     static let boldFont: UIFont = FontFamily.Montserrat.bold.font(size: 18)
     static let semiBoldFont: UIFont = FontFamily.Montserrat.semiBold.font(size: 14)
+    static let borderWidth: CGFloat = 2
 }
 
 final class CardView: UIView {
@@ -51,7 +52,7 @@ final class CardView: UIView {
     
     private func configureAppearance() {
         self.backgroundColor = .white
-        self.layer.borderWidth = 2
+        self.layer.borderWidth = Constants.borderWidth
         self.layer.borderColor = Asset.mainTextColor.color.cgColor
         self.layer.masksToBounds = true
         self.layer.cornerRadius = .largeRadius
@@ -59,11 +60,34 @@ final class CardView: UIView {
         typeOfPlayerLabel.textAlignment = .center
         typeOfPlayerLabel.font = Constants.boldFont
         typeOfPlayerLabel.textColor = Asset.mainTextColor.color
-        typeOfPlayerLabel.text = "Игрок"
+        typeOfPlayerLabel.text = L10n.CardView.startName
         descriptionOfTypeLabel.font = Constants.semiBoldFont
         descriptionOfTypeLabel.textColor = Asset.mainTextColor.color
         descriptionOfTypeLabel.textAlignment = .center
         descriptionOfTypeLabel.numberOfLines = 0
-        descriptionOfTypeLabel.text = "Ты игрок балблТы игрок балблТы игрок балблТы игрок балблТы игрок балбл"
+        descriptionOfTypeLabel.text = L10n.CardView.startDescription
+    }
+}
+
+extension CardView: Configurable {
+    
+    struct Player {
+        let type: PlayerType
+        let word: String
+        var isCardOpen: Bool = false
+    }
+    
+    func configure(with model: Player) {
+        switch model.type {
+        case .common:
+            typeOfPlayerLabel.text = model.word
+            descriptionOfTypeLabel.text = L10n.CardView.commonPlayerDescription
+        case .spy:
+            typeOfPlayerLabel.text = L10n.CardView.spyName
+            typeOfPlayerLabel.textColor = Asset.spyColor.color
+            descriptionOfTypeLabel.textColor = Asset.spyColor.color
+            descriptionOfTypeLabel.text = L10n.CardView.spyDescription
+            self.layer.borderColor = Asset.spyColor.color.cgColor
+        }
     }
 }

@@ -12,6 +12,7 @@ private enum Constants {
     static let boldFont: UIFont = FontFamily.Montserrat.bold.font(size: 18)
     static let semiBoldFont: UIFont = FontFamily.Montserrat.semiBold.font(size: 14)
     static let alphaBackground: CGFloat = 0.5
+    static let durationOfAnimation: CGFloat = 0.66
     static let offAlpha: CGFloat = 0.25
     static let startButtonHeight: CGFloat = 56
 }
@@ -24,6 +25,14 @@ final class GameViewController: BaseViewController {
     private let timerLabel = UILabel()
     private let startGameButton = TappableButton()
     
+    // TODO: - Удалить отсюда
+    private var cards: [CardView.Player] = [
+        CardView.Player(type: .spy, word: "Прикол"),
+        CardView.Player(type: .common, word: "Прикол"),
+        CardView.Player(type: .spy, word: "Прикол"),
+        CardView.Player(type: .common, word: "Прикол"),
+    ]
+    
     // MARK: - Lifecycle
     
     override func loadView() {
@@ -31,6 +40,19 @@ final class GameViewController: BaseViewController {
         addViews()
         configureLayout()
         configureAppearance()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureActions()
+    }
+    
+    // MARK: - Actions
+    
+    private func configureActions() {
+        startGameButton.enableTapping { [weak self] in
+            self?.dismiss(animated: true)
+        }
     }
     
     // MARK: - Private
@@ -79,10 +101,6 @@ final class GameViewController: BaseViewController {
         startGameButton.setTitle(L10n.FooterView.startGame, for: .normal)
         startGameButton.titleLabel?.font = Constants.boldFont
         startGameButton.setTitleColor(Asset.mainTextColor.color, for: .normal)
-        startGameButton.setTitleColor(
-            Asset.mainTextColor.color.withAlphaComponent(Constants.offAlpha),
-            for: .disabled
-        )
         startGameButton.backgroundColor = Asset.buttonBackgroundColor.color
     }
 }
@@ -90,12 +108,35 @@ final class GameViewController: BaseViewController {
 // MARK: - Extensions SwipeCardStack
 
 extension GameViewController: SwipeCardStackDelegate, SwipeCardStackDataSource {
+    
     func cardStack(_ cardStack: SwipeCardStack, cardForIndexAt index: Int) -> SwipeCard {
         return configureCard()
     }
     
+    func cardStack(_ cardStack: SwipeCardStack, didSelectCardAt index: Int) {
+        if !cards[index].isCardOpen {
+            guard let card = cardStack.card(forIndexAt: index) else { return }
+            
+            UIView.transition(
+                with: card,
+                duration: Constants.durationOfAnimation,
+                options: [.curveEaseOut, .transitionFlipFromRight],
+                animations: {
+                    (card.content as? CardView)?.configure(with: self.cards[index])
+                },
+                completion: nil
+            )
+            
+            cards[index].isCardOpen = true
+        }
+    }
+    
     func numberOfCards(in cardStack: SwipeCardStack) -> Int {
-        5
+        cards.count
+    }
+    
+    func didSwipeAllCards(_ cardStack: SwipeCardStack) {
+        shuffleStackView.isHidden = true
     }
     
     private func configureCard() -> SwipeCard {
@@ -106,15 +147,4 @@ extension GameViewController: SwipeCardStackDelegate, SwipeCardStackDataSource {
         
         return card
     }
-}
-
-// MARK: - Extension Configurable
-
-extension GameViewController: Configurable {
-
-    struct Model {
-        let value: Int
-    }
-    
-    func configure(with model: Model) { }
 }
