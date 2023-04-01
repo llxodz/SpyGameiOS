@@ -13,7 +13,7 @@ enum SpyEndpoint: String {
 
 extension SpyEndpoint: BaseEndpoint {
     
-    private static let baseUrl: String = "http://localhost:3000"
+    private static let baseUrl: String = "https://spy-game-backend.vercel.app/"
     
     var url: URL {
         URL(string: SpyEndpoint.baseUrl + self.rawValue)!
