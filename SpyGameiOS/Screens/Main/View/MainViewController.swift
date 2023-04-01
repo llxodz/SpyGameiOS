@@ -160,22 +160,22 @@ class MainViewController: BaseViewController {
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0.001, height: 0))
         tableView.separatorStyle = .none
         tableView.backgroundColor = .clear
-        view.backgroundColor = Asset.mainBackgroundColor.color
+        view.backgroundColor = Asset.Colors.mainBackgroundColor.color
         // Start Button
         startButton.layer.cornerRadius = .baseRadius
         startButton.setTitle(L10n.FooterView.startGame, for: .normal)
         startButton.titleLabel?.font = Constants.startButtonFont
-        startButton.setTitleColor(Asset.mainTextColor.color, for: .normal)
+        startButton.setTitleColor(Asset.Colors.mainTextColor.color, for: .normal)
         startButton.setTitleColor(
-            Asset.mainTextColor.color.withAlphaComponent(Constants.offAlpha),
+            Asset.Colors.mainTextColor.color.withAlphaComponent(Constants.offAlpha),
             for: .disabled
         )
-        startButton.backgroundColor = Asset.buttonBackgroundColor.color
+        startButton.backgroundColor = Asset.Colors.buttonBackgroundColor.color
         // Refresh Button
         refreshButton.isHidden = true
         refreshButton.setTitle(L10n.SettingsViewController.refresh, for: .normal)
         refreshButton.titleLabel?.font = Constants.startButtonFont
-        refreshButton.setTitleColor(Asset.mainTextColor.color, for: .normal)
+        refreshButton.setTitleColor(Asset.Colors.mainTextColor.color, for: .normal)
         refreshButton.setInsetsOffset(CGFloat.mediumSpace)
     }
     

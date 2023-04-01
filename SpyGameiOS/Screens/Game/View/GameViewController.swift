@@ -83,7 +83,7 @@ final class GameViewController: BaseViewController {
     }
     
     private func configureAppearance() {
-        view.backgroundColor = Asset.mainBackgroundColor.color
+        view.backgroundColor = Asset.Colors.mainBackgroundColor.color
         // Shuffle
         shuffleStackView.dataSource = self
         shuffleStackView.delegate = self
@@ -94,14 +94,14 @@ final class GameViewController: BaseViewController {
         // Label
         timerLabel.textAlignment = .center
         timerLabel.font = Constants.boldFont
-        timerLabel.textColor = Asset.mainTextColor.color
+        timerLabel.textColor = Asset.Colors.mainTextColor.color
         timerLabel.text = "2:00"
         // Button
         startGameButton.layer.cornerRadius = .baseRadius
         startGameButton.setTitle(L10n.FooterView.startGame, for: .normal)
         startGameButton.titleLabel?.font = Constants.boldFont
-        startGameButton.setTitleColor(Asset.mainTextColor.color, for: .normal)
-        startGameButton.backgroundColor = Asset.buttonBackgroundColor.color
+        startGameButton.setTitleColor(Asset.Colors.mainTextColor.color, for: .normal)
+        startGameButton.backgroundColor = Asset.Colors.buttonBackgroundColor.color
     }
 }
 

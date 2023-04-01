@@ -81,14 +81,14 @@ final class SettingsViewCell: AnimatedPressTableCell {
     }
     
     private func configureAppearance() {
-        backgroundColor = Asset.mainBackgroundColor.color
+        backgroundColor = Asset.Colors.mainBackgroundColor.color
         // Labels
         titleTextLabel.font = Constants.titleFont
-        titleTextLabel.textColor = Asset.mainTextColor.color
+        titleTextLabel.textColor = Asset.Colors.mainTextColor.color
         secondTextLabel.font = Constants.titleFont
-        secondTextLabel.textColor = Asset.mainTextColor.color
+        secondTextLabel.textColor = Asset.Colors.mainTextColor.color
         // Image
-        arrowImageView.image = Asset.arrowRightImage.image
+        arrowImageView.image = Asset.ImageCell.arrowRightImage.image
         // Separator
         separator.backgroundColor = .gray
     }
@@ -105,7 +105,7 @@ extension SettingsViewCell: Configurable {
     }
     
     func configure(with model: Model) {
-        infoImageView.image = model.icon.withTintColor(Asset.mainTextColor.color)
+        infoImageView.image = model.icon.withTintColor(Asset.Colors.mainTextColor.color)
         titleTextLabel.text = model.titleText
         secondTextLabel.text = model.secondText
     }

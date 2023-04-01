@@ -100,18 +100,18 @@ final class SettingsTimeFieldViewController: BaseViewController {
     }
     
     private func configureAppearance() {
-        containerView.backgroundColor = .white
+        containerView.backgroundColor = Asset.Colors.mainBackgroundColor.color
         containerView.layer.cornerRadius = .baseRadius
         view.backgroundColor = .gray.withAlphaComponent(Constants.alphaBackground)
         // Labels
         titleLabel.font = Constants.boldFont
-        titleLabel.textColor = Asset.mainTextColor.color
+        titleLabel.textColor = Asset.Colors.mainTextColor.color
         titleLabel.textAlignment = .center
         countOfMinutesLabel.text = L10n.SettingsCell.minute
         countOfMinutesLabel.font = Constants.boldFont
         countOfMinutesLabel.textAlignment = .right
         countOfMinutesLabel.font = Constants.mediumFont
-        countOfMinutesLabel.textColor = Asset.mainTextColor.color
+        countOfMinutesLabel.textColor = Asset.Colors.mainTextColor.color
         // Date picker
         minutesPicker.delegate = self
         minutesPicker.dataSource = self
@@ -121,8 +121,8 @@ final class SettingsTimeFieldViewController: BaseViewController {
         saveButton.layer.masksToBounds = true
         saveButton.setTitle(L10n.SettingsViewController.save, for: .normal)
         saveButton.titleLabel?.font = Constants.mediumFont
-        saveButton.setTitleColor(Asset.mainTextColor.color, for: .normal)
-        saveButton.backgroundColor = Asset.buttonBackgroundColor.color
+        saveButton.setTitleColor(Asset.Colors.mainTextColor.color, for: .normal)
+        saveButton.backgroundColor = Asset.Colors.buttonBackgroundColor.color
     }
 }
 

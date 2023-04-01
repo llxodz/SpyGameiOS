@@ -76,9 +76,9 @@ final class CategoryViewCell: UITableViewCell {
     }
     
     private func configureAppearance() {
-        backgroundColor = Asset.mainBackgroundColor.color
+        backgroundColor = Asset.Colors.mainBackgroundColor.color
         name.font = Constants.nameFont
-        name.textColor = Asset.mainTextColor.color
+        name.textColor = Asset.Colors.mainTextColor.color
         switchCase.transform = CGAffineTransform(scaleX: Constants.switchScale, y: Constants.switchScale)
     }
 }
