@@ -1,5 +1,5 @@
 //
-//  TapGestureRecognizer.swift
+//  SwipeCardStackTapGestureRecognizer.swift
 //  SpyGameiOS
 //
 //  Created by Ilya Gavrilov on 28.03.2023.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TapGestureRecognizer: UITapGestureRecognizer {
+class SwipeCardStackTapGestureRecognizer: UITapGestureRecognizer {
     
     private weak var testTarget: AnyObject?
     private var testAction: Selector?

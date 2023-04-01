@@ -23,18 +23,18 @@ public extension Tappable where Self: UIView {
         // Удаление Recognizer если он уже был
         disableTapping()
 
-        let tapRecognizer = SpyTapGestureRecognizer(handler: handler)
+        let tapRecognizer = TapGestureRecognizer(handler: handler)
         addGestureRecognizer(tapRecognizer)
     }
 
     func disableTapping() {
-        if let recognizersToDelete = gestureRecognizers?.filter({ $0 is SpyTapGestureRecognizer }) {
+        if let recognizersToDelete = gestureRecognizers?.filter({ $0 is TapGestureRecognizer }) {
             recognizersToDelete.forEach(removeGestureRecognizer)
         }
     }
 }
 
-private class SpyTapGestureRecognizer: UITapGestureRecognizer {
+private class TapGestureRecognizer: UITapGestureRecognizer {
     
     private let handler: (() -> Void)?
     

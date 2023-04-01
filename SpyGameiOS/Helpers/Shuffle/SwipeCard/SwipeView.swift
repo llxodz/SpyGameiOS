@@ -22,7 +22,7 @@ open class SwipeView: UIView {
         return internalTapGestureRecognizer
     }
     
-    private lazy var internalTapGestureRecognizer = TapGestureRecognizer(target: self,
+    private lazy var internalTapGestureRecognizer = SwipeCardStackTapGestureRecognizer(target: self,
                                                                          action: #selector(didTap))
     
     override public init(frame: CGRect) {

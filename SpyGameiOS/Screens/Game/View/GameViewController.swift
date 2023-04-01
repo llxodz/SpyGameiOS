@@ -27,10 +27,10 @@ final class GameViewController: BaseViewController {
     
     // TODO: - Удалить отсюда
     private var cards: [CardView.Player] = [
-        CardView.Player(type: .spy, word: "Прикол"),
-        CardView.Player(type: .common, word: "Прикол"),
-        CardView.Player(type: .spy, word: "Прикол"),
-        CardView.Player(type: .common, word: "Прикол"),
+        CardView.Player(type: .spyPlayer, word: "Прикол"),
+        CardView.Player(type: .normalPlayer, word: "Прикол"),
+        CardView.Player(type: .spyPlayer, word: "Прикол"),
+        CardView.Player(type: .normalPlayer, word: "Прикол"),
     ]
     
     // MARK: - Lifecycle

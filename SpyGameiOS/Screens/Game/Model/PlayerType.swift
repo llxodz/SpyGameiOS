@@ -8,6 +8,6 @@
 import Foundation
 
 enum PlayerType {
-    case common
-    case spy
+    case normalPlayer
+    case spyPlayer
 }

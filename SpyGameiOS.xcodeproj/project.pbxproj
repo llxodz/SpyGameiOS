@@ -29,7 +29,7 @@
 		33AE08CC29D55F9A00A598DA /* PanGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AE08B829D55F9A00A598DA /* PanGestureRecognizer.swift */; };
 		33AE08CD29D55F9A00A598DA /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AE08B929D55F9A00A598DA /* Animator.swift */; };
 		33AE08CE29D55F9A00A598DA /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AE08BA29D55F9A00A598DA /* CGPoint+Extensions.swift */; };
-		33AE08CF29D55F9A00A598DA /* TapGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AE08BB29D55F9A00A598DA /* TapGestureRecognizer.swift */; };
+		33AE08CF29D55F9A00A598DA /* SwipeCardStackTapGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AE08BB29D55F9A00A598DA /* SwipeCardStackTapGestureRecognizer.swift */; };
 		33AE08D329D55FAD00A598DA /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AE08D229D55FAD00A598DA /* GameViewController.swift */; };
 		33AE08D529D560C000A598DA /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AE08D429D560C000A598DA /* CardView.swift */; };
 		33BFA57E29859822000DDD5D /* CountButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BFA57D29859822000DDD5D /* CountButton.swift */; };
@@ -108,7 +108,7 @@
 		33AE08B829D55F9A00A598DA /* PanGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanGestureRecognizer.swift; sourceTree = "<group>"; };
 		33AE08B929D55F9A00A598DA /* Animator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
 		33AE08BA29D55F9A00A598DA /* CGPoint+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extensions.swift"; sourceTree = "<group>"; };
-		33AE08BB29D55F9A00A598DA /* TapGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TapGestureRecognizer.swift; sourceTree = "<group>"; };
+		33AE08BB29D55F9A00A598DA /* SwipeCardStackTapGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeCardStackTapGestureRecognizer.swift; sourceTree = "<group>"; };
 		33AE08D229D55FAD00A598DA /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		33AE08D429D560C000A598DA /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		33BFA57D29859822000DDD5D /* CountButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountButton.swift; sourceTree = "<group>"; };
@@ -252,7 +252,7 @@
 				33AE08B829D55F9A00A598DA /* PanGestureRecognizer.swift */,
 				33AE08B929D55F9A00A598DA /* Animator.swift */,
 				33AE08BA29D55F9A00A598DA /* CGPoint+Extensions.swift */,
-				33AE08BB29D55F9A00A598DA /* TapGestureRecognizer.swift */,
+				33AE08BB29D55F9A00A598DA /* SwipeCardStackTapGestureRecognizer.swift */,
 			);
 			path = Internal;
 			sourceTree = "<group>";
@@ -739,7 +739,7 @@
 				64871D5A28A989C00004B773 /* SpyGameiOS.xcdatamodeld in Sources */,
 				33BFA57E29859822000DDD5D /* CountButton.swift in Sources */,
 				64BB42A429BE3B1300B3317A /* CategoriesViewModel.swift in Sources */,
-				33AE08CF29D55F9A00A598DA /* TapGestureRecognizer.swift in Sources */,
+				33AE08CF29D55F9A00A598DA /* SwipeCardStackTapGestureRecognizer.swift in Sources */,
 				64BB42A229BE37E700B3317A /* Category.swift in Sources */,
 				33AE08C529D55F9A00A598DA /* SwipeCardStackDelegate.swift in Sources */,
 				33AE08BF29D55F9A00A598DA /* SwipeCardDelegate.swift in Sources */,

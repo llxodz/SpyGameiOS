@@ -79,10 +79,10 @@ extension CardView: Configurable {
     
     func configure(with model: Player) {
         switch model.type {
-        case .common:
+        case .normalPlayer:
             typeOfPlayerLabel.text = model.word
             descriptionOfTypeLabel.text = L10n.CardView.commonPlayerDescription
-        case .spy:
+        case .spyPlayer:
             typeOfPlayerLabel.text = L10n.CardView.spyName
             typeOfPlayerLabel.textColor = Asset.Colors.spyColor.color
             descriptionOfTypeLabel.textColor = Asset.Colors.spyColor.color
