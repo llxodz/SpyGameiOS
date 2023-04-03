@@ -127,6 +127,7 @@ extension GameViewController: SwipeCardStackDelegate, SwipeCardStackDataSource {
                 completion: nil
             )
             
+            card.swipeDirections = [.left, .right]
             cards[index].isCardOpen = true
         }
     }
@@ -142,7 +143,7 @@ extension GameViewController: SwipeCardStackDelegate, SwipeCardStackDataSource {
     private func configureCard() -> SwipeCard {
         let card = SwipeCard()
         let cardView = CardView()
-        card.swipeDirections = [.left, .right]
+        card.swipeDirections = []
         card.content = cardView
         
         return card
