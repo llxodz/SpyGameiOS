@@ -30,6 +30,7 @@ internal enum Asset {
     internal static let buttonBackgroundColor = ColorAsset(name: "ButtonBackgroundColor")
     internal static let mainBackgroundColor = ColorAsset(name: "MainBackgroundColor")
     internal static let mainTextColor = ColorAsset(name: "MainTextColor")
+    internal static let spyColor = ColorAsset(name: "SpyColor")
   }
   internal enum ImageCell {
     internal static let arrowRightImage = ImageAsset(name: "ArrowRightImage")

@@ -7,8 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		331FCB3B29D86714007BCBB8 /* PlayerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331FCB3A29D86714007BCBB8 /* PlayerType.swift */; };
 		3341C75B297F2863008D61E1 /* SettingsTimeFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341C75A297F2863008D61E1 /* SettingsTimeFieldViewController.swift */; };
 		33657F82296475D300680536 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33657F81296475D300680536 /* MainViewModel.swift */; };
+		33AE08BC29D55F9A00A598DA /* CardAnimationOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AE08A629D55F9A00A598DA /* CardAnimationOptions.swift */; };
+		33AE08BD29D55F9A00A598DA /* SwipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AE08A729D55F9A00A598DA /* SwipeView.swift */; };
+		33AE08BE29D55F9A00A598DA /* CardAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AE08A829D55F9A00A598DA /* CardAnimator.swift */; };
+		33AE08BF29D55F9A00A598DA /* SwipeCardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AE08A929D55F9A00A598DA /* SwipeCardDelegate.swift */; };
+		33AE08C029D55F9A00A598DA /* SwipeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AE08AA29D55F9A00A598DA /* SwipeCard.swift */; };
+		33AE08C129D55F9A00A598DA /* SwipeCardStackDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AE08AC29D55F9A00A598DA /* SwipeCardStackDataSource.swift */; };
+		33AE08C229D55F9A00A598DA /* CardStackAnimationOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AE08AD29D55F9A00A598DA /* CardStackAnimationOptions.swift */; };
+		33AE08C329D55F9A00A598DA /* CardStackAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AE08AE29D55F9A00A598DA /* CardStackAnimator.swift */; };
+		33AE08C429D55F9A00A598DA /* SwipeCardStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AE08AF29D55F9A00A598DA /* SwipeCardStack.swift */; };
+		33AE08C529D55F9A00A598DA /* SwipeCardStackDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AE08B029D55F9A00A598DA /* SwipeCardStackDelegate.swift */; };
+		33AE08C629D55F9A00A598DA /* CardStackStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AE08B129D55F9A00A598DA /* CardStackStateManager.swift */; };
+		33AE08C729D55F9A00A598DA /* SwipeDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AE08B229D55F9A00A598DA /* SwipeDirection.swift */; };
+		33AE08C829D55F9A00A598DA /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AE08B429D55F9A00A598DA /* Array+Extensions.swift */; };
+		33AE08C929D55F9A00A598DA /* CGVector+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AE08B529D55F9A00A598DA /* CGVector+Extensions.swift */; };
+		33AE08CA29D55F9A00A598DA /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AE08B629D55F9A00A598DA /* UIView+Extensions.swift */; };
+		33AE08CB29D55F9A00A598DA /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AE08B729D55F9A00A598DA /* StringUtils.swift */; };
+		33AE08CC29D55F9A00A598DA /* PanGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AE08B829D55F9A00A598DA /* PanGestureRecognizer.swift */; };
+		33AE08CD29D55F9A00A598DA /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AE08B929D55F9A00A598DA /* Animator.swift */; };
+		33AE08CE29D55F9A00A598DA /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AE08BA29D55F9A00A598DA /* CGPoint+Extensions.swift */; };
+		33AE08CF29D55F9A00A598DA /* SwipeCardStackTapGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AE08BB29D55F9A00A598DA /* SwipeCardStackTapGestureRecognizer.swift */; };
+		33AE08D329D55FAD00A598DA /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AE08D229D55FAD00A598DA /* GameViewController.swift */; };
+		33AE08D529D560C000A598DA /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AE08D429D560C000A598DA /* CardView.swift */; };
 		33BFA57E29859822000DDD5D /* CountButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BFA57D29859822000DDD5D /* CountButton.swift */; };
 		33BFA58029859973000DDD5D /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BFA57F29859973000DDD5D /* UIView+Extension.swift */; };
 		33C52A2929C5EFD100C716E8 /* NetworkRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C52A2829C5EFD100C716E8 /* NetworkRepository.swift */; };
@@ -63,8 +86,31 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		331FCB3A29D86714007BCBB8 /* PlayerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerType.swift; sourceTree = "<group>"; };
 		3341C75A297F2863008D61E1 /* SettingsTimeFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTimeFieldViewController.swift; sourceTree = "<group>"; };
 		33657F81296475D300680536 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		33AE08A629D55F9A00A598DA /* CardAnimationOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardAnimationOptions.swift; sourceTree = "<group>"; };
+		33AE08A729D55F9A00A598DA /* SwipeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeView.swift; sourceTree = "<group>"; };
+		33AE08A829D55F9A00A598DA /* CardAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardAnimator.swift; sourceTree = "<group>"; };
+		33AE08A929D55F9A00A598DA /* SwipeCardDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeCardDelegate.swift; sourceTree = "<group>"; };
+		33AE08AA29D55F9A00A598DA /* SwipeCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeCard.swift; sourceTree = "<group>"; };
+		33AE08AC29D55F9A00A598DA /* SwipeCardStackDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeCardStackDataSource.swift; sourceTree = "<group>"; };
+		33AE08AD29D55F9A00A598DA /* CardStackAnimationOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardStackAnimationOptions.swift; sourceTree = "<group>"; };
+		33AE08AE29D55F9A00A598DA /* CardStackAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardStackAnimator.swift; sourceTree = "<group>"; };
+		33AE08AF29D55F9A00A598DA /* SwipeCardStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeCardStack.swift; sourceTree = "<group>"; };
+		33AE08B029D55F9A00A598DA /* SwipeCardStackDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeCardStackDelegate.swift; sourceTree = "<group>"; };
+		33AE08B129D55F9A00A598DA /* CardStackStateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardStackStateManager.swift; sourceTree = "<group>"; };
+		33AE08B229D55F9A00A598DA /* SwipeDirection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeDirection.swift; sourceTree = "<group>"; };
+		33AE08B429D55F9A00A598DA /* Array+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
+		33AE08B529D55F9A00A598DA /* CGVector+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGVector+Extensions.swift"; sourceTree = "<group>"; };
+		33AE08B629D55F9A00A598DA /* UIView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		33AE08B729D55F9A00A598DA /* StringUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringUtils.swift; sourceTree = "<group>"; };
+		33AE08B829D55F9A00A598DA /* PanGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanGestureRecognizer.swift; sourceTree = "<group>"; };
+		33AE08B929D55F9A00A598DA /* Animator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
+		33AE08BA29D55F9A00A598DA /* CGPoint+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extensions.swift"; sourceTree = "<group>"; };
+		33AE08BB29D55F9A00A598DA /* SwipeCardStackTapGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeCardStackTapGestureRecognizer.swift; sourceTree = "<group>"; };
+		33AE08D229D55FAD00A598DA /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		33AE08D429D560C000A598DA /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		33BFA57D29859822000DDD5D /* CountButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountButton.swift; sourceTree = "<group>"; };
 		33BFA57F29859973000DDD5D /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		33C52A2829C5EFD100C716E8 /* NetworkRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkRepository.swift; sourceTree = "<group>"; };
@@ -144,12 +190,89 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		331FCB3929D86702007BCBB8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				331FCB3A29D86714007BCBB8 /* PlayerType.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		3341C759297F284E008D61E1 /* SettingTimeField */ = {
 			isa = PBXGroup;
 			children = (
 				33F276B729D0E12400B1265D /* View */,
 			);
 			path = SettingTimeField;
+			sourceTree = "<group>";
+		};
+		33AE08A429D55F9A00A598DA /* Shuffle */ = {
+			isa = PBXGroup;
+			children = (
+				33AE08A529D55F9A00A598DA /* SwipeCard */,
+				33AE08AB29D55F9A00A598DA /* SwipeCardStack */,
+				33AE08B229D55F9A00A598DA /* SwipeDirection.swift */,
+				33AE08B329D55F9A00A598DA /* Internal */,
+			);
+			path = Shuffle;
+			sourceTree = "<group>";
+		};
+		33AE08A529D55F9A00A598DA /* SwipeCard */ = {
+			isa = PBXGroup;
+			children = (
+				33AE08A629D55F9A00A598DA /* CardAnimationOptions.swift */,
+				33AE08A729D55F9A00A598DA /* SwipeView.swift */,
+				33AE08A829D55F9A00A598DA /* CardAnimator.swift */,
+				33AE08A929D55F9A00A598DA /* SwipeCardDelegate.swift */,
+				33AE08AA29D55F9A00A598DA /* SwipeCard.swift */,
+			);
+			path = SwipeCard;
+			sourceTree = "<group>";
+		};
+		33AE08AB29D55F9A00A598DA /* SwipeCardStack */ = {
+			isa = PBXGroup;
+			children = (
+				33AE08AC29D55F9A00A598DA /* SwipeCardStackDataSource.swift */,
+				33AE08AD29D55F9A00A598DA /* CardStackAnimationOptions.swift */,
+				33AE08AE29D55F9A00A598DA /* CardStackAnimator.swift */,
+				33AE08AF29D55F9A00A598DA /* SwipeCardStack.swift */,
+				33AE08B029D55F9A00A598DA /* SwipeCardStackDelegate.swift */,
+				33AE08B129D55F9A00A598DA /* CardStackStateManager.swift */,
+			);
+			path = SwipeCardStack;
+			sourceTree = "<group>";
+		};
+		33AE08B329D55F9A00A598DA /* Internal */ = {
+			isa = PBXGroup;
+			children = (
+				33AE08B429D55F9A00A598DA /* Array+Extensions.swift */,
+				33AE08B529D55F9A00A598DA /* CGVector+Extensions.swift */,
+				33AE08B629D55F9A00A598DA /* UIView+Extensions.swift */,
+				33AE08B729D55F9A00A598DA /* StringUtils.swift */,
+				33AE08B829D55F9A00A598DA /* PanGestureRecognizer.swift */,
+				33AE08B929D55F9A00A598DA /* Animator.swift */,
+				33AE08BA29D55F9A00A598DA /* CGPoint+Extensions.swift */,
+				33AE08BB29D55F9A00A598DA /* SwipeCardStackTapGestureRecognizer.swift */,
+			);
+			path = Internal;
+			sourceTree = "<group>";
+		};
+		33AE08D029D55FAD00A598DA /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				331FCB3929D86702007BCBB8 /* Model */,
+				33AE08D129D55FAD00A598DA /* View */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		33AE08D129D55FAD00A598DA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				33AE08D229D55FAD00A598DA /* GameViewController.swift */,
+				33AE08D429D560C000A598DA /* CardView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		33C52A2729C5EFD100C716E8 /* Repository */ = {
@@ -310,6 +433,7 @@
 				CEE8667D28AA7EBE006AC0FB /* Main */,
 				33E3AEB5294E5AF2000E0C03 /* SettingNumberField */,
 				3341C759297F284E008D61E1 /* SettingTimeField */,
+				33AE08D029D55FAD00A598DA /* Game */,
 				64871D5D28A989C30004B773 /* LaunchScreen.storyboard */,
 			);
 			path = Screens;
@@ -420,6 +544,7 @@
 			children = (
 				644C66B129C0FD2E00EA5384 /* Views */,
 				33E3AEB8294E5CA4000E0C03 /* Extensions */,
+				33AE08A429D55F9A00A598DA /* Shuffle */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -596,24 +721,38 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33AE08CD29D55F9A00A598DA /* Animator.swift in Sources */,
 				641E215729D07C5700ADCAE0 /* AppCoordinator.swift in Sources */,
 				33C52A2B29C5EFEB00C716E8 /* CategoriesState.swift in Sources */,
 				33C52A3129C5F03B00C716E8 /* BaseEndpoint.swift in Sources */,
+				33AE08C229D55F9A00A598DA /* CardStackAnimationOptions.swift in Sources */,
 				641E215429D07BDA00ADCAE0 /* Coordinator.swift in Sources */,
+				33AE08BE29D55F9A00A598DA /* CardAnimator.swift in Sources */,
+				33AE08BC29D55F9A00A598DA /* CardAnimationOptions.swift in Sources */,
 				64871D7F28A995210004B773 /* Fonts+Generated.swift in Sources */,
 				644C66A929C0F49A00EA5384 /* AnimatedPressTableCell.swift in Sources */,
 				64871D6C28A990EE0004B773 /* Configurable.swift in Sources */,
 				64871D6E28A990EE0004B773 /* BaseConstants.swift in Sources */,
+				331FCB3B29D86714007BCBB8 /* PlayerType.swift in Sources */,
+				33AE08C629D55F9A00A598DA /* CardStackStateManager.swift in Sources */,
 				33C52A2929C5EFD100C716E8 /* NetworkRepository.swift in Sources */,
 				64871D5A28A989C00004B773 /* SpyGameiOS.xcdatamodeld in Sources */,
 				33BFA57E29859822000DDD5D /* CountButton.swift in Sources */,
 				64BB42A429BE3B1300B3317A /* CategoriesViewModel.swift in Sources */,
+				33AE08CF29D55F9A00A598DA /* SwipeCardStackTapGestureRecognizer.swift in Sources */,
 				64BB42A229BE37E700B3317A /* Category.swift in Sources */,
+				33AE08C529D55F9A00A598DA /* SwipeCardStackDelegate.swift in Sources */,
+				33AE08BF29D55F9A00A598DA /* SwipeCardDelegate.swift in Sources */,
+				33AE08C329D55F9A00A598DA /* CardStackAnimator.swift in Sources */,
 				644C66AD29C0FA1B00EA5384 /* CellType.swift in Sources */,
 				64871D5428A989C00004B773 /* MainViewController.swift in Sources */,
 				64871D8028A995210004B773 /* XCAssets+Generated.swift in Sources */,
+				33AE08CC29D55F9A00A598DA /* PanGestureRecognizer.swift in Sources */,
+				33AE08C429D55F9A00A598DA /* SwipeCardStack.swift in Sources */,
+				33AE08C729D55F9A00A598DA /* SwipeDirection.swift in Sources */,
 				644C66B329C0FD3900EA5384 /* TappableButton.swift in Sources */,
 				64871D5028A989C00004B773 /* AppDelegate.swift in Sources */,
+				33AE08D329D55FAD00A598DA /* GameViewController.swift in Sources */,
 				64871D8128A995210004B773 /* IB-Scenes+Generated.swift in Sources */,
 				33DD551B296B46490068F79B /* AnimatedPressButton.swift in Sources */,
 				33E3AEB7294E5B02000E0C03 /* SettingNumberFieldViewController.swift in Sources */,
@@ -623,14 +762,18 @@
 				64F0D327297D93F300728750 /* CategoryViewCell.swift in Sources */,
 				64871D5228A989C00004B773 /* SceneDelegate.swift in Sources */,
 				640CAD6429C253FF001562F2 /* CountButtonType.swift in Sources */,
+				33AE08CB29D55F9A00A598DA /* StringUtils.swift in Sources */,
 				64871D7E28A995210004B773 /* Strings+Generated.swift in Sources */,
 				64BB42A029BE368D00B3317A /* BaseViewModel.swift in Sources */,
 				64AF8F4929BFC20B00C57C44 /* NetworkService.swift in Sources */,
 				33657F82296475D300680536 /* MainViewModel.swift in Sources */,
 				64F8F5F4296459C900477407 /* Tappable.swift in Sources */,
 				64871D8228A995210004B773 /* IB-Segues+Generated.swift in Sources */,
+				33AE08C929D55F9A00A598DA /* CGVector+Extensions.swift in Sources */,
 				64C1547329D0CA6800D3A0E9 /* UserDefaults+Settings.swift in Sources */,
 				64871D6D28A990EE0004B773 /* BaseViewController.swift in Sources */,
+				33AE08C129D55F9A00A598DA /* SwipeCardStackDataSource.swift in Sources */,
+				33AE08CE29D55F9A00A598DA /* CGPoint+Extensions.swift in Sources */,
 				3341C75B297F2863008D61E1 /* SettingsTimeFieldViewController.swift in Sources */,
 				33C52A2D29C5EFF400C716E8 /* SpyEndpoint.swift in Sources */,
 				64AF8F4B29BFC20B00C57C44 /* NetworkError.swift in Sources */,
@@ -638,7 +781,12 @@
 				CEE8667228A99E65006AC0FB /* SettingsViewCell.swift in Sources */,
 				64F0D325297D929400728750 /* AutoTableView.swift in Sources */,
 				33C52A2F29C5F01900C716E8 /* GamingCategory.swift in Sources */,
+				33AE08CA29D55F9A00A598DA /* UIView+Extensions.swift in Sources */,
+				33AE08BD29D55F9A00A598DA /* SwipeView.swift in Sources */,
+				33AE08C029D55F9A00A598DA /* SwipeCard.swift in Sources */,
 				64F0D321297D62A700728750 /* CategoriesViewCell.swift in Sources */,
+				33AE08C829D55F9A00A598DA /* Array+Extensions.swift in Sources */,
+				33AE08D529D560C000A598DA /* CardView.swift in Sources */,
 				64AF8F4A29BFC20B00C57C44 /* Resource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

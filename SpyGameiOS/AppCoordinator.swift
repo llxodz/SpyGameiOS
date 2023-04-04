@@ -61,6 +61,10 @@ extension AppCoordinator: MainNavigation {
     }
     
     func goToGame() {
-        // TODO: go to gameVC
+        let vc = GameViewController()
+        vc.modalPresentationStyle = .fullScreen
+        navigationController.setNavigationBarHidden(false, animated: true)
+        navigationController.navigationBar.tintColor = Asset.Colors.mainTextColor.color
+        navigationController.pushViewController(vc, animated: true)
     }
 }

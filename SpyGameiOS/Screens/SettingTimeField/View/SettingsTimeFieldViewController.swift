@@ -27,7 +27,7 @@ final class SettingsTimeFieldViewController: BaseViewController {
     private let saveButton = TappableButton()
     
     // Private
-    private var currentCountOfinutes: Int = 0
+    private var currentCountOfMinutes: Int = 0
     private var valueBounds: (min: Int, max: Int) = (0, 0)
     private var updateNumber: PassthroughSubject<Int, Never>?
     
@@ -115,7 +115,7 @@ final class SettingsTimeFieldViewController: BaseViewController {
         // Date picker
         minutesPicker.delegate = self
         minutesPicker.dataSource = self
-        minutesPicker.selectRow(currentCountOfinutes - 1, inComponent: 0, animated: true)
+        minutesPicker.selectRow(currentCountOfMinutes - 1, inComponent: 0, animated: true)
         // Button
         saveButton.layer.cornerRadius = .baseRadius
         saveButton.layer.masksToBounds = true
@@ -143,7 +143,7 @@ extension SettingsTimeFieldViewController: UIPickerViewDelegate, UIPickerViewDat
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent  component: Int) {
-        self.currentCountOfinutes = row + 1
+        self.currentCountOfMinutes = row + 1
     }
 }
 
@@ -161,7 +161,7 @@ extension SettingsTimeFieldViewController: Configurable {
     func configure(with model: Model) {
         titleLabel.text = model.title
         updateNumber = model.updateNumber
-        currentCountOfinutes = model.number
+        currentCountOfMinutes = model.number
         valueBounds = model.valueBounds
     }
 }
