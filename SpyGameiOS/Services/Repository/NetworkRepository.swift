@@ -33,7 +33,7 @@ final class NetworkRepository: INetworkRepository {
     @discardableResult
     func fetchCategories() -> AnyPublisher<CategoriesState, Never> {
         let categoriesState = CurrentValueSubject<CategoriesState, Never>(.loading)
-        let resource = Resource<[GamingCategory]>(url: SpyEndpoint.allCategories.url)
+        let resource = Resource<[GameCategoryData]>(url: SpyEndpoint.allCategories.url)
         service
             .load(resource)
             .sink { result in

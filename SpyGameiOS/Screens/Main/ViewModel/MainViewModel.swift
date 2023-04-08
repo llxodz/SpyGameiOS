@@ -44,18 +44,19 @@ final class MainViewModel: BaseViewModel {
     var modelForCategoriesCell: CategoriesViewCell.Model {
         CategoriesViewCell.Model(
             categories: categories,
-            availabilityStart: availabilityStart
+            availabilityStartWithCategories: availabilityStartWithCategories
         )
     }
     
     // Private property
+    private let availabilityStartWithCategories = PassthroughSubject<(Bool, [GameCategory]), Never>()
     private let availabilityStart = CurrentValueSubject<Bool, Never>(false)
     private let categoriesState = PassthroughSubject<CategoriesState, Never>()
     private let updatePlayersCount = PassthroughSubject<Int, Never>()
     private let updateSpiesCount = PassthroughSubject<Int, Never>()
     private let updateMinutesCount = PassthroughSubject<Int, Never>()
     private var cancellables = Set<AnyCancellable>()
-    private var categories: [Category] = []
+    private var categories: [GameCategory] = []
     
     // MARK: - Init
     
@@ -74,7 +75,8 @@ final class MainViewModel: BaseViewModel {
             .store(in: &cancellables)
         input.clickedStart
             .sink { [weak self] in
-                self?.navigation.goToGame()
+                guard let self = self else { return }
+                self.navigation.goToGame(with: self.makeGameModel())
             }
             .store(in: &cancellables)
         input.viewDidLoad
@@ -83,9 +85,9 @@ final class MainViewModel: BaseViewModel {
                 self.networkRepository.fetchCategories()
                     .sink {
                         switch $0 {
-                        case .success(let gamingCategories):
-                            self.categories = gamingCategories.map { gc in
-                                Category(id: gc.id, name: gc.name, selected: false)
+                        case .success(let data):
+                            self.categories = data.map { category in
+                                GameCategory(data: category, selected: false)
                             }
                         default: break
                         }
@@ -116,6 +118,14 @@ final class MainViewModel: BaseViewModel {
             .merge(with: updateSpiesCount)
             .merge(with: updateMinutesCount)
             .map { _ in return () }
+        
+        availabilityStartWithCategories
+            .sink { [weak self] (availabilityStartValue, categories) in
+                guard let self = self else { return }
+                self.availabilityStart.send(availabilityStartValue)
+                self.categories = categories
+            }
+            .store(in: &cancellables)
         
         return Output(
             availabilityStart: availabilityStart.receive(on: DispatchQueue.main).eraseToAnyPublisher(),
@@ -178,5 +188,14 @@ final class MainViewModel: BaseViewModel {
             ))
         default: break
         }
+    }
+    
+    private func makeGameModel() -> GameViewController.Model {
+        return GameViewController.Model(
+            playersCount: UserDefaults.standard.settingPlayersCount,
+            spiesCount: UserDefaults.standard.settingSpiesCount,
+            minutesCount: UserDefaults.standard.settingMinutesCount,
+            categories: categories.filter({ $0.selected })
+        )
     }
 }

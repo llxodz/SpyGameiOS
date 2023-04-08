@@ -87,8 +87,8 @@ final class CategoryViewCell: UITableViewCell {
 
 extension CategoryViewCell: Configurable {
     
-    func configure(with model: Category) {
-        name.text = model.name
+    func configure(with model: GameCategory) {
+        name.text = model.data.name
         switchCase.isOn = model.selected
     }
 }

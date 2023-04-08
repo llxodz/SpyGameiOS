@@ -16,7 +16,7 @@ extension CategoriesViewModel {
         /// Изменение "Выбрать все"
         let switchAll: AnyPublisher<Bool, Never>
         /// Изменение категории
-        let switchCategory: AnyPublisher<Category, Never>
+        let switchCategory: AnyPublisher<GameCategory, Never>
     }
 
     struct Output {
@@ -25,7 +25,7 @@ extension CategoriesViewModel {
         /// Измененить все переключатели
         let switchAllCategories: AnyPublisher<Bool, Never>
         /// Доступность кнопки старт
-        let availabilityStart: AnyPublisher<Bool, Never>
+        let availabilityStartWithCategories: AnyPublisher<(Bool, [GameCategory]), Never>
     }
 }
 
@@ -34,17 +34,17 @@ extension CategoriesViewModel {
 final class CategoriesViewModel: BaseViewModel {
     
     // Dependencies
-    private(set) var categories: [Category]
+    private(set) var categories: [GameCategory]
     
     // Property
     private var cancellables = Set<AnyCancellable>()
     private let switchAll = PassthroughSubject<Bool, Never>()
     private let switchAllCategories = PassthroughSubject<Bool, Never>()
-    private var availabilityStart = PassthroughSubject<Bool, Never>()
+    private var availabilityStartWithCategories = PassthroughSubject<(Bool, [GameCategory]), Never>()
     
     // MARK: - Init
     
-    init(categories: [Category]) {
+    init(categories: [GameCategory]) {
         self.categories = categories
     }
     
@@ -67,7 +67,8 @@ final class CategoriesViewModel: BaseViewModel {
         input.switchCategory
             .sink { [weak self] item in
                 guard let self = self,
-                      let index = self.categories.firstIndex(where: { $0.id == item.id }) else {
+                      let index = self.categories.firstIndex(where: { $0.data == item.data })
+                else {
                     return
                 }
                 self.categories[index] = item
@@ -79,7 +80,7 @@ final class CategoriesViewModel: BaseViewModel {
         return Output(
             switchAll: switchAll.eraseToAnyPublisher(),
             switchAllCategories: switchAllCategories.eraseToAnyPublisher(),
-            availabilityStart: availabilityStart.eraseToAnyPublisher()
+            availabilityStartWithCategories: availabilityStartWithCategories.eraseToAnyPublisher()
         )
     }
     
@@ -105,9 +106,9 @@ final class CategoriesViewModel: BaseViewModel {
             count[$0.selected] = val + 1
         }
         if count[false] == categories.count {
-            availabilityStart.send(false)
+            availabilityStartWithCategories.send((false, []))
         } else {
-            availabilityStart.send(true)
+            availabilityStartWithCategories.send((true, categories))
         }
     }
 }
