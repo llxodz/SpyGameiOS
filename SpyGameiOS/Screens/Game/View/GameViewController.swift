@@ -145,7 +145,22 @@ extension GameViewController: SwipeCardStackDelegate, SwipeCardStackDataSource {
         let cardView = CardView()
         card.swipeDirections = []
         card.content = cardView
-        
         return card
+    }
+}
+
+// MARK: - Configurable
+
+extension GameViewController: Configurable {
+    
+    struct Model {
+        let playersCount: Int
+        let spiesCount: Int
+        let minutesCount: Int
+        let categories: [GameCategory]
+    }
+    
+    func configure(with model: Model) {
+        print("log: configure \(model.categories.count)")
     }
 }

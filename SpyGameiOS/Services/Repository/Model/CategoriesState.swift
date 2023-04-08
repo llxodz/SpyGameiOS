@@ -9,6 +9,6 @@ import Foundation
 
 enum CategoriesState {
     case loading
-    case success([GamingCategory])
+    case success([GameCategoryData])
     case failed
 }

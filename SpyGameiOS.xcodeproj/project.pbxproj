@@ -37,7 +37,7 @@
 		33C52A2929C5EFD100C716E8 /* NetworkRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C52A2829C5EFD100C716E8 /* NetworkRepository.swift */; };
 		33C52A2B29C5EFEB00C716E8 /* CategoriesState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C52A2A29C5EFEB00C716E8 /* CategoriesState.swift */; };
 		33C52A2D29C5EFF400C716E8 /* SpyEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C52A2C29C5EFF400C716E8 /* SpyEndpoint.swift */; };
-		33C52A2F29C5F01900C716E8 /* GamingCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C52A2E29C5F01900C716E8 /* GamingCategory.swift */; };
+		33C52A2F29C5F01900C716E8 /* GameCategoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C52A2E29C5F01900C716E8 /* GameCategoryData.swift */; };
 		33C52A3129C5F03B00C716E8 /* BaseEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C52A3029C5F03B00C716E8 /* BaseEndpoint.swift */; };
 		33DD551B296B46490068F79B /* AnimatedPressButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD551A296B46490068F79B /* AnimatedPressButton.swift */; };
 		33E3AEB7294E5B02000E0C03 /* SettingNumberFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E3AEB6294E5B02000E0C03 /* SettingNumberFieldViewController.swift */; };
@@ -67,7 +67,7 @@
 		64AF8F4A29BFC20B00C57C44 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AF8F4729BFC20B00C57C44 /* Resource.swift */; };
 		64AF8F4B29BFC20B00C57C44 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AF8F4829BFC20B00C57C44 /* NetworkError.swift */; };
 		64BB42A029BE368D00B3317A /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BB429F29BE368D00B3317A /* BaseViewModel.swift */; };
-		64BB42A229BE37E700B3317A /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BB42A129BE37E700B3317A /* Category.swift */; };
+		64BB42A229BE37E700B3317A /* GameCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BB42A129BE37E700B3317A /* GameCategory.swift */; };
 		64BB42A429BE3B1300B3317A /* CategoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BB42A329BE3B1200B3317A /* CategoriesViewModel.swift */; };
 		64C1547329D0CA6800D3A0E9 /* UserDefaults+Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C1547229D0CA6800D3A0E9 /* UserDefaults+Settings.swift */; };
 		64F0D321297D62A700728750 /* CategoriesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F0D320297D62A700728750 /* CategoriesViewCell.swift */; };
@@ -116,7 +116,7 @@
 		33C52A2829C5EFD100C716E8 /* NetworkRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkRepository.swift; sourceTree = "<group>"; };
 		33C52A2A29C5EFEB00C716E8 /* CategoriesState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesState.swift; sourceTree = "<group>"; };
 		33C52A2C29C5EFF400C716E8 /* SpyEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpyEndpoint.swift; sourceTree = "<group>"; };
-		33C52A2E29C5F01900C716E8 /* GamingCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamingCategory.swift; sourceTree = "<group>"; };
+		33C52A2E29C5F01900C716E8 /* GameCategoryData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCategoryData.swift; sourceTree = "<group>"; };
 		33C52A3029C5F03B00C716E8 /* BaseEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseEndpoint.swift; sourceTree = "<group>"; };
 		33DD551A296B46490068F79B /* AnimatedPressButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedPressButton.swift; sourceTree = "<group>"; };
 		33E3AEB6294E5B02000E0C03 /* SettingNumberFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingNumberFieldViewController.swift; sourceTree = "<group>"; };
@@ -151,7 +151,7 @@
 		64AF8F4729BFC20B00C57C44 /* Resource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
 		64AF8F4829BFC20B00C57C44 /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		64BB429F29BE368D00B3317A /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
-		64BB42A129BE37E700B3317A /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		64BB42A129BE37E700B3317A /* GameCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCategory.swift; sourceTree = "<group>"; };
 		64BB42A329BE3B1200B3317A /* CategoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewModel.swift; sourceTree = "<group>"; };
 		64C1547229D0CA6800D3A0E9 /* UserDefaults+Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Settings.swift"; sourceTree = "<group>"; };
 		64F0D320297D62A700728750 /* CategoriesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewCell.swift; sourceTree = "<group>"; };
@@ -332,7 +332,7 @@
 		641E215829D08D3400ADCAE0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				33C52A2E29C5F01900C716E8 /* GamingCategory.swift */,
+				33C52A2E29C5F01900C716E8 /* GameCategoryData.swift */,
 				33C52A2A29C5EFEB00C716E8 /* CategoriesState.swift */,
 				33C52A2C29C5EFF400C716E8 /* SpyEndpoint.swift */,
 			);
@@ -498,7 +498,7 @@
 		64BB429A29BE1DA900B3317A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				64BB42A129BE37E700B3317A /* Category.swift */,
+				64BB42A129BE37E700B3317A /* GameCategory.swift */,
 				644C66AC29C0FA1B00EA5384 /* CellType.swift */,
 			);
 			path = Model;
@@ -740,7 +740,7 @@
 				33BFA57E29859822000DDD5D /* CountButton.swift in Sources */,
 				64BB42A429BE3B1300B3317A /* CategoriesViewModel.swift in Sources */,
 				33AE08CF29D55F9A00A598DA /* SwipeCardStackTapGestureRecognizer.swift in Sources */,
-				64BB42A229BE37E700B3317A /* Category.swift in Sources */,
+				64BB42A229BE37E700B3317A /* GameCategory.swift in Sources */,
 				33AE08C529D55F9A00A598DA /* SwipeCardStackDelegate.swift in Sources */,
 				33AE08BF29D55F9A00A598DA /* SwipeCardDelegate.swift in Sources */,
 				33AE08C329D55F9A00A598DA /* CardStackAnimator.swift in Sources */,
@@ -780,7 +780,7 @@
 				33BFA58029859973000DDD5D /* UIView+Extension.swift in Sources */,
 				CEE8667228A99E65006AC0FB /* SettingsViewCell.swift in Sources */,
 				64F0D325297D929400728750 /* AutoTableView.swift in Sources */,
-				33C52A2F29C5F01900C716E8 /* GamingCategory.swift in Sources */,
+				33C52A2F29C5F01900C716E8 /* GameCategoryData.swift in Sources */,
 				33AE08CA29D55F9A00A598DA /* UIView+Extensions.swift in Sources */,
 				33AE08BD29D55F9A00A598DA /* SwipeView.swift in Sources */,
 				33AE08C029D55F9A00A598DA /* SwipeCard.swift in Sources */,

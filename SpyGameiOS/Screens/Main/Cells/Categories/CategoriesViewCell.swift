@@ -27,9 +27,9 @@ final class CategoriesViewCell: UITableViewCell {
     private var viewModel: CategoriesViewModel?
     private var cancellables = Set<AnyCancellable>()
     private let switchAll = PassthroughSubject<Bool, Never>()
-    private let switchCategory = PassthroughSubject<Category, Never>()
+    private let switchCategory = PassthroughSubject<GameCategory, Never>()
     private var switchAllCategories: AnyPublisher<Bool, Never>?
-    private var availabilityStart: CurrentValueSubject<Bool, Never>?
+    private var availabilityStartWithCategories: PassthroughSubject<(Bool, [GameCategory]), Never>?
     
     // Public property
     public static var identifier: String { "CategoriesViewCell" }
@@ -76,10 +76,9 @@ final class CategoriesViewCell: UITableViewCell {
                 self?.allSwitch.setOn(isOn, animated: true)
             }
             .store(in: &cancellables)
-        output?.availabilityStart
-            .removeDuplicates()
-            .sink { [weak self] isAvailability in
-                self?.availabilityStart?.send(isAvailability)
+        output?.availabilityStartWithCategories
+            .sink { [weak self] (isAvailability, categories) in
+                self?.availabilityStartWithCategories?.send((isAvailability, categories))
             }
             .store(in: &cancellables)
         switchAllCategories = output?.switchAllCategories
@@ -151,13 +150,13 @@ final class CategoriesViewCell: UITableViewCell {
 extension CategoriesViewCell: Configurable {
     
     struct Model {
-        let categories: [Category]
+        let categories: [GameCategory]
         /// Доступность кнопки старт
-        let availabilityStart: CurrentValueSubject<Bool, Never>
+        let availabilityStartWithCategories: PassthroughSubject<(Bool, [GameCategory]), Never>
     }
     
     func configure(with model: Model) {
-        self.availabilityStart = model.availabilityStart
+        self.availabilityStartWithCategories = model.availabilityStartWithCategories
         viewModel = CategoriesViewModel(categories: model.categories)
         binding()
         tableView.reloadData()
