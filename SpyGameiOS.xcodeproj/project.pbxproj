@@ -62,6 +62,7 @@
 		64871D8028A995210004B773 /* XCAssets+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64871D7B28A995210004B773 /* XCAssets+Generated.swift */; };
 		64871D8128A995210004B773 /* IB-Scenes+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64871D7C28A995210004B773 /* IB-Scenes+Generated.swift */; };
 		64871D8228A995210004B773 /* IB-Segues+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64871D7D28A995210004B773 /* IB-Segues+Generated.swift */; };
+		648C3D8229DCCD470014E8CE /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648C3D8129DCCD470014E8CE /* GameViewModel.swift */; };
 		649FB44F29CA48B200B51F99 /* SettingNumberFieldViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649FB44E29CA48B200B51F99 /* SettingNumberFieldViewModel.swift */; };
 		64AF8F4929BFC20B00C57C44 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AF8F4629BFC20B00C57C44 /* NetworkService.swift */; };
 		64AF8F4A29BFC20B00C57C44 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AF8F4729BFC20B00C57C44 /* Resource.swift */; };
@@ -146,6 +147,7 @@
 		64871D7B28A995210004B773 /* XCAssets+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCAssets+Generated.swift"; sourceTree = "<group>"; };
 		64871D7C28A995210004B773 /* IB-Scenes+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IB-Scenes+Generated.swift"; sourceTree = "<group>"; };
 		64871D7D28A995210004B773 /* IB-Segues+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IB-Segues+Generated.swift"; sourceTree = "<group>"; };
+		648C3D8129DCCD470014E8CE /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 		649FB44E29CA48B200B51F99 /* SettingNumberFieldViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingNumberFieldViewModel.swift; sourceTree = "<group>"; };
 		64AF8F4629BFC20B00C57C44 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		64AF8F4729BFC20B00C57C44 /* Resource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 		33AE08D029D55FAD00A598DA /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				648C3D8029DCCD370014E8CE /* ViewModel */,
 				331FCB3929D86702007BCBB8 /* Model */,
 				33AE08D129D55FAD00A598DA /* View */,
 			);
@@ -457,6 +460,14 @@
 				64871D7528A993670004B773 /* Localizable.strings */,
 			);
 			path = Strings;
+			sourceTree = "<group>";
+		};
+		648C3D8029DCCD370014E8CE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				648C3D8129DCCD470014E8CE /* GameViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		649FB44D29CA48B200B51F99 /* ViewModel */ = {
@@ -745,6 +756,7 @@
 				33AE08BF29D55F9A00A598DA /* SwipeCardDelegate.swift in Sources */,
 				33AE08C329D55F9A00A598DA /* CardStackAnimator.swift in Sources */,
 				644C66AD29C0FA1B00EA5384 /* CellType.swift in Sources */,
+				648C3D8229DCCD470014E8CE /* GameViewModel.swift in Sources */,
 				64871D5428A989C00004B773 /* MainViewController.swift in Sources */,
 				64871D8028A995210004B773 /* XCAssets+Generated.swift in Sources */,
 				33AE08CC29D55F9A00A598DA /* PanGestureRecognizer.swift in Sources */,

@@ -190,8 +190,8 @@ final class MainViewModel: BaseViewModel {
         }
     }
     
-    private func makeGameModel() -> GameViewController.Model {
-        return GameViewController.Model(
+    private func makeGameModel() -> GameViewModel.Model {
+        return GameViewModel.Model(
             playersCount: UserDefaults.standard.settingPlayersCount,
             spiesCount: UserDefaults.standard.settingSpiesCount,
             minutesCount: UserDefaults.standard.settingMinutesCount,
