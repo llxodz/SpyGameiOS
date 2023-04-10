@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 private enum Constants {
-    static let boldFont: UIFont = FontFamily.Montserrat.bold.font(size: 18)
+    static let boldFont: UIFont = FontFamily.Montserrat.bold.font(size: 24)
     static let semiBoldFont: UIFont = FontFamily.Montserrat.semiBold.font(size: 14)
     static let borderWidth: CGFloat = 2
 }
@@ -45,13 +45,13 @@ final class CardView: UIView {
         }
         descriptionOfTypeLabel.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(CGFloat.baseMargin)
-            $0.trailing.equalToSuperview().inset(CGFloat.baseMargin).priority(.high)
+            $0.trailing.equalToSuperview().inset(CGFloat.baseMargin).priority(.high) // Priotity нужен для фикса логов
             $0.bottom.equalToSuperview().inset(CGFloat.baseMargin)
         }
     }
     
     private func configureAppearance() {
-        self.backgroundColor = .white
+        self.backgroundColor = Asset.Colors.buttonBackgroundColor.color
         self.layer.borderWidth = Constants.borderWidth
         self.layer.borderColor = Asset.Colors.mainTextColor.color.cgColor
         self.layer.masksToBounds = true
@@ -73,21 +73,17 @@ extension CardView: Configurable {
     
     struct Player {
         let type: PlayerType
-        let word: String
-        var isCardOpen: Bool = false
+        let location: String
     }
     
     func configure(with model: Player) {
         switch model.type {
         case .normalPlayer:
-            typeOfPlayerLabel.text = model.word
+            typeOfPlayerLabel.text = model.location
             descriptionOfTypeLabel.text = L10n.CardView.commonPlayerDescription
         case .spyPlayer:
             typeOfPlayerLabel.text = L10n.CardView.spyName
-            typeOfPlayerLabel.textColor = Asset.Colors.spyColor.color
-            descriptionOfTypeLabel.textColor = Asset.Colors.spyColor.color
             descriptionOfTypeLabel.text = L10n.CardView.spyDescription
-            self.layer.borderColor = Asset.Colors.spyColor.color.cgColor
         }
     }
 }

@@ -11,7 +11,7 @@ import Combine
 protocol MainNavigation: AnyObject {
     func goToNumberField(with model: SettingNumberFieldViewController.Model)
     func goToTimeField(with model: SettingsTimeFieldViewController.Model)
-    func goToGame(with model: GameViewController.Model)
+    func goToGame(with model: GameViewModel.Model)
 }
 
 // MARK: - AppCoordinator
@@ -60,9 +60,9 @@ extension AppCoordinator: MainNavigation {
         navigationController.present(vc, animated: true)
     }
     
-    func goToGame(with model: GameViewController.Model) {
-        let vc = GameViewController()
-        vc.configure(with: model)
+    func goToGame(with model: GameViewModel.Model) {
+        let vm = GameViewModel(with: model)
+        let vc = GameViewController(viewModel: vm)
         vc.modalPresentationStyle = .fullScreen
         navigationController.setNavigationBarHidden(false, animated: true)
         navigationController.navigationBar.tintColor = Asset.Colors.mainTextColor.color
