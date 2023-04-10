@@ -6,7 +6,12 @@
 //
 
 import Foundation
+import UserNotifications
 import Combine
+
+private enum Constants {
+    static let pushNotificationId: String = "SpyGameiOS.GameOver"
+}
 
 // MARK: - Input & Output
 
@@ -45,6 +50,7 @@ final class GameViewModel: BaseViewModel {
     
     // Dependencies
     private let model: Model
+    private let notificationRepository: INotificationRepository
     
     // Private property
     private let showStart = PassthroughSubject<Void, Never>()
@@ -57,8 +63,9 @@ final class GameViewModel: BaseViewModel {
     
     // MARK: - Init
     
-    init(with model: Model) {
+    init(with model: Model, notificationRepository: INotificationRepository) {
         self.model = model
+        self.notificationRepository = notificationRepository
         self.cardModels = generateCardModels()
     }
     
@@ -85,6 +92,8 @@ final class GameViewModel: BaseViewModel {
         input.start
             .sink { [weak self] in
                 // TODO: - Start timer
+                guard let self = self else { return }
+                self.notificationRepository.sendNotification(content: self.configureContentOfNotification())
             }
             .store(in: &cancellables)
         return Output(
@@ -106,5 +115,15 @@ final class GameViewModel: BaseViewModel {
             models.append(CardView.Model(type: .normalPlayer, location: location.name))
         }
         return models.shuffled()
+    }
+    
+    private func configureContentOfNotification() -> NotificationResource {
+        let content = UNMutableNotificationContent()
+        
+        content.title = L10n.Notification.title
+        content.body = L10n.Notification.description
+        content.sound = UNNotificationSound.default
+            
+        return NotificationResource(id: Constants.pushNotificationId, content: content, timeInterval: TimeInterval(1))
     }
 }
