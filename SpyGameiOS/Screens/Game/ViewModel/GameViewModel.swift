@@ -102,6 +102,12 @@ final class GameViewModel: BaseViewModel {
         )
     }
     
+    // MARK: - Public
+    
+    func requestAuthorization() {
+        notificationRepository.requestAuth()
+    }
+    
     // MARK: - Private
     
     private func generateCardModels() -> [CardView.Model] {

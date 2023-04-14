@@ -36,7 +36,7 @@ final class NotificationService: NSObject, INotificationService {
     }
     
     func scheduleNotification(_ resource: NotificationResource) {
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: resource.timeInterval * 60, repeats: false)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: resource.timeInterval, repeats: false)
         let request = UNNotificationRequest(identifier: resource.id, content: resource.content, trigger: trigger)
         
         notificationCenter.add(request) { error in

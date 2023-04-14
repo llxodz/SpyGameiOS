@@ -68,7 +68,6 @@ extension AppCoordinator: MainNavigation {
         vc.modalPresentationStyle = .fullScreen
         navigationController.setNavigationBarHidden(false, animated: true)
         navigationController.navigationBar.tintColor = Asset.Colors.mainTextColor.color
-        notificationRepository.requestAuth()
         navigationController.pushViewController(vc, animated: true)
     }
 }

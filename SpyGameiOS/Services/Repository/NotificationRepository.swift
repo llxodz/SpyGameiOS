@@ -8,7 +8,7 @@
 import Foundation
 import UserNotifications
 
-// MARK: = INotificationRepository
+// MARK: - INotificationRepository
 
 protocol INotificationRepository {
     func requestAuth()
