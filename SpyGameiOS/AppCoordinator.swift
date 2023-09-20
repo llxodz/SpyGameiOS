@@ -23,12 +23,14 @@ final class AppCoordinator: Coordinator {
     var children: [Coordinator] = []
     var navigationController: UINavigationController
     private let networkRepository: INetworkRepository
+    private let notificationRepository: INotificationRepository
     
     // MARK: - Init
     
-    init(navigationController: UINavigationController, networkRepository: INetworkRepository) {
+    init(navigationController: UINavigationController, networkRepository: INetworkRepository, notificationRepository: INotificationRepository) {
         self.navigationController = navigationController
         self.networkRepository = networkRepository
+        self.notificationRepository = notificationRepository
     }
     
     // MARK: - Coordinator
@@ -61,7 +63,7 @@ extension AppCoordinator: MainNavigation {
     }
     
     func goToGame(with model: GameViewModel.Model) {
-        let vm = GameViewModel(with: model)
+        let vm = GameViewModel(with: model, notificationRepository: notificationRepository)
         let vc = GameViewController(viewModel: vm)
         vc.modalPresentationStyle = .fullScreen
         navigationController.setNavigationBarHidden(false, animated: true)

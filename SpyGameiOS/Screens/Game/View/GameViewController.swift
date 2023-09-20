@@ -86,6 +86,8 @@ final class GameViewController: BaseViewController {
                 self?.timerLabel.text = "\(time)"
             }
             .store(in: &cancellables)
+        
+        viewModel.requestAuthorization()
     }
     
     private func configureActions() {

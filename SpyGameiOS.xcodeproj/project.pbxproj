@@ -32,6 +32,9 @@
 		33AE08CF29D55F9A00A598DA /* SwipeCardStackTapGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AE08BB29D55F9A00A598DA /* SwipeCardStackTapGestureRecognizer.swift */; };
 		33AE08D329D55FAD00A598DA /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AE08D229D55FAD00A598DA /* GameViewController.swift */; };
 		33AE08D529D560C000A598DA /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AE08D429D560C000A598DA /* CardView.swift */; };
+		33B34CD729E4A43A003F3B08 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B34CD629E4A43A003F3B08 /* NotificationService.swift */; };
+		33B34CD929E4A6E2003F3B08 /* NotificationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B34CD829E4A6E2003F3B08 /* NotificationRepository.swift */; };
+		33B34CDB29E4B00F003F3B08 /* NotificationResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B34CDA29E4B00F003F3B08 /* NotificationResource.swift */; };
 		33BFA57E29859822000DDD5D /* CountButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BFA57D29859822000DDD5D /* CountButton.swift */; };
 		33BFA58029859973000DDD5D /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BFA57F29859973000DDD5D /* UIView+Extension.swift */; };
 		33C52A2929C5EFD100C716E8 /* NetworkRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C52A2829C5EFD100C716E8 /* NetworkRepository.swift */; };
@@ -112,6 +115,9 @@
 		33AE08BB29D55F9A00A598DA /* SwipeCardStackTapGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeCardStackTapGestureRecognizer.swift; sourceTree = "<group>"; };
 		33AE08D229D55FAD00A598DA /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		33AE08D429D560C000A598DA /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		33B34CD629E4A43A003F3B08 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		33B34CD829E4A6E2003F3B08 /* NotificationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationRepository.swift; sourceTree = "<group>"; };
+		33B34CDA29E4B00F003F3B08 /* NotificationResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationResource.swift; sourceTree = "<group>"; };
 		33BFA57D29859822000DDD5D /* CountButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountButton.swift; sourceTree = "<group>"; };
 		33BFA57F29859973000DDD5D /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		33C52A2829C5EFD100C716E8 /* NetworkRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkRepository.swift; sourceTree = "<group>"; };
@@ -278,11 +284,21 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		33B34CD529E4A3F6003F3B08 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				33B34CD629E4A43A003F3B08 /* NotificationService.swift */,
+				33B34CDA29E4B00F003F3B08 /* NotificationResource.swift */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
 		33C52A2729C5EFD100C716E8 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
 				641E215829D08D3400ADCAE0 /* Model */,
 				33C52A2829C5EFD100C716E8 /* NetworkRepository.swift */,
+				33B34CD829E4A6E2003F3B08 /* NotificationRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -481,6 +497,7 @@
 		64AF8F4429BFC20B00C57C44 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				33B34CD529E4A3F6003F3B08 /* Notification */,
 				33C52A2729C5EFD100C716E8 /* Repository */,
 				64AF8F4529BFC20B00C57C44 /* Network */,
 			);
@@ -734,6 +751,7 @@
 			files = (
 				33AE08CD29D55F9A00A598DA /* Animator.swift in Sources */,
 				641E215729D07C5700ADCAE0 /* AppCoordinator.swift in Sources */,
+				33B34CD929E4A6E2003F3B08 /* NotificationRepository.swift in Sources */,
 				33C52A2B29C5EFEB00C716E8 /* CategoriesState.swift in Sources */,
 				33C52A3129C5F03B00C716E8 /* BaseEndpoint.swift in Sources */,
 				33AE08C229D55F9A00A598DA /* CardStackAnimationOptions.swift in Sources */,
@@ -745,12 +763,14 @@
 				64871D6C28A990EE0004B773 /* Configurable.swift in Sources */,
 				64871D6E28A990EE0004B773 /* BaseConstants.swift in Sources */,
 				331FCB3B29D86714007BCBB8 /* PlayerType.swift in Sources */,
+				33B34CDB29E4B00F003F3B08 /* NotificationResource.swift in Sources */,
 				33AE08C629D55F9A00A598DA /* CardStackStateManager.swift in Sources */,
 				33C52A2929C5EFD100C716E8 /* NetworkRepository.swift in Sources */,
 				64871D5A28A989C00004B773 /* SpyGameiOS.xcdatamodeld in Sources */,
 				33BFA57E29859822000DDD5D /* CountButton.swift in Sources */,
 				64BB42A429BE3B1300B3317A /* CategoriesViewModel.swift in Sources */,
 				33AE08CF29D55F9A00A598DA /* SwipeCardStackTapGestureRecognizer.swift in Sources */,
+				33B34CD729E4A43A003F3B08 /* NotificationService.swift in Sources */,
 				64BB42A229BE37E700B3317A /* GameCategory.swift in Sources */,
 				33AE08C529D55F9A00A598DA /* SwipeCardStackDelegate.swift in Sources */,
 				33AE08BF29D55F9A00A598DA /* SwipeCardDelegate.swift in Sources */,

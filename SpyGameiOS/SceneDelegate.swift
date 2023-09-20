@@ -17,7 +17,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         
         let networkRepository = NetworkRepository(service: NetworkService())
-        appCoordinator = AppCoordinator(navigationController: UINavigationController(), networkRepository: networkRepository)
+        let notificationRepository = NotificationRepository(service: NotificationService())
+        appCoordinator = AppCoordinator(navigationController: UINavigationController(), networkRepository: networkRepository, notificationRepository: notificationRepository)
         appCoordinator?.start()
         self.window?.rootViewController = appCoordinator?.navigationController
         self.window?.makeKeyAndVisible()

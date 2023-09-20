@@ -21,3 +21,5 @@ CardView.startDescription = "Нажми здесь, чтобы увидеть с
 CardView.spyName = "Ты шпион";
 CardView.commonPlayerDescription = "Ты местный. Твоя задача вычислить шпиона. Задавай вопросы другим игрокам, чтобы вычислить шпиона";
 CardView.spyDescription = "Постарайся понять, о чем говорят местные";
+Notification.title = "Игра окончена!";
+Notification.description = "Пора выяснить, кто же был шпионом...";

@@ -21,3 +21,5 @@ CardView.startDescription = "Tap here to view your role";
 CardView.commonPlayerDescription = "You're local. Your task is to figure out the spy. Ask questions to other players to figure out the spy";
 CardView.spyName = "You're a spy";
 CardView.spyDescription = "Try to understand about what talk about";
+Notification.title = "The game is over!";
+Notification.description = "It's time to find out who was the spy...";

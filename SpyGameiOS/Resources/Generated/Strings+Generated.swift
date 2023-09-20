@@ -34,6 +34,12 @@ internal enum L10n {
     /// Start game
     internal static let startGame = L10n.tr("Localizable", "FooterView.StartGame", fallback: #"Start game"#)
   }
+  internal enum Notification {
+    /// It's time to find out who was the spy...
+    internal static let description = L10n.tr("Localizable", "Notification.description", fallback: #"It's time to find out who was the spy..."#)
+    /// The game is over!
+    internal static let title = L10n.tr("Localizable", "Notification.title", fallback: #"The game is over!"#)
+  }
   internal enum SettingsCell {
     /// min
     internal static let minute = L10n.tr("Localizable", "SettingsCell.Minute", fallback: #"min"#)
