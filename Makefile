@@ -1,10 +1,17 @@
 
 ## Help
 help:
-	@echo 'make help - Выводит команды'
-	@echo "make pod - Устанавливает поды"
-	@echo "make start - Позволяет быстро открыть workspace проекта"
-	@echo "make clean - Очищает содержимое папки DerivedData"
+	@echo "Основные:"
+	@echo "\tmake gen - генерация проекта и установка зависимостей"
+	@echo "\tmake start - Позволяет быстро открыть workspace проекта"
+	@echo "Дополнительные:"
+	@echo "\tmake pod - Устанавливает поды"
+	@echo "\tmake clean - Очищает содержимое папки DerivedData"
+
+## Генерация проекта
+gen:
+	xcodegen
+	pod install
 
 ## Устанавливает поды
 pod:
