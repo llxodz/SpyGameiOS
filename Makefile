@@ -1,13 +1,3 @@
-
-## Help
-help:
-	@echo "Основные:"
-	@echo "\tmake gen - генерация проекта и установка зависимостей"
-	@echo "\tmake start - Позволяет быстро открыть workspace проекта"
-	@echo "Дополнительные:"
-	@echo "\tmake pod - Устанавливает поды"
-	@echo "\tmake clean - Очищает содержимое папки DerivedData"
-
 ## Генерация проекта
 gen:
 	xcodegen
