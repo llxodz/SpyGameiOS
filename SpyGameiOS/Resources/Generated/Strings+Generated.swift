@@ -19,8 +19,8 @@ internal enum L10n {
     internal static let spyDescription = L10n.tr("Localizable", "CardView.spyDescription", fallback: #"Try to understand about what talk about"#)
     /// You're a spy
     internal static let spyName = L10n.tr("Localizable", "CardView.spyName", fallback: #"You're a spy"#)
-    /// Tap here to view your role
-    internal static let startDescription = L10n.tr("Localizable", "CardView.startDescription", fallback: #"Tap here to view your role"#)
+    /// Tap on card to view your role
+    internal static let startDescription = L10n.tr("Localizable", "CardView.startDescription", fallback: #"Tap on card to view your role"#)
     /// Who are you?
     internal static let startName = L10n.tr("Localizable", "CardView.startName", fallback: #"Who are you?"#)
   }

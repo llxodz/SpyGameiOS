@@ -7,5 +7,4 @@ target 'SpyGame' do
 
   pod 'SwiftGen'
   pod 'SnapKit', '5.6.0'
-  pod 'Toast-Swift', '5.0.1'
 end
