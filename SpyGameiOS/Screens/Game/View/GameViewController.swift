@@ -24,13 +24,14 @@ final class GameViewController: BaseViewController {
     // UI
     private let shuffleStackView = SwipeCardStack()
     private let timerLabel = UILabel()
-    private let startGameButton = TappableButton()
+    private let gameButton = TappableButton()
     
     // Private property
     private let tapCard = PassthroughSubject<Void, Never>()
     private let didSwipeCard = PassthroughSubject<Void, Never>()
     private let didSwipeAllCards = PassthroughSubject<Void, Never>()
-    private let start = PassthroughSubject<Void, Never>()
+    private let tapButton = PassthroughSubject<Void, Never>()
+    private let viewDidDisappear = PassthroughSubject<Void, Never>()
     private var cancellables = Set<AnyCancellable>()
     
     // MARK: - Init
@@ -59,6 +60,11 @@ final class GameViewController: BaseViewController {
         configureActions()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        viewDidDisappear.send()
+    }
+    
     // MARK: - Binding & Actions
     
     private func binding() {
@@ -66,7 +72,8 @@ final class GameViewController: BaseViewController {
             tapCard: tapCard.eraseToAnyPublisher(),
             didSwipeCard: didSwipeCard.eraseToAnyPublisher(),
             didSwipeAllCards: didSwipeAllCards.eraseToAnyPublisher(),
-            start: start.eraseToAnyPublisher()
+            tapButton: tapButton.eraseToAnyPublisher(),
+            viewDidDisappear: viewDidDisappear.eraseToAnyPublisher()
         ))
         
         output.showStart
@@ -75,7 +82,7 @@ final class GameViewController: BaseViewController {
                 self.shuffleStackView.isUserInteractionEnabled = false
                 self.view.layoutIfNeeded()
                 UIView.animate(withDuration: 0.3) {
-                    self.startGameButton.alpha = 1
+                    self.gameButton.alpha = 1
                     self.timerLabel.alpha = 1
                     self.view.layoutIfNeeded()
                 }
@@ -86,20 +93,25 @@ final class GameViewController: BaseViewController {
                 self?.timerLabel.text = text
             }
             .store(in: &cancellables)
+        output.updateButtonTitle
+            .sink { [weak self] title in
+                self?.gameButton.setTitle(title, for: .normal)
+            }
+            .store(in: &cancellables)
         
         viewModel.requestAuthorization()
     }
     
     private func configureActions() {
-        startGameButton.enableTapping { [weak self] in
-            self?.start.send()
+        gameButton.enableTapping { [weak self] in
+            self?.tapButton.send()
         }
     }
     
     // MARK: - Private
     
     private func addViews() {
-        view.addSubviews(timerLabel, startGameButton, shuffleStackView)
+        view.addSubviews(timerLabel, gameButton, shuffleStackView)
     }
     
     private func configureLayout() {
@@ -112,7 +124,7 @@ final class GameViewController: BaseViewController {
         timerLabel.snp.makeConstraints {
             $0.center.equalToSuperview()
         }
-        startGameButton.snp.makeConstraints {
+        gameButton.snp.makeConstraints {
             $0.height.equalTo(Constants.startButtonHeight)
             $0.leading.trailing.equalToSuperview().inset(CGFloat.baseMargin)
             $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
@@ -129,13 +141,12 @@ final class GameViewController: BaseViewController {
         timerLabel.font = Constants.timerFont
         timerLabel.textColor = Asset.Colors.mainTextColor.color
         // Button
-        startGameButton.layer.cornerRadius = .baseRadius
-        startGameButton.setTitle(L10n.FooterView.startGame, for: .normal)
-        startGameButton.titleLabel?.font = Constants.buttonFont
-        startGameButton.setTitleColor(Asset.Colors.mainTextColor.color, for: .normal)
-        startGameButton.backgroundColor = Asset.Colors.buttonBackgroundColor.color
+        gameButton.layer.cornerRadius = .baseRadius
+        gameButton.titleLabel?.font = Constants.buttonFont
+        gameButton.setTitleColor(Asset.Colors.mainTextColor.color, for: .normal)
+        gameButton.backgroundColor = Asset.Colors.buttonBackgroundColor.color
         // Default
-        startGameButton.alpha = 0
+        gameButton.alpha = 0
         timerLabel.alpha = 0
     }
 }

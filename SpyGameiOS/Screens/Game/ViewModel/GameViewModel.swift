@@ -11,6 +11,10 @@ import Combine
 
 private enum Constants {
     static let pushNotificationId: String = "SpyGameiOS.GameOver"
+    static let oneMituteInSeconds: Int = 60
+    static let oneHourInSeconds: Int = 3600
+    static let oneSecond: Double = 1
+    static let timerTolerance: Double = 0.1
 }
 
 // MARK: - Input & Output
@@ -24,13 +28,17 @@ extension GameViewModel {
         let didSwipeCard: AnyPublisher<Void, Never>
         // didSwipeAllCards
         let didSwipeAllCards: AnyPublisher<Void, Never>
-        // Старт игры
-        let start: AnyPublisher<Void, Never>
+        // Тап кнопки старт\пауза
+        let tapButton: AnyPublisher<Void, Never>
+        // viewDidDisappear
+        let viewDidDisappear: AnyPublisher<Void, Never>
     }
     
     struct Output {
-        // все свайпнули
+        // Все свайпнули
         let showStart: AnyPublisher<Void, Never>
+        // Старт\пауза
+        let updateButtonTitle: AnyPublisher<String, Never>
         // Время (c)
         let updateTime: AnyPublisher<String, Never>
     }
@@ -41,11 +49,6 @@ extension GameViewModel {
         let spiesCount: Int
         let minutesCount: Int
         let categories: [GameCategory]
-        
-        var seconds: Int {
-            guard minutesCount > 0 else { return 0 }
-            return minutesCount * 60
-        }
     }
 }
 
@@ -59,8 +62,11 @@ final class GameViewModel: BaseViewModel {
     
     // Private property
     private let showStart = PassthroughSubject<Void, Never>()
+    private let updateButtonTitle = CurrentValueSubject<String, Never>(L10n.FooterView.startGame)
     private let updateTime = PassthroughSubject<String, Never>()
     private var cancellables = Set<AnyCancellable>()
+    private var timer: Timer?
+    private var seconds: Int
     
     // Public property
     private(set) var cardIsOpen: Bool = false
@@ -71,6 +77,7 @@ final class GameViewModel: BaseViewModel {
     init(with model: Model, notificationRepository: INotificationRepository) {
         self.model = model
         self.notificationRepository = notificationRepository
+        self.seconds = max(0, model.minutesCount) * Constants.oneMituteInSeconds
         self.cardModels = generateCardModels()
     }
     
@@ -90,23 +97,39 @@ final class GameViewModel: BaseViewModel {
         input.didSwipeAllCards
             .sink { [weak self] in
                 guard let self = self else { return }
-                let timeText = self.makeTimeString(seconds: self.model.seconds)
-                self.updateTime.send(timeText)
+                self.updateTime.send(self.makeTimeString())
                 self.showStart.send()
             }
             .store(in: &cancellables)
-        input.start
+        input.tapButton
             .sink { [weak self] in
                 guard let self = self else { return }
-                // TODO: - Start timer
-                // Локальная нотификация во время окончания игры
-                self.notificationRepository.sendNotification(
-                    content: self.configureContentOfNotification()
-                )
+                if timer == nil {
+                    // Старт
+                    self.notificationRepository.sendNotification(
+                        content: self.configureContentOfNotification()
+                    )
+                    self.startTimer()
+                    self.updateButtonTitle.send(L10n.FooterView.pauseGame)
+                } else {
+                    // Пауза
+                    self.notificationRepository.removeAllPendingNotification()
+                    self.stopTimer()
+                    self.updateButtonTitle.send(L10n.FooterView.continueGame)
+                }
             }
             .store(in: &cancellables)
+        input.viewDidDisappear
+            .sink { [weak self] in
+                guard let self else { return }
+                self.notificationRepository.removeAllPendingNotification()
+                self.stopTimer()
+            }
+            .store(in: &cancellables)
+        
         return Output(
             showStart: showStart.eraseToAnyPublisher(),
+            updateButtonTitle: updateButtonTitle.eraseToAnyPublisher(),
             updateTime: updateTime.eraseToAnyPublisher()
         )
     }
@@ -142,13 +165,36 @@ final class GameViewModel: BaseViewModel {
         return NotificationResource(
             id: Constants.pushNotificationId,
             content: content,
-            timeInterval: Double(model.seconds)
+            timeInterval: Double(seconds)
         )
     }
+}
+
+// MARK: - Timer
+
+private extension GameViewModel {
     
-    private func makeTimeString(seconds: Int) -> String {
+    func startTimer() {
+        guard timer == nil else { return }
+        timer = Timer.scheduledTimer(withTimeInterval: Constants.oneSecond, repeats: true) { [weak self] t in
+            guard let self, self.seconds > 0 else {
+                self?.stopTimer()
+                return
+            }
+            self.seconds -= 1
+            self.updateTime.send(makeTimeString())
+        }
+        timer?.tolerance = Constants.timerTolerance
+    }
+    
+    func stopTimer() {
+        timer?.invalidate()
+        timer = nil
+    }
+    
+    func makeTimeString() -> String {
         let formatter = DateComponentsFormatter()
-        if seconds < 3600 {
+        if seconds < Constants.oneHourInSeconds {
             formatter.allowedUnits = [.second, .minute]
         } else {
             formatter.allowedUnits = [.second, .minute, .hour]

@@ -31,8 +31,12 @@ internal enum L10n {
     internal static let selectAll = L10n.tr("Localizable", "CategoriesTableViewCell.SelectAll", fallback: #"Select all"#)
   }
   internal enum FooterView {
-    /// Start game
-    internal static let startGame = L10n.tr("Localizable", "FooterView.StartGame", fallback: #"Start game"#)
+    /// Continue
+    internal static let continueGame = L10n.tr("Localizable", "FooterView.ContinueGame", fallback: #"Continue"#)
+    /// Pause
+    internal static let pauseGame = L10n.tr("Localizable", "FooterView.PauseGame", fallback: #"Pause"#)
+    /// Start
+    internal static let startGame = L10n.tr("Localizable", "FooterView.StartGame", fallback: #"Start"#)
   }
   internal enum Notification {
     /// It's time to find out who was the spy...
