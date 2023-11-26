@@ -31,6 +31,16 @@ final class AppCoordinator: Coordinator {
         self.navigationController = navigationController
         self.networkRepository = networkRepository
         self.notificationRepository = notificationRepository
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(applicationWillTerminate),
+            name: UIApplication.willTerminateNotification,
+            object: nil
+        )
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     // MARK: - Coordinator
@@ -39,6 +49,12 @@ final class AppCoordinator: Coordinator {
         let vm = MainViewModel(navigation: self, networkRepository: networkRepository)
         let vc = MainViewController(viewModel: vm)
         navigationController.setViewControllers([vc], animated: false)
+    }
+    
+    // MARK: - Will Terminate
+    
+    @objc func applicationWillTerminate(notification: Notification) {
+        notificationRepository.removeAllPendingNotification()
     }
 }
 

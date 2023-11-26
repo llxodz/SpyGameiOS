@@ -13,6 +13,7 @@ import UserNotifications
 protocol INotificationRepository {
     func requestAuth()
     func sendNotification(content: NotificationResource)
+    func removeAllPendingNotification()
 }
 
 // MARK: - NotificationRepository
@@ -34,5 +35,9 @@ final class NotificationRepository: INotificationRepository {
     
     func sendNotification(content: NotificationResource) {
         service.scheduleNotification(content)
+    }
+    
+    func removeAllPendingNotification() {
+        service.removeAllPendingNotificationRequests()
     }
 }

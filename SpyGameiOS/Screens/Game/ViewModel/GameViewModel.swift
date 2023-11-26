@@ -32,7 +32,7 @@ extension GameViewModel {
         // все свайпнули
         let showStart: AnyPublisher<Void, Never>
         // Время (c)
-        let updateTime: AnyPublisher<Int, Never>
+        let updateTime: AnyPublisher<String, Never>
     }
     
     // Initial model
@@ -41,6 +41,11 @@ extension GameViewModel {
         let spiesCount: Int
         let minutesCount: Int
         let categories: [GameCategory]
+        
+        var seconds: Int {
+            guard minutesCount > 0 else { return 0 }
+            return minutesCount * 60
+        }
     }
 }
 
@@ -54,7 +59,7 @@ final class GameViewModel: BaseViewModel {
     
     // Private property
     private let showStart = PassthroughSubject<Void, Never>()
-    private let updateTime = PassthroughSubject<Int, Never>()
+    private let updateTime = PassthroughSubject<String, Never>()
     private var cancellables = Set<AnyCancellable>()
     
     // Public property
@@ -85,7 +90,8 @@ final class GameViewModel: BaseViewModel {
         input.didSwipeAllCards
             .sink { [weak self] in
                 guard let self = self else { return }
-                self.updateTime.send(self.model.minutesCount)
+                let timeText = self.makeTimeString(seconds: self.model.seconds)
+                self.updateTime.send(timeText)
                 self.showStart.send()
             }
             .store(in: &cancellables)
@@ -95,7 +101,7 @@ final class GameViewModel: BaseViewModel {
                 // TODO: - Start timer
                 // Локальная нотификация во время окончания игры
                 self.notificationRepository.sendNotification(
-                    content: self.configureContentOfNotification(minutes: self.model.minutesCount)
+                    content: self.configureContentOfNotification()
                 )
             }
             .store(in: &cancellables)
@@ -126,14 +132,28 @@ final class GameViewModel: BaseViewModel {
         return models.shuffled()
     }
     
-    private func configureContentOfNotification(minutes: Int) -> NotificationResource {
+    private func configureContentOfNotification() -> NotificationResource {
         let content = UNMutableNotificationContent()
         
         content.title = L10n.Notification.title
         content.body = L10n.Notification.description
         content.sound = UNNotificationSound.default
         
-        let seconds: TimeInterval = TimeInterval(max(0, minutes) * 60)
-        return NotificationResource(id: Constants.pushNotificationId, content: content, timeInterval: seconds)
+        return NotificationResource(
+            id: Constants.pushNotificationId,
+            content: content,
+            timeInterval: Double(model.seconds)
+        )
+    }
+    
+    private func makeTimeString(seconds: Int) -> String {
+        let formatter = DateComponentsFormatter()
+        if seconds < 3600 {
+            formatter.allowedUnits = [.second, .minute]
+        } else {
+            formatter.allowedUnits = [.second, .minute, .hour]
+        }
+        formatter.zeroFormattingBehavior = .pad
+        return formatter.string(from: TimeInterval(seconds)) ?? "\(seconds) sec"
     }
 }

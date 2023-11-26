@@ -13,7 +13,7 @@ import UserNotifications
 protocol INotificationService {
     func requestAuthorization()
     func scheduleNotification(_ resource: NotificationResource)
-    func removePendingNotificationRequest(identifier: String)
+    func removeAllPendingNotificationRequests()
 }
 
 // MARK: - NotificationService
@@ -48,8 +48,8 @@ final class NotificationService: NSObject, INotificationService {
         }
     }
     
-    func removePendingNotificationRequest(identifier: String) {
-        notificationCenter.removePendingNotificationRequests(withIdentifiers: [identifier])
+    func removeAllPendingNotificationRequests() {
+        notificationCenter.removeAllPendingNotificationRequests()
     }
 }
 

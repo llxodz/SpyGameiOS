@@ -82,8 +82,8 @@ final class GameViewController: BaseViewController {
             }
             .store(in: &cancellables)
         output.updateTime
-            .sink { [weak self] time in
-                self?.timerLabel.text = "\(time)"
+            .sink { [weak self] text in
+                self?.timerLabel.text = text
             }
             .store(in: &cancellables)
         

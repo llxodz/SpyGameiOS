@@ -41,6 +41,8 @@ internal enum Asset {
     internal static let plusImage = ImageAsset(name: "PlusImage")
     internal static let spyImage = ImageAsset(name: "SpyImage")
   }
+  internal static let swipeImage = ImageAsset(name: "SwipeImage")
+  internal static let tapImage = ImageAsset(name: "TapImage")
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 
