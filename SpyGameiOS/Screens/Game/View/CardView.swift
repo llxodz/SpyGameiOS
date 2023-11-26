@@ -43,7 +43,9 @@ final class CardView: UIView {
     
     private func configureLayout() {
         typeOfPlayerLabel.snp.makeConstraints {
-            $0.center.equalToSuperview()
+            $0.leading.equalToSuperview().offset(CGFloat.baseMargin)
+            $0.trailing.equalToSuperview().inset(CGFloat.baseMargin).priority(.high) // Priotity нужен для фикса логов
+            $0.centerY.equalToSuperview()
         }
         descriptionOfTypeLabel.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(CGFloat.baseMargin)
@@ -68,6 +70,7 @@ final class CardView: UIView {
         typeOfPlayerLabel.font = Constants.boldFont
         typeOfPlayerLabel.textColor = Asset.Colors.mainTextColor.color
         typeOfPlayerLabel.text = L10n.CardView.startName
+        typeOfPlayerLabel.numberOfLines = 0
         descriptionOfTypeLabel.font = Constants.semiBoldFont
         descriptionOfTypeLabel.textColor = Asset.Colors.mainTextColor.color
         descriptionOfTypeLabel.textAlignment = .center
