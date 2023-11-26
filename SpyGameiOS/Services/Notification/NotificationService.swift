@@ -27,6 +27,8 @@ final class NotificationService: NSObject, INotificationService {
     
     init(notificationCenter: UNUserNotificationCenter = UNUserNotificationCenter.current()) {
         self.notificationCenter = notificationCenter
+        super.init()
+        notificationCenter.delegate = self
     }
     
     func requestAuthorization() {
@@ -48,5 +50,17 @@ final class NotificationService: NSObject, INotificationService {
     
     func removePendingNotificationRequest(identifier: String) {
         notificationCenter.removePendingNotificationRequests(withIdentifiers: [identifier])
+    }
+}
+
+// MARK: - UNUserNotificationCenterDelegate
+
+extension NotificationService: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(
+        _ center: UNUserNotificationCenter,
+        willPresent notification: UNNotification,
+        withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Swift.Void
+    ) {
+        completionHandler([.banner, .sound, .badge])
     }
 }

@@ -91,9 +91,12 @@ final class GameViewModel: BaseViewModel {
             .store(in: &cancellables)
         input.start
             .sink { [weak self] in
-                // TODO: - Start timer
                 guard let self = self else { return }
-                self.notificationRepository.sendNotification(content: self.configureContentOfNotification())
+                // TODO: - Start timer
+                // Локальная нотификация во время окончания игры
+                self.notificationRepository.sendNotification(
+                    content: self.configureContentOfNotification(minutes: self.model.minutesCount)
+                )
             }
             .store(in: &cancellables)
         return Output(
@@ -123,13 +126,14 @@ final class GameViewModel: BaseViewModel {
         return models.shuffled()
     }
     
-    private func configureContentOfNotification() -> NotificationResource {
+    private func configureContentOfNotification(minutes: Int) -> NotificationResource {
         let content = UNMutableNotificationContent()
         
         content.title = L10n.Notification.title
         content.body = L10n.Notification.description
         content.sound = UNNotificationSound.default
-            
-        return NotificationResource(id: Constants.pushNotificationId, content: content, timeInterval: TimeInterval(1))
+        
+        let seconds: TimeInterval = TimeInterval(max(0, minutes) * 60)
+        return NotificationResource(id: Constants.pushNotificationId, content: content, timeInterval: seconds)
     }
 }
