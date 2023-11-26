@@ -1,0 +1,27 @@
+/* 
+  Localizable.strings
+  SpyGameiOS
+
+  Created by Andrey Firsenko on 14.08.2022.
+  
+*/
+
+SpyGameiOS = "Spy Game";
+SettingsCell.Players = "Players";
+SettingsCell.Spys = "Spys";
+SettingsCell.Timer = "Timer";
+SettingsCell.Minute = "min";
+SettingsViewController.Save = "Save";
+SettingsViewController.Refresh = "Refresh";
+FooterView.StartGame = "Start";
+FooterView.PauseGame = "Pause";
+FooterView.ContinueGame = "Continue";
+CategoriesTableViewCell.Categories = "Categories";
+CategoriesTableViewCell.SelectAll = "Select all";
+CardView.startName = "Who are you?";
+CardView.startDescription = "Tap on card to view your role";
+CardView.commonPlayerDescription = "You're local. Your task is to figure out the spy. Ask questions to other players to figure out the spy";
+CardView.spyName = "You're a spy";
+CardView.spyDescription = "Try to understand about what talk about";
+Notification.title = "The game is over!";
+Notification.description = "It's time to find out who was the spy...";

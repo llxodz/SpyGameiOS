@@ -1,0 +1,27 @@
+/* 
+  Localizable.strings
+  SpyGameiOS
+
+  Created by Andrey Firsenko on 14.08.2022.
+  
+*/
+
+SpyGameiOS = "Игра Шпион";
+SettingsCell.Players = "Игроки";
+SettingsCell.Spys = "Шпионы";
+SettingsCell.Timer = "Таймер";
+SettingsCell.Minute = "мин";
+SettingsViewController.Save = "Сохранить";
+SettingsViewController.Refresh = "Перезагрузить";
+FooterView.StartGame = "Начать";
+FooterView.PauseGame = "Пауза";
+FooterView.ContinueGame = "Продолжить";
+CategoriesTableViewCell.Categories = "Категории";
+CategoriesTableViewCell.SelectAll = "Выбрать все";
+CardView.startName = "Кто ты?";
+CardView.startDescription = "Нажми на карточку, чтобы увидеть свою роль";
+CardView.spyName = "Ты шпион";
+CardView.commonPlayerDescription = "Ты местный. Твоя задача вычислить шпиона. Задавай вопросы другим игрокам, чтобы вычислить шпиона";
+CardView.spyDescription = "Постарайся понять, о чем говорят местные";
+Notification.title = "Игра окончена!";
+Notification.description = "Пора выяснить, кто же был шпионом...";
