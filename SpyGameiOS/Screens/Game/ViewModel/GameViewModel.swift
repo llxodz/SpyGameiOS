@@ -104,7 +104,7 @@ final class GameViewModel: BaseViewModel {
         input.tapButton
             .sink { [weak self] in
                 guard let self = self else { return }
-                if timer == nil {
+                if self.timer == nil {
                     // Старт
                     self.notificationRepository.sendNotification(
                         content: self.configureContentOfNotification()
@@ -182,7 +182,7 @@ private extension GameViewModel {
                 return
             }
             self.seconds -= 1
-            self.updateTime.send(makeTimeString())
+            self.updateTime.send(self.makeTimeString())
         }
         timer?.tolerance = Constants.timerTolerance
     }
