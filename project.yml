@@ -25,6 +25,7 @@ targets:
         TARGETED_DEVICE_FAMILY: 1 # supports iPhone(1)
         PRODUCT_BUNDLE_PACKAGE_TYPE: 'APPL'
         PRODUCT_BUNDLE_IDENTIFIER: 'com.andrewfirsenko.spygame'
+        PRODUCT_BUNDLE_NAME: 'Spy Game'
     sources:
       - path: SpyGameiOS
     preBuildScripts:
